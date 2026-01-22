@@ -1,0 +1,30 @@
+[Start] effFix started at 2026-01-21 16:17:09.752940
+Repair Failed
+Target bug not found by Infer analysis. This is likely because the Infer bug trace has start and end location in different function, which is not supported by EffFix now.
+Runtime Error
+Error. Exiting...
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 52, in analyze
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 52, in analyze
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+
+effFix exited with an error after 0.074 seconds 
+

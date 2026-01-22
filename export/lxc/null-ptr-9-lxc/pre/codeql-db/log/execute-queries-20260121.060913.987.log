@@ -1,0 +1,660 @@
+[2026-01-21 06:09:14] This is codeql execute queries -J-Xmx2388M --off-heap-ram=2388 --verbosity=progress --logdir=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/log --evaluator-log-level=5 --warnings=show --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/results -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/db-cpp /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql
+[2026-01-21 06:09:14] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --format=json -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql
+[2026-01-21 06:09:14] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:09:14] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql"
+                      ]
+[2026-01-21 06:09:14] Refusing fancy output: The terminal is not an xterm: 
+[2026-01-21 06:09:14] Creating executor with 1 threads.
+[2026-01-21 06:09:14] Calling plumbing command: codeql resolve extensions --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql
+[2026-01-21 06:09:14] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --format startingpacks -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql
+[2026-01-21 06:09:14] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:09:14] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries"
+                      ]
+[2026-01-21 06:09:16] Plumbing command codeql resolve extensions completed:
+                      {
+                        "models" : [ ],
+                        "data" : { }
+                      }
+[2026-01-21 06:09:16] [DETAILS] execute queries> Did not find any ML models.
+[2026-01-21 06:09:16] Calling plumbing command: codeql resolve library-path --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --query=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql --format=json
+[2026-01-21 06:09:16] [DETAILS] resolve library-path> Resolving query at normalized path /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql.
+[2026-01-21 06:09:16] [DETAILS] resolve library-path> Found enclosing pack 'efffix/codeql-cpp-queries' at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:09:16] [DETAILS] resolve library-path> Adding compilation cache at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache.
+[2026-01-21 06:09:16] [DETAILS] resolve library-path> Resolving library dependencies from /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlpack.yml.
+[2026-01-21 06:09:16] [DETAILS] resolve library-path> QL pack dependencies for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries resolved OK.
+[2026-01-21 06:09:16] [DETAILS] resolve library-path> Found dbscheme through QL packs: /root/.codeql/packages/codeql/cpp-all/0.6.0/semmlecode.cpp.dbscheme.
+[2026-01-21 06:09:16] Plumbing command codeql resolve library-path completed:
+                      {
+                        "libraryPath" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries",
+                          "/root/.codeql/packages/codeql/cpp-all/0.6.0",
+                          "/root/.codeql/packages/codeql/ssa/0.0.13",
+                          "/root/.codeql/packages/codeql/tutorial/0.0.6"
+                        ],
+                        "dbscheme" : "/root/.codeql/packages/codeql/cpp-all/0.6.0/semmlecode.cpp.dbscheme",
+                        "compilationCache" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache"
+                        ],
+                        "relativeName" : "efffix/codeql-cpp-queries/consts.ql",
+                        "qlPackName" : "efffix/codeql-cpp-queries"
+                      }
+[2026-01-21 06:09:16] [PROGRESS] execute queries> Compiling query plan for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql.
+[2026-01-21 06:09:16] [DETAILS] execute queries> Resolving imports for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql.
+[2026-01-21 06:09:16] Resolved file set for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql hashes to dec3abd8c2a5e8e381db7ca8f9ad6d3797594b12.
+[2026-01-21 06:09:16] [DETAILS] execute queries> Checking QL for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql.
+[2026-01-21 06:09:16] ExternalModuleBindingPass ...
+[2026-01-21 06:09:16] ExternalModuleBindingPass time: 00:00.292
+[2026-01-21 06:09:16] QLPredicateSynthesiser ...
+[2026-01-21 06:09:17] QLPredicateSynthesiser time: 00:00.011
+[2026-01-21 06:09:17] DeclarationBindingPass ...
+[2026-01-21 06:09:17] DeclarationBindingPass time: 00:00.089
+[2026-01-21 06:09:17] Fixed point time ...
+[2026-01-21 06:09:17] Fixed point time time: 00:00.505
+[2026-01-21 06:09:17] ReferenceBindingPass ...
+[2026-01-21 06:09:17] ReferenceBindingPass time: 00:00.042
+[2026-01-21 06:09:17] PopulateInstantiationMapPass ...
+[2026-01-21 06:09:17] PopulateInstantiationMapPass time: 00:00.210
+[2026-01-21 06:09:17] ReferenceBindingCheck ...
+[2026-01-21 06:09:17] ReferenceBindingCheck time: 00:00.034
+[2026-01-21 06:09:17] PredicateBodyBindingPass ...
+[2026-01-21 06:09:18] PredicateBodyBindingPass time: 00:00.159
+[2026-01-21 06:09:18] LanguagePragmaPropagationPass ...
+[2026-01-21 06:09:18] LanguagePragmaPropagationPass time: 00:00.013
+[2026-01-21 06:09:18] Ambiguity checks ...
+[2026-01-21 06:09:18] Ambiguity checks time: 00:00.053
+[2026-01-21 06:09:18] Ql checks ...
+[2026-01-21 06:09:18] Ql checks time: 00:00.721
+[2026-01-21 06:09:19] Compilation pipeline
+[2026-01-21 06:09:19] Type Inference ...
+[2026-01-21 06:09:19] CSV_TYPE_HIERARCHY: Best number of iterations,Maximum number of runs,Number of BDD variables,Size of BDD for typefacts
+[2026-01-21 06:09:19] CSV_TYPE_HIERARCHY: 0,0,12,12
+[2026-01-21 06:09:19] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:09:19] CSV_TYPE_HIERARCHY: 0,0,8,8
+[2026-01-21 06:09:19] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:09:19] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,812,1829
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,2,2
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,2,2
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,3,3
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,4,4
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,7,7
+[2026-01-21 06:09:20] CSV_TYPE_HIERARCHY: 0,0,5,5
+[2026-01-21 06:09:21] Type Inference time: 00:01.279
+[2026-01-21 06:09:21] [DETAILS] execute queries> Optimizing /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql.
+[2026-01-21 06:09:21] Processing compilation pipeline
+[2026-01-21 06:09:21] Started compiling a query
+[2026-01-21 06:09:21] Initialising compiler...
+[2026-01-21 06:09:21] 	 ... compiler initialised
+[2026-01-21 06:09:21] About to start query optimisation
+[2026-01-21 06:09:21] Compilation cache miss for e857d39a671865276f4951a3f72dbfa8a6874297.
+[2026-01-21 06:09:21] Stored compiled program for e857d39a671865276f4951a3f72dbfa8a6874297.
+[2026-01-21 06:09:21] Compilation cache miss for a8676a4b0a2fdbb647289c783712fc431431e690.
+[2026-01-21 06:09:22] Stored compiled program for a8676a4b0a2fdbb647289c783712fc431431e690.
+[2026-01-21 06:09:22] Compilation cache miss for 37d9f17a628b084f51b6e9266ef33d2efaf79eb0.
+[2026-01-21 06:09:22] Stored compiled program for 37d9f17a628b084f51b6e9266ef33d2efaf79eb0.
+[2026-01-21 06:09:22] Compilation cache miss for 6f0d1d1653b8de447f97f5f6a4762b176ec76f0b.
+[2026-01-21 06:09:22] Stored compiled program for 6f0d1d1653b8de447f97f5f6a4762b176ec76f0b.
+[2026-01-21 06:09:22] Compilation cache miss for 11ea20154e6f6e18c921a02fe96eb8e7f02a9f60.
+[2026-01-21 06:09:22] Stored compiled program for 11ea20154e6f6e18c921a02fe96eb8e7f02a9f60.
+[2026-01-21 06:09:22] Compilation cache miss for 077e6622a81d02806ea1148cee10d40b0b1a85e5.
+[2026-01-21 06:09:23] Stored compiled program for 077e6622a81d02806ea1148cee10d40b0b1a85e5.
+[2026-01-21 06:09:23] Compilation cache miss for 019e16dc32ac4cd1a28e97df04cd46292c588009.
+[2026-01-21 06:09:24] Stored compiled program for 019e16dc32ac4cd1a28e97df04cd46292c588009.
+[2026-01-21 06:09:24] Compilation cache miss for 77a27fcd058e9534424ca5c816e2df3ac5945f31.
+[2026-01-21 06:09:24] Stored compiled program for 77a27fcd058e9534424ca5c816e2df3ac5945f31.
+[2026-01-21 06:09:24] Compilation cache miss for 83a93972b908dae3ece318758858866400f49e15.
+[2026-01-21 06:09:25] Stored compiled program for 83a93972b908dae3ece318758858866400f49e15.
+[2026-01-21 06:09:25] Compilation cache miss for 2834095d76c4e68a2beea176988f95b6ef0d3243.
+[2026-01-21 06:09:26] Stored compiled program for 2834095d76c4e68a2beea176988f95b6ef0d3243.
+[2026-01-21 06:09:26] Compilation cache miss for bd63d141d4dcd0d9326be386cff5d87de9c167fa.
+[2026-01-21 06:09:26] Stored compiled program for bd63d141d4dcd0d9326be386cff5d87de9c167fa.
+[2026-01-21 06:09:26] Compilation cache miss for dbf7a769ccffd291f77ea1d1a0aa887d15c50364.
+[2026-01-21 06:09:29] Stored compiled program for dbf7a769ccffd291f77ea1d1a0aa887d15c50364.
+[2026-01-21 06:09:29] Compilation cache miss for 05861ff14084e62ed9fe554dd056eef9ef8eac50.
+[2026-01-21 06:09:31] Stored compiled program for 05861ff14084e62ed9fe554dd056eef9ef8eac50.
+[2026-01-21 06:09:31] Compilation cache miss for 551ec15d2e73b6473c2021607881cc6366067daf.
+[2026-01-21 06:09:31] Stored compiled program for 551ec15d2e73b6473c2021607881cc6366067daf.
+[2026-01-21 06:09:31] CSV_COMPILATION: NONE,MISC,RA_TRANSLATION,OPTIMISATIONS
+[2026-01-21 06:09:31] CSV_COMPILATION: 646,358,600,8427
+[2026-01-21 06:09:31] [SPAMMY] execute queries> No database upgrade/downgrade needed for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql
+[2026-01-21 06:09:31] [PROGRESS] execute queries> [1/1 comp 15.3s] Compiled /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql.
+[2026-01-21 06:09:31] [PROGRESS] execute queries> Starting evaluation of efffix/codeql-cpp-queries/consts.ql.
+[2026-01-21 06:09:31] Starting evaluation of /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql
+[2026-01-21 06:09:31] (0s) Start query execution
+[2026-01-21 06:09:31] (0s) Beginning execution of consts.ql
+[2026-01-21 06:09:31] (0s)  >>> Created relation exprs/3@9397d9en with 176625 rows and digest b64bc1rti653pfd9mva1ue2uat7.
+[2026-01-21 06:09:31] (0s)  >>> Created relation values/2@875193ol with 52093 rows and digest bf432b6tl50h5v6j4o1dnm8ns71.
+[2026-01-21 06:09:31] (0s)  >>> Created relation functions/3@d341e4il with 3368 rows and digest d763e6003o1s1eu8f15cilossvc.
+[2026-01-21 06:09:31] (0s)  >>> Created relation files/2@bfcf0c84 with 413 rows and digest a1e902el37icja61ktd34snk3h0.
+[2026-01-21 06:09:31] (0s)  >>> Created relation folders/2@3a330ev0 with 33 rows and digest 90bfddnf330m6u148i88s66ohv9.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate File#1c14e1de::Container::getAbsolutePath#0#dispred#ff/2@64dd30uq
+[2026-01-21 06:09:31] (0s)  >>> Created relation File#1c14e1de::Container::getAbsolutePath#0#dispred#ff/2@64dd30uq with 446 rows and digest 6ecc8f9mcc4klahnfhik6p3gcd8.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate File#1c14e1de::Container::getBaseName#0#dispred#ff/2@90e488i1
+[2026-01-21 06:09:31] (0s)  >>> Created relation File#1c14e1de::Container::getBaseName#0#dispred#ff/2@90e488i1 with 445 rows and digest 3e471cjkmje7boc0akr7tp7hjt3.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate File#1c14e1de::Container::getBaseName#0#dispred#ff_10#join_rhs/2@a9e7720q
+[2026-01-21 06:09:31] (0s)  >>> Created relation File#1c14e1de::Container::getBaseName#0#dispred#ff_10#join_rhs/2@a9e7720q with 445 rows and digest 25e49090rb59td6t08ialh7tco2.
+[2026-01-21 06:09:31] (0s)  >>> Created relation locations_default/6@8c8d0fsu with 59676 rows and digest e10bff1k29v5kq88lnhn3u4evv8.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate functions_20#join_rhs/2@c63f293b
+[2026-01-21 06:09:31] (0s)  >>> Created relation functions_20#join_rhs/2@c63f293b with 3368 rows and digest ba3495807nemj10b7p499vsdu54.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate _functions_20#join_rhs#antijoin_rhs/1@b6cc9cki
+[2026-01-21 06:09:31] (0s)  >>> Created relation _functions_20#join_rhs#antijoin_rhs/1@b6cc9cki with 5 rows and digest 9b353algmoufuai1afraiehnvp7.
+[2026-01-21 06:09:31] (0s)  >>> Created relation fun_decls/5@12c32ffk with 4779 rows and digest dcbd490fre2c3i67tga1gtjn5ca.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate fun_decls_10#join_rhs/2@ce97a05a
+[2026-01-21 06:09:31] (0s)  >>> Created relation fun_decls_10#join_rhs/2@ce97a05a with 4778 rows and digest da0766ep60mo6e972efq59gaop4.
+[2026-01-21 06:09:31] (0s)  >>> Created relation function_instantiation/2@f3a65csb with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s) Inferred that Parameter#ed81dd8f::Parameter::getFunction#0#dispred#fb/2@740fe6lm is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that project#function_instantiation/1@ebe3e69d is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that function_instantiation_10#join_rhs/2@8c99c5m0 is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@45f123f1 is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that _function_instantiation_is_function_template#shared/2@d953ee6q is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that _function_instantiation_is_function_template_m#Declaration#4bfb53be::Declaration::isMember#0#dispred__#shared/2@a266a92g is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@eda30383 is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@53c2c8pr is empty, due to function_instantiation/2@f3a65csb.
+[2026-01-21 06:09:31] (0s) Inferred that _Parameter#ed81dd8f::Parameter#f_Parameter#ed81dd8f::Parameter::getFunction#0#dispred#fb_function_in__#antijoin_rhs/1@c60d54b9 is empty, due to Parameter#ed81dd8f::Parameter::getFunction#0#dispred#fb/2@740fe6lm.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::Function::getParameter#1#dispred#bff/3@282527bg is empty, due to project#function_instantiation/1@ebe3e69d.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getTemplateArgumentType#1#dispred#bff/3@1500dfcn is empty, due to project#function_instantiation/1@ebe3e69d.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@3ec0a8s9 is empty, due to project#function_instantiation/1@ebe3e69d.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@fb15e2b3 is empty, due to project#function_instantiation/1@ebe3e69d.
+[2026-01-21 06:09:31] (0s) Inferred that QualifiedName#6f5e0462::TemplateFunction::getAnInstantiation#0#dispred#ff/2@8f643550 is empty, due to function_instantiation_10#join_rhs/2@8c99c5m0.
+[2026-01-21 06:09:31] (0s) Inferred that __is_function_template_project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf#__#antijoin_rhs/2@de1d2276 is empty, due to function_instantiation_10#join_rhs/2@8c99c5m0.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#ff/2@f606a8fa is empty, due to function_instantiation_10#join_rhs/2@8c99c5m0.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@56c1e5id is empty, due to function_instantiation_10#join_rhs/2@8c99c5m0.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#ff/2@45da1cep is empty, due to function_instantiation_10#join_rhs/2@8c99c5m0.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getTemplateArgumentType#1#dispred#bff/3@1f7b66rs is empty, due to m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@45f123f1.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@0d06e023 is empty, due to m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@45f123f1.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@3b4984kd is empty, due to m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@45f123f1.
+[2026-01-21 06:09:31] (0s) Inferred that __function_instantiation_is_function_template#shared_fun_decls_10#join_rhs_fun_specialized_project#D__#antijoin_rhs/2@84328acn is empty, due to _function_instantiation_is_function_template#shared/2@d953ee6q.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#ff/2@4ac406bf is empty, due to _function_instantiation_is_function_template#shared/2@d953ee6q.
+[2026-01-21 06:09:31] (0s) Inferred that __function_instantiation_is_function_template_m#Declaration#4bfb53be::Declaration::isMember#0#dispre__#antijoin_rhs/2@b2c423eh is empty, due to _function_instantiation_is_function_template_m#Declaration#4bfb53be::Declaration::isMember#0#dispred__#shared/2@a266a92g.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@f4c95005 is empty, due to _function_instantiation_is_function_template_m#Declaration#4bfb53be::Declaration::isMember#0#dispred__#shared/2@a266a92g.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getTemplateArgumentType#1#dispred#bff/3@82875059 is empty, due to m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@eda30383.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@208a3cna is empty, due to m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@eda30383.
+[2026-01-21 06:09:31] (0s) Inferred that Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@f3f323ok is empty, due to m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@eda30383.
+[2026-01-21 06:09:31] (0s) Inferred that project#Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/2@a3fc40kp is empty, due to Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@3ec0a8s9.
+[2026-01-21 06:09:31] (0s) Inferred that project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@342f97eh is empty, due to Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@fb15e2b3.
+[2026-01-21 06:09:31] (0s) Inferred that _is_function_template_project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf#shared/1@1c1de1ff is empty, due to project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@342f97eh.
+[2026-01-21 06:09:31] (0s) Inferred that project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@9ae1dbv6 is empty, due to Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@f3f323ok.
+[2026-01-21 06:09:31] (0s) Inferred that project#Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/2@0d8fa09i is empty, due to Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@0d06e023.
+[2026-01-21 06:09:31] (0s) Inferred that project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@5e55e1i6 is empty, due to Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@3b4984kd.
+[2026-01-21 06:09:31] (0s) Inferred that project#Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/2@3852ecka is empty, due to Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@208a3cna.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@6bafbfbb is empty, due to project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@5e55e1i6.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Parameter#ed81dd8f::Parameter::getFunction#0#dispred#fb/2@740fe6lm with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@6bafbfbb with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation function_instantiation_10#join_rhs/2@8c99c5m0 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@5e55e1i6 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/2@0d8fa09i with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@9ae1dbv6 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@45f123f1 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@342f97eh with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/2@a3fc40kp with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getTemplateArgumentType#1#dispred#bff/3@1500dfcn with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@208a3cna with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getTemplateArgumentType#1#dispred#bff/3@82875059 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@f4c95005 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation __function_instantiation_is_function_template_m#Declaration#4bfb53be::Declaration::isMember#0#dispre__#antijoin_rhs/2@b2c423eh with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@f3f323ok with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation __function_instantiation_is_function_template#shared_fun_decls_10#join_rhs_fun_specialized_project#D__#antijoin_rhs/2@84328acn with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@3b4984kd with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@0d06e023 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/3@3ec0a8s9 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#ff/2@45da1cep with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@56c1e5id with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#ff/2@f606a8fa with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#Declaration#4bfb53be::Declaration::getTemplateArgumentValue#1#dispred#bff/2@3852ecka with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/2@fb15e2b3 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation _is_function_template_project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf#shared/1@1c1de1ff with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation QualifiedName#6f5e0462::TemplateFunction::getAnInstantiation#0#dispred#ff/2@8f643550 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation _function_instantiation_is_function_template#shared/2@d953ee6q with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::getParameter#1#dispred#bff/3@282527bg with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#ff/2@4ac406bf with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::TemplateFunction::getAnInstantiation#0#dispred#fb/2@53c2c8pr with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Declaration#4bfb53be::Declaration::getTemplateArgumentType#1#dispred#bff/3@1f7b66rs with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation __is_function_template_project#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf#__#antijoin_rhs/2@de1d2276 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation _function_instantiation_is_function_template_m#Declaration#4bfb53be::Declaration::isMember#0#dispred__#shared/2@a266a92g with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation project#function_instantiation/1@ebe3e69d with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation m#Declaration#4bfb53be::Declaration::getATemplateArgument#0#dispred#bf/1@eda30383 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation _Parameter#ed81dd8f::Parameter#f_Parameter#ed81dd8f::Parameter::getFunction#0#dispred#fb_function_in__#antijoin_rhs/1@c60d54b9 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation fun_specialized/1@410236a6 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s) Inferred that __is_function_template_project#function_template_argument#shared_fun_decls_10#join_rhs_fun_specializ__#antijoin_rhs/1@0854e692 is empty, due to fun_specialized/1@410236a6.
+[2026-01-21 06:09:31] (0s) Inferred that _fun_decls_fun_specialized_project#Call#39248e3c::FunctionCall::getTarget#ff#antijoin_rhs/1@ec31339q is empty, due to fun_specialized/1@410236a6.
+[2026-01-21 06:09:31] (0s) Inferred that Function#65d29029::Function::isSpecialization#0#dispred#f/1@7c6f0dqe is empty, due to fun_specialized/1@410236a6.
+[2026-01-21 06:09:31] (0s) Inferred that _fun_decls_10#join_rhs_fun_specialized#antijoin_rhs/2@843f14l4 is empty, due to fun_specialized/1@410236a6.
+[2026-01-21 06:09:31] (0s)  >>> Created relation __is_function_template_project#function_template_argument#shared_fun_decls_10#join_rhs_fun_specializ__#antijoin_rhs/1@0854e692 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation _fun_decls_10#join_rhs_fun_specialized#antijoin_rhs/2@843f14l4 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation _fun_decls_fun_specialized_project#Call#39248e3c::FunctionCall::getTarget#ff#antijoin_rhs/1@ec31339q with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::isSpecialization#0#dispred#f/1@7c6f0dqe with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Function#65d29029::Function::declEntry#1#dispred#bf/2@a4402b1a
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::declEntry#1#dispred#bf/2@a4402b1a with 4778 rows and digest da0766ep60mo6e972efq59gaop4.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate fun_decls_1#antijoin_rhs/1@976541cp
+[2026-01-21 06:09:31] (0s)  >>> Created relation fun_decls_1#antijoin_rhs/1@976541cp with 3365 rows and digest 6253e3ihpf5jenqj6hp2rprh5r4.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Function#65d29029::Function::getADeclarationEntry#0#dispred#bf/2@f4d46chf
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::getADeclarationEntry#0#dispred#bf/2@f4d46chf with 4778 rows and digest fede4a0v89t1k5eng3n4ohefm56.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Function#65d29029::Function::getADeclarationEntry#0#dispred#bf_10#join_rhs/2@439382aj
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::getADeclarationEntry#0#dispred#bf_10#join_rhs/2@439382aj with 4778 rows and digest de2e47c1jgjcuba61gcrpbjpn65.
+[2026-01-21 06:09:31] (0s)  >>> Created relation fun_def/1@760890qm with 2049 rows and digest 44a0cd30mmmfnf9i20if4qab9q6.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Function#65d29029::Function::getDefinition#0#dispred#bf/2@8a25807u
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::getDefinition#0#dispred#bf/2@8a25807u with 2049 rows and digest 4b55f56vfd3v4f89nv2e6udjkt6.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Function#65d29029::Function::getDefinition#0#dispred#bf_0#antijoin_rhs/1@2a3490qp
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::getDefinition#0#dispred#bf_0#antijoin_rhs/1@2a3490qp with 2049 rows and digest 91e877dsb3m9lqh2bfkvc0rcnf8.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Function#65d29029::Function::getDefinitionLocation#0#dispred#bf/2@28b93ef3
+[2026-01-21 06:09:31] (0s)  >>> Created relation Function#65d29029::Function::getDefinitionLocation#0#dispred#bf/2@28b93ef3 with 2049 rows and digest e1843bfehb0kmdgb9ic3i76s210.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate locations_default_23450#join_rhs/5@416a22uf
+[2026-01-21 06:09:31] (0s)  >>> Created relation locations_default_23450#join_rhs/5@416a22uf with 59676 rows and digest 7da9f0a8hbut3qb62pvfho6b1a5.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate files_10#join_rhs/2@fad41frn
+[2026-01-21 06:09:31] (0s)  >>> Created relation files_10#join_rhs/2@fad41frn with 413 rows and digest a34eb0tv98g6k22aikhh2ut3742.
+[2026-01-21 06:09:31] (0s)  >>> Created relation locations_stmt/6@002559ts with 32906 rows and digest 6d6cd7gl9nj3apooo3mi4hhmr26.
+[2026-01-21 06:09:31] (0s)  >>> Created relation locations_expr/6@3f68a5vv with 89952 rows and digest 360a3f1li78h2j6k3pm9uu016n5.
+[2026-01-21 06:09:31] (0s) Starting to evaluate predicate Location#bd5c7591::Location::fullLocationInfo#5#dispred#ffffff/6@8add30bm
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::Location::fullLocationInfo#5#dispred#ffffff/6@8add30bm with 182534 rows and digest d54531htchin3q7stmaknikg58a.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getContainer#ff/2@f8ea80lh
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::Location::getContainer#ff/2@f8ea80lh with 182534 rows and digest a9607cdukdpo5nkeho11u72mv81.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getContainer#ff_10#join_rhs/2@e5d380v4
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::Location::getContainer#ff_10#join_rhs/2@e5d380v4 with 182534 rows and digest fafec64vr9ur8d74c0ucplngjv8.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getFile#0#dispred#bf/2@5ad5f4kb
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::Location::getFile#0#dispred#bf/2@5ad5f4kb with 182501 rows and digest 26e45alir91cuhb8ajotl3t4vu4.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getFile#0#dispred#bf_10#join_rhs/2@2002d94r
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::Location::getFile#0#dispred#bf_10#join_rhs/2@2002d94r with 182501 rows and digest e97ae72jitl28lt90jtmoq2ovbf.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Location#bd5c7591::UnknownLocation#b/1@b6c4eded
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::UnknownLocation#b/1@b6c4eded with 3 rows and digest db81cemdg2o9670qkbtu8d51md1.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Element#496c7fc2::Element::getLocation#0#dispred#bf/2@21998crq
+[2026-01-21 06:09:32] (0s)  >>> Created relation Element#496c7fc2::Element::getLocation#0#dispred#bf/2@21998crq with 3393 rows and digest de5388deae64dl2101a2hqnkfj0.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Element#496c7fc2::Element::getFile#0#dispred#bf/2@69eeab2a
+[2026-01-21 06:09:32] (0s)  >>> Created relation Element#496c7fc2::Element::getFile#0#dispred#bf/2@69eeab2a with 3386 rows and digest e82d9410f1isd9tper9qikamkt7.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Element#496c7fc2::Element::getFile#0#dispred#bf_10#join_rhs/2@3144b1an
+[2026-01-21 06:09:32] (0s)  >>> Created relation Element#496c7fc2::Element::getFile#0#dispred#bf_10#join_rhs/2@3144b1an with 3386 rows and digest c95eafj7hur38rqh9m4fj905foa.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::is_target_func#1#f/1@07ad5bqt
+[2026-01-21 06:09:32] (0s)  >>> Created relation consts#82b1f63f::is_target_func#1#f/1@07ad5bqt with 1 rows and digest ee3217rm9qnkhice06e7mli3he7.
+[2026-01-21 06:09:32] (0s)  >>> Created relation valuebind/2@956da5u1 with 53932 rows and digest 6f8d3e7pue4bgug8usj03vd1tq1.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate valuebind_10#join_rhs/2@d4e55d8e
+[2026-01-21 06:09:32] (0s)  >>> Created relation valuebind_10#join_rhs/2@d4e55d8e with 53932 rows and digest 98875cji892k5dmrta3knlml3l7.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::print_integral_literal#1#bf/2@7e46f0j5
+[2026-01-21 06:09:32] (0s)  >>> Created relation consts#82b1f63f::print_integral_literal#1#bf/2@7e46f0j5 with 12 rows and digest 52badbvlijuu3k1p8mibsg4a02f.
+[2026-01-21 06:09:32] (0s)  >>> Created relation stmts/3@a84928ns with 46321 rows and digest 84662ba0kpag29n61mv928nqua5.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getStartLine#ff/2@5a94d8g1
+[2026-01-21 06:09:32] (0s)  >>> Created relation Location#bd5c7591::Location::getStartLine#ff/2@5a94d8g1 with 182534 rows and digest 6ba93bfbv4ln8bctp7n4jvkhnef.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::isFixLocation#1#f/1@17b5cc6n
+[2026-01-21 06:09:32] (0s)  >>> Created relation consts#82b1f63f::isFixLocation#1#f/1@17b5cc6n with 7 rows and digest a39db9r1lrrrug1us6sc45iv428.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::isFixLocationStmt#1#f/1@f251c4ut
+[2026-01-21 06:09:32] (0s)  >>> Created relation consts#82b1f63f::isFixLocationStmt#1#f/1@f251c4ut with 1 rows and digest f966ae70cb8c6snbn7l7biufm77.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate _Enclosing#c50c5fbf::exprEnclosingElement#1#ff_consts#82b1f63f::is_target_func#1#f#shared/1@9d1e95n0
+[2026-01-21 06:09:32] (0s)  >>> Created relation _Enclosing#c50c5fbf::exprEnclosingElement#1#ff_consts#82b1f63f::is_target_func#1#f#shared/1@9d1e95n0 with 138 rows and digest f18d0a1d5q6tfjcp9bca3u45737.
+[2026-01-21 06:09:32] (0s)  >>> Created relation usertypes/3@fc89fbdn with 877 rows and digest 1025115flgmi9ea2mkfoii5hsd2.
+[2026-01-21 06:09:32] (0s)  >>> Created relation decltypes/4@e2e60fqi with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s) Inferred that project#decltypes/1@a6c084fu is empty, due to decltypes/4@e2e60fqi.
+[2026-01-21 06:09:32] (0s) Inferred that project#decltypes#2/2@7d1been8 is empty, due to decltypes/4@e2e60fqi.
+[2026-01-21 06:09:32] (0s) Inferred that Type#2e8eb3ef::Decltype#f/1@ec479e0j is empty, due to project#decltypes/1@a6c084fu.
+[2026-01-21 06:09:32] (0s) Inferred that Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff/2@5487d6un is empty, due to project#decltypes#2/2@7d1been8.
+[2026-01-21 06:09:32] (0s) Inferred that Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff/2@236fed50 is empty, due to project#decltypes/2@7d1been8.
+[2026-01-21 06:09:32] (0s) Inferred that Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff_10#join_rhs/2@da5c19np is empty, due to Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff/2@5487d6un.
+[2026-01-21 06:09:32] (0s) Inferred that Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff_10#join_rhs/2@12b92919 is empty, due to Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff/2@236fed50.
+[2026-01-21 06:09:32] (0s)  >>> Created relation project#decltypes/1@a6c084fu with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Decltype#f/1@ec479e0j with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff_10#join_rhs/2@da5c19np with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff/2@236fed50 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff/2@5487d6un with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Decltype::getBaseType#0#dispred#ff_10#join_rhs/2@12b92919 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation project#decltypes#2/2@7d1been8 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate usertypes_20#join_rhs/2@f5cef7o5
+[2026-01-21 06:09:32] (0s)  >>> Created relation usertypes_20#join_rhs/2@f5cef7o5 with 877 rows and digest 76cf92n06rf6bb80ipml8uqkqqc.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate TypedefType#2045b2ea::TypedefType#f/1@769e960b
+[2026-01-21 06:09:32] (0s)  >>> Created relation TypedefType#2045b2ea::TypedefType#f/1@769e960b with 323 rows and digest 06c65684hqsidcbu4ccp42qkopc.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::Type::getUnderlyingType#ff/2@56f6d97l
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Type::getUnderlyingType#ff/2@56f6d97l with 3185 rows and digest ba054bdobd1scb9ds3bjdj1kmi1.
+[2026-01-21 06:09:32] (0s)  >>> Created relation typedefbase/2@7715680f with 323 rows and digest 65ad88npus5gcoftkej97o9pfo2.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate usertypes_0#antijoin_rhs/1@55faa2pt
+[2026-01-21 06:09:32] (0s)  >>> Created relation usertypes_0#antijoin_rhs/1@55faa2pt with 877 rows and digest b3cb89q75epq9e6o9selmj5fcd8.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate TypedefType#2045b2ea::TypedefType::getBaseType#0#dispred#ff/2@1bafe7vn
+[2026-01-21 06:09:32] (0s)  >>> Created relation TypedefType#2045b2ea::TypedefType::getBaseType#0#dispred#ff/2@1bafe7vn with 323 rows and digest 30f743qccdvk9gooph42654pdue.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate TypedefType#2045b2ea::TypedefType::getBaseType#0#dispred#ff_10#join_rhs/2@1f05c6r2
+[2026-01-21 06:09:32] (0s)  >>> Created relation TypedefType#2045b2ea::TypedefType::getBaseType#0#dispred#ff_10#join_rhs/2@1f05c6r2 with 323 rows and digest 3d9d1ddn73svlnjgdshk71pcusa.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff/2@i1#eedb7cbm (iteration 1)
+[2026-01-21 06:09:32] (0s) 			 - Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff_delta has 3185 rows (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff/2@i2#eedb7cbm (iteration 2)
+[2026-01-21 06:09:32] (0s) 			 - Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff_delta has 220 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff/2@i3#eedb7cbm (iteration 3)
+[2026-01-21 06:09:32] (0s) 			 - Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff_delta has 88 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff/2@i4#eedb7cbm (iteration 4)
+[2026-01-21 06:09:32] (0s) 			 - Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff_delta has 15 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff/2@i5#eedb7cbm (iteration 5)
+[2026-01-21 06:09:32] (0s) Empty delta for Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff_delta (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Accumulating deltas
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::Type::getUnderlyingType#0#dispred#ff/2@eedb7cbm with 3508 rows and digest 70f4c6u2isv0a6b89vicevfviv6.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getActualType#0#dispred#bf/2@05adf9hu
+[2026-01-21 06:09:32] (0s)  >>> Created relation Expr#ef463c5d::Expr::getActualType#0#dispred#bf/2@05adf9hu with 138 rows and digest 57025as8ihgpf4n1qcklldvi2ic.
+[2026-01-21 06:09:32] (0s)  >>> Created relation builtintypes/6@2962f845 with 49 rows and digest aae0f9cuivp3nu8128ovg8a6ind.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::isArithmeticType#2#ff/2@80bb1f9p
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::isArithmeticType#2#ff/2@80bb1f9p with 45 rows and digest a0e728hahc5q7epila1vk7klrfa.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::isIntegralType#2#ff/2@a2f094jo
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::isIntegralType#2#ff/2@a2f094jo with 23 rows and digest e6470894e7dkvluc98sig7t80l9.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::IntegralOrEnumType#b/1@76b700c4
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::IntegralOrEnumType#b/1@76b700c4 with 23 rows and digest 986b79o261sk8ekojq1g77tvl78.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Type#2e8eb3ef::IntegralType#ff/2@37b2d35e
+[2026-01-21 06:09:32] (0s)  >>> Created relation Type#2e8eb3ef::IntegralType#ff/2@37b2d35e with 23 rows and digest e6470894e7dkvluc98sig7t80l9.
+[2026-01-21 06:09:32] (0s)  >>> Created relation localvariables/3@621c54fo with 7415 rows and digest 3c1ac1qk3je71u38icecvjk8jce.
+[2026-01-21 06:09:32] (0s)  >>> Created relation initialisers/4@b22bf0qg with 7754 rows and digest 6a8a62dmju0bsqoh46s46hdkcq2.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Variable#7a968d4e::Variable::getInitializer#0#dispred#ff/2@0dcc45kq
+[2026-01-21 06:09:32] (0s)  >>> Created relation Variable#7a968d4e::Variable::getInitializer#0#dispred#ff/2@0dcc45kq with 4530 rows and digest 67482fne8b9bqu6o7v673d9r3gc.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Variable#7a968d4e::LocalVariable#f/1@7ff515dk
+[2026-01-21 06:09:32] (0s)  >>> Created relation Variable#7a968d4e::LocalVariable#f/1@7ff515dk with 7415 rows and digest 242ecd21mrirev2hgik82upg064.
+[2026-01-21 06:09:32] (0s)  >>> Created relation condition_decl_bind/2@dd4c18pa with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s) Inferred that Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr is empty, due to condition_decl_bind/2@dd4c18pa.
+[2026-01-21 06:09:32] (0s) Inferred that project#Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/1@ab4a349m is empty, due to Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr.
+[2026-01-21 06:09:32] (0s) Inferred that _Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff_Variable#7a968d4e::LocalVariable#b__#join_rhs/2@892c0c5g is empty, due to Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr.
+[2026-01-21 06:09:32] (0s) Inferred that Assignment#9d5edc7a::ConditionDeclExpr::getInitializingExpr#0#dispred#ff/2@0b29f3s2 is empty, due to Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr.
+[2026-01-21 06:09:32] (0s) Inferred that _Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff_Variable#7a968d4e::LocalVariable#f__#join_rhs/2@b20141rr is empty, due to Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr.
+[2026-01-21 06:09:32] (0s) Inferred that _Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff_Variable#7a968d4e::LocalVariable#f__#join_rhs/2@8c4d2fb8 is empty, due to Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr.
+[2026-01-21 06:09:32] (0s) Inferred that Assignment#9d5edc7a::ConditionDeclExpr::getInitializingExpr#0#dispred#ff_1#antijoin_rhs/1@eab99206 is empty, due to Assignment#9d5edc7a::ConditionDeclExpr::getInitializingExpr#0#dispred#ff/2@0b29f3s2.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/2@2f0102jr with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Assignment#9d5edc7a::ConditionDeclExpr::getInitializingExpr#0#dispred#ff_1#antijoin_rhs/1@eab99206 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation Assignment#9d5edc7a::ConditionDeclExpr::getInitializingExpr#0#dispred#ff/2@0b29f3s2 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation _Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff_Variable#7a968d4e::LocalVariable#f__#join_rhs/2@b20141rr with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation _Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff_Variable#7a968d4e::LocalVariable#f__#join_rhs/2@8c4d2fb8 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation _Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff_Variable#7a968d4e::LocalVariable#b__#join_rhs/2@892c0c5g with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation project#Assignment#9d5edc7a::ConditionDeclExpr::getVariable#0#dispred#ff/1@ab4a349m with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:32] (0s)  >>> Created relation exprconv/2@ba3291f0 with 38644 rows and digest 523199gcjnsebl91fijvkt2up36.
+[2026-01-21 06:09:32] (0s)  >>> Created relation stmt_decl_bind/3@3d1ecap4 with 6929 rows and digest 5705418qh37tkjudpnrr42idnu8.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate stmt_decl_bind_20#join_rhs/2@a31d0fr3
+[2026-01-21 06:09:32] (0s)  >>> Created relation stmt_decl_bind_20#join_rhs/2@a31d0fr3 with 6929 rows and digest a0afacslvo5a00r2b5agm7ptjrd.
+[2026-01-21 06:09:32] (0s)  >>> Created relation exprparents/3@a532c646 with 130825 rows and digest 10be3c9716e9528t5g2fk84a7hd.
+[2026-01-21 06:09:32] (0s)  >>> Created relation membervariables/3@d7f3b4dr with 1909 rows and digest 1690036ckhnh84k54377t9s8udd.
+[2026-01-21 06:09:32] (0s)  >>> Created relation params/4@a622ee4g with 7371 rows and digest 9ae6460lvo2a1jmai7s4a2d5ss9.
+[2026-01-21 06:09:32] (0s)  >>> Created relation globalvariables/3@31e921a4 with 248 rows and digest d2d23aeo69dq6j10hm1ofiq6k28.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate @variable#f/1@9b58e5oc
+[2026-01-21 06:09:32] (0s)  >>> Created relation @variable#f/1@9b58e5oc with 16890 rows and digest b1fde4v78o1lajnmtdsrrnbua14.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getParent#0#dispred#ff/2@9677bcho
+[2026-01-21 06:09:32] (0s)  >>> Created relation Expr#ef463c5d::Expr::getParent#0#dispred#ff/2@9677bcho with 130825 rows and digest 984404pksjdp63fcpubgkeespp4.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getParent#0#dispred#ff_10#join_rhs/2@609bd6u7
+[2026-01-21 06:09:32] (0s)  >>> Created relation Expr#ef463c5d::Expr::getParent#0#dispred#ff_10#join_rhs/2@609bd6u7 with 130825 rows and digest 1041498bl7tk6373un4bfbmiov6.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate stmts_0#join_rhs/1@af0f5576
+[2026-01-21 06:09:32] (0s)  >>> Created relation stmts_0#join_rhs/1@af0f5576 with 46321 rows and digest c96cebhaqr5ssu8s3qfp36hll93.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i1#cc54e9lj (iteration 1)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 32218 rows (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i2#cc54e9lj (iteration 2)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 52979 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i3#cc54e9lj (iteration 3)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 42805 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i4#cc54e9lj (iteration 4)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 22000 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i5#cc54e9lj (iteration 5)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 6000 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i6#cc54e9lj (iteration 6)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 1874 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i7#cc54e9lj (iteration 7)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 694 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i8#cc54e9lj (iteration 8)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 331 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i9#cc54e9lj (iteration 9)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 135 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i10#cc54e9lj (iteration 10)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 72 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i11#cc54e9lj (iteration 11)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 19 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i12#cc54e9lj (iteration 12)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 12 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i13#cc54e9lj (iteration 13)
+[2026-01-21 06:09:32] (0s) 			 - Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta has 4 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@i14#cc54e9lj (iteration 14)
+[2026-01-21 06:09:32] (0s) Empty delta for Expr#ef463c5d::Expr::getEnclosingStmt#ff_delta (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Accumulating deltas
+[2026-01-21 06:09:32] (0s)  >>> Created relation Expr#ef463c5d::Expr::getEnclosingStmt#ff/2@cc54e9lj with 159143 rows and digest 532b1eh7f72h0b9su5fkgii7r97.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate ConstantExprs#68575382::Cached::successors_adapted#2#ff_10#join_rhs/2@1d8b457n
+[2026-01-21 06:09:32] (0s)  >>> Created relation ConstantExprs#68575382::Cached::successors_adapted#2#ff_10#join_rhs/2@1d8b457n with 180900 rows and digest 33e771h2a8uduga2ni7moau7shb.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate _ConstantExprs#68575382::Cached::successors_adapted#2#ff_10#join_rhs_stmts_0#join_rhs#shared/2@062c4fbd
+[2026-01-21 06:09:32] (0s)  >>> Created relation _ConstantExprs#68575382::Cached::successors_adapted#2#ff_10#join_rhs_stmts_0#join_rhs#shared/2@062c4fbd with 49119 rows and digest a4cf5budk3nujdl54ukqm005i72.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate ControlFlowGraph#d4dcb784::ControlFlowNode::getEnclosingStmt#0#dispred#ff/2@c80595rf
+[2026-01-21 06:09:32] (0s)  >>> Created relation ControlFlowGraph#d4dcb784::ControlFlowNode::getEnclosingStmt#0#dispred#ff/2@c80595rf with 209314 rows and digest 25690co4ojuroralsclokm5vnn7.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate _ControlFlowGraph#d4dcb784::ControlFlowNode::getEnclosingStmt#0#dispred#ff__ConstantExprs#68575382::__#join_rhs/2@b70bc7ju
+[2026-01-21 06:09:32] (0s)  >>> Created relation _ControlFlowGraph#d4dcb784::ControlFlowNode::getEnclosingStmt#0#dispred#ff__ConstantExprs#68575382::__#join_rhs/2@b70bc7ju with 47999 rows and digest 05b488gqfmbhof2jhgj7d746rcb.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate ControlFlowGraph#d4dcb784::ControlFlowNode::getEnclosingStmt#0#dispred#ff_10#join_rhs/2@7ada89gv
+[2026-01-21 06:09:32] (0s)  >>> Created relation ControlFlowGraph#d4dcb784::ControlFlowNode::getEnclosingStmt#0#dispred#ff_10#join_rhs/2@7ada89gv with 209314 rows and digest 075416aat2ia19uhmtvkioa7f73.
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i1#2f8ca4uj (iteration 1)
+[2026-01-21 06:09:32] (0s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 47999 rows (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i2#2f8ca4uj (iteration 2)
+[2026-01-21 06:09:32] (0s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 48255 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i3#2f8ca4uj (iteration 3)
+[2026-01-21 06:09:32] (0s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 48024 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i4#2f8ca4uj (iteration 4)
+[2026-01-21 06:09:32] (0s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 46995 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i5#2f8ca4uj (iteration 5)
+[2026-01-21 06:09:32] (0s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 45277 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (0s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i6#2f8ca4uj (iteration 6)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 42911 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i7#2f8ca4uj (iteration 7)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 40373 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i8#2f8ca4uj (iteration 8)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 37918 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i9#2f8ca4uj (iteration 9)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 34724 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i10#2f8ca4uj (iteration 10)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 32119 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i11#2f8ca4uj (iteration 11)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 30105 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i12#2f8ca4uj (iteration 12)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 28170 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i13#2f8ca4uj (iteration 13)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 26244 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i14#2f8ca4uj (iteration 14)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 24461 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i15#2f8ca4uj (iteration 15)
+[2026-01-21 06:09:32] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 22777 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:32] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i16#2f8ca4uj (iteration 16)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 21220 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i17#2f8ca4uj (iteration 17)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 19661 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i18#2f8ca4uj (iteration 18)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 18134 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i19#2f8ca4uj (iteration 19)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 16646 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i20#2f8ca4uj (iteration 20)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 15218 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i21#2f8ca4uj (iteration 21)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 13978 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i22#2f8ca4uj (iteration 22)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 12817 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i23#2f8ca4uj (iteration 23)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 11756 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i24#2f8ca4uj (iteration 24)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 10813 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i25#2f8ca4uj (iteration 25)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 9927 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i26#2f8ca4uj (iteration 26)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 9080 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i27#2f8ca4uj (iteration 27)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 8364 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i28#2f8ca4uj (iteration 28)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 7666 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i29#2f8ca4uj (iteration 29)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 7045 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i30#2f8ca4uj (iteration 30)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 6464 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i31#2f8ca4uj (iteration 31)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 5939 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i32#2f8ca4uj (iteration 32)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 5497 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i33#2f8ca4uj (iteration 33)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 5140 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i34#2f8ca4uj (iteration 34)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 4795 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i35#2f8ca4uj (iteration 35)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 4461 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i36#2f8ca4uj (iteration 36)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 4165 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i37#2f8ca4uj (iteration 37)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 3812 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i38#2f8ca4uj (iteration 38)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 3566 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i39#2f8ca4uj (iteration 39)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 3337 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i40#2f8ca4uj (iteration 40)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 3101 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i41#2f8ca4uj (iteration 41)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2891 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i42#2f8ca4uj (iteration 42)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2685 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i43#2f8ca4uj (iteration 43)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2534 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i44#2f8ca4uj (iteration 44)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2409 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i45#2f8ca4uj (iteration 45)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2300 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i46#2f8ca4uj (iteration 46)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2216 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i47#2f8ca4uj (iteration 47)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2136 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i48#2f8ca4uj (iteration 48)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 2068 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i49#2f8ca4uj (iteration 49)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1996 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i50#2f8ca4uj (iteration 50)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1943 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i51#2f8ca4uj (iteration 51)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1898 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i52#2f8ca4uj (iteration 52)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1850 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i53#2f8ca4uj (iteration 53)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1800 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i54#2f8ca4uj (iteration 54)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1763 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i55#2f8ca4uj (iteration 55)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1736 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i56#2f8ca4uj (iteration 56)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1715 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i57#2f8ca4uj (iteration 57)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1680 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i58#2f8ca4uj (iteration 58)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1645 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i59#2f8ca4uj (iteration 59)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1584 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i60#2f8ca4uj (iteration 60)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1502 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i61#2f8ca4uj (iteration 61)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1411 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i62#2f8ca4uj (iteration 62)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1317 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i63#2f8ca4uj (iteration 63)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1215 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i64#2f8ca4uj (iteration 64)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1104 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i65#2f8ca4uj (iteration 65)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 990 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i66#2f8ca4uj (iteration 66)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 891 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i67#2f8ca4uj (iteration 67)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 800 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i68#2f8ca4uj (iteration 68)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 727 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i69#2f8ca4uj (iteration 69)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 666 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i70#2f8ca4uj (iteration 70)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 610 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i71#2f8ca4uj (iteration 71)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 555 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i72#2f8ca4uj (iteration 72)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 502 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i73#2f8ca4uj (iteration 73)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 457 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i74#2f8ca4uj (iteration 74)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 414 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i75#2f8ca4uj (iteration 75)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 369 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i76#2f8ca4uj (iteration 76)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 334 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i77#2f8ca4uj (iteration 77)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 304 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i78#2f8ca4uj (iteration 78)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 278 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i79#2f8ca4uj (iteration 79)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 244 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i80#2f8ca4uj (iteration 80)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 214 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i81#2f8ca4uj (iteration 81)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 183 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i82#2f8ca4uj (iteration 82)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 159 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i83#2f8ca4uj (iteration 83)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 136 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i84#2f8ca4uj (iteration 84)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 117 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i85#2f8ca4uj (iteration 85)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 99 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i86#2f8ca4uj (iteration 86)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 82 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i87#2f8ca4uj (iteration 87)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 71 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i88#2f8ca4uj (iteration 88)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 62 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i89#2f8ca4uj (iteration 89)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 55 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i90#2f8ca4uj (iteration 90)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 46 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i91#2f8ca4uj (iteration 91)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 38 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i92#2f8ca4uj (iteration 92)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 31 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i93#2f8ca4uj (iteration 93)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 25 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i94#2f8ca4uj (iteration 94)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 17 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i95#2f8ca4uj (iteration 95)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 9 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i96#2f8ca4uj (iteration 96)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 4 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i97#2f8ca4uj (iteration 97)
+[2026-01-21 06:09:33] (1s) 			 - consts#82b1f63f::ancestorOf#1#ff_delta has 1 rows (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff/2@i98#2f8ca4uj (iteration 98)
+[2026-01-21 06:09:33] (1s) Empty delta for consts#82b1f63f::ancestorOf#1#ff_delta (order for disjuncts: delta=500000).
+[2026-01-21 06:09:33] (1s) Accumulating deltas
+[2026-01-21 06:09:33] (1s)  >>> Created relation consts#82b1f63f::ancestorOf#1#ff/2@2f8ca4uj with 843842 rows and digest 2a60ccn106uf2ondg5msakcr4g3.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate consts#82b1f63f::ancestorOf#1#ff_10#join_rhs/2@496d172i
+[2026-01-21 06:09:33] (1s)  >>> Created relation consts#82b1f63f::ancestorOf#1#ff_10#join_rhs/2@496d172i with 843842 rows and digest 547fc19adfnr2fp4j382lqgcojb.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate #select#ff/2@597bc1dm
+[2026-01-21 06:09:33] (1s)  >>> Created relation #select#ff/2@597bc1dm with 2 rows and digest 78e1043brhookm59ia6smqqfcdf.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate project#Element#496c7fc2::ElementBase::toString#0#dispred/1@c4ad99tp
+[2026-01-21 06:09:33] (1s)  >>> Created relation project#Element#496c7fc2::ElementBase::toString#0#dispred/1@c4ad99tp with 380387 rows and digest 7bd4afsaor873nklk1c1ulr9ua9.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate locations_expr_23450#join_rhs/5@005e2dga
+[2026-01-21 06:09:33] (1s)  >>> Created relation locations_expr_23450#join_rhs/5@005e2dga with 89952 rows and digest df9496fiu1vg5ikpqpg49cakocb.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate Location#bd5c7591::UnknownExprLocation#f/1@3a08d10p
+[2026-01-21 06:09:33] (1s)  >>> Created relation Location#bd5c7591::UnknownExprLocation#f/1@3a08d10p with 1 rows and digest 706accuggjh0omsfn5u21p62639.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate m#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@i1#cbb4c2k4 (iteration 1)
+[2026-01-21 06:09:33] (1s) 			 - m#Expr#ef463c5d::Expr::getExprLocationOverride#bf_delta has 2 rows (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate m#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@i2#cbb4c2k4 (iteration 2)
+[2026-01-21 06:09:33] (1s) 			 - m#Expr#ef463c5d::Expr::getExprLocationOverride#bf_delta has 2 rows (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate m#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@i3#cbb4c2k4 (iteration 3)
+[2026-01-21 06:09:33] (1s) 			 - m#Expr#ef463c5d::Expr::getExprLocationOverride#bf_delta has 2 rows (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate m#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@i4#cbb4c2k4 (iteration 4)
+[2026-01-21 06:09:33] (1s) Empty delta for m#Expr#ef463c5d::Expr::getExprLocationOverride#bf_delta (order for disjuncts: delta=<standard>).
+[2026-01-21 06:09:33] (1s) Accumulating deltas
+[2026-01-21 06:09:33] (1s)  >>> Created relation m#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@cbb4c2k4 with 6 rows and digest c4571c2g39p24m65ou8jm4goime.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate _Expr#ef463c5d::Expr::getParent#0#dispred#ff_Location#bd5c7591::UnknownExprLocation#f_exprs_m#Expr#e__#join_rhs/2@f39bdbjk
+[2026-01-21 06:09:33] (1s)  >>> Created relation _Expr#ef463c5d::Expr::getParent#0#dispred#ff_Location#bd5c7591::UnknownExprLocation#f_exprs_m#Expr#e__#join_rhs/2@f39bdbjk with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:33] (1s) Inferred that Expr#ef463c5d::Expr::getExprLocationOverride#bf/2@a734f9ne is empty, due to _Expr#ef463c5d::Expr::getParent#0#dispred#ff_Location#bd5c7591::UnknownExprLocation#f_exprs_m#Expr#e__#join_rhs/2@f39bdbjk.
+[2026-01-21 06:09:33] (1s) Inferred that project#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@6d853fjl is empty, due to Expr#ef463c5d::Expr::getExprLocationOverride#bf/2@a734f9ne.
+[2026-01-21 06:09:33] (1s)  >>> Created relation project#Expr#ef463c5d::Expr::getExprLocationOverride#bf/1@6d853fjl with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:33] (1s)  >>> Created relation Expr#ef463c5d::Expr::getExprLocationOverride#bf/2@a734f9ne with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate Expr#ef463c5d::Expr::getLocation#0#dispred#bf/2@20d038f5
+[2026-01-21 06:09:33] (1s)  >>> Created relation Expr#ef463c5d::Expr::getLocation#0#dispred#bf/2@20d038f5 with 2 rows and digest a268611ctjgf1fpj3seus0gier4.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate Expr#ef463c5d::Expr::getLocation#0#dispred#bf_10#join_rhs/2@0f266a0l
+[2026-01-21 06:09:33] (1s)  >>> Created relation Expr#ef463c5d::Expr::getLocation#0#dispred#bf_10#join_rhs/2@0f266a0l with 2 rows and digest 485d7b740kmmcmem5t59kdidjg0.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/6@2403cfn5
+[2026-01-21 06:09:33] (1s)  >>> Created relation Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/6@2403cfn5 with 2 rows and digest 3ecf2d764livobpvhtsf0c2a3d3.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate _#select#ff_Expr#ef463c5d::Expr::getLocation#0#dispred#bf#shared/3@604cea2s
+[2026-01-21 06:09:33] (1s)  >>> Created relation _#select#ff_Expr#ef463c5d::Expr::getLocation#0#dispred#bf#shared/3@604cea2s with 2 rows and digest 74b541lca5ou1f3mdpd0fuvgsd6.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate _Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff__#select#ff_Expr#ef463c5d::Expr::getL__#antijoin_rhs/2@1a104bjo
+[2026-01-21 06:09:33] (1s)  >>> Created relation _Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff__#select#ff_Expr#ef463c5d::Expr::getL__#antijoin_rhs/2@1a104bjo with 2 rows and digest 78e1043brhookm59ia6smqqfcdf.
+[2026-01-21 06:09:33] (1s) Starting to evaluate predicate #select#query#ffffffff/8@e9014fco
+[2026-01-21 06:09:33] (1s)  >>> Created relation #select#query#ffffffff/8@e9014fco with 2 rows and digest d0f0c60rcvl2lloo131e8ohkgd0.
+[2026-01-21 06:09:33] (1s) Query done
+[2026-01-21 06:09:33] (1s) Sequence stamp origin is -5956192980794809442
+[2026-01-21 06:09:33] (1s) Pausing evaluation to sync to disk at sequence stamp o+0
+[2026-01-21 06:09:33] (1s) Unpausing evaluation
+[2026-01-21 06:09:33] Evaluation of /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/consts.ql produced BQRS results.
+[2026-01-21 06:09:33] [PROGRESS] execute queries> [1/1 eval 1.9s] Evaluation done; writing results to efffix/codeql-cpp-queries/consts.bqrs.
+[2026-01-21 06:09:33] [PROGRESS] execute queries> Shutting down query evaluator.
+[2026-01-21 06:09:33] Pausing evaluation to close the cache at sequence stamp o+1
+[2026-01-21 06:09:33] The disk cache is freshly trimmed; leave it be.
+[2026-01-21 06:09:33] Unpausing evaluation
+[2026-01-21 06:09:33] Terminating normally.

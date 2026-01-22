@@ -1,0 +1,58 @@
+[Start] effFix started at 2026-01-21 18:17:53.435344
+<function title at 0x7009cc1d3f70>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Target bug is: NULLPTR_DEREFERENCE, test/params_test.c, init_object, start_line:100, end_line:102, two_loc_source_line:-1
+Performing fix localization
+Result from ochiai: [(98, 0.1414213562373095), (100, 0.1414213562373095), (102, 0.1414213562373095), (103, 0.0), (104, 0.0), (107, 0.0), (110, 0.0), (111, 0.0), (113, 0.0)]
+Locations allowed (by considering trace start and trace end): {102}
+Final locations: [102]
+[Timer] Duration for localize: 93.537s
+Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 100, 102>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <LatentAbortProgram, 104, 361>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (secure_mem_initialized = 0)) & (! ('&(sh)->freelist_size' = 0)) & (2 <= '&(sh)->bittable_size')),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'}), frozenset({'return->p4'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: (('&(return->p6->__infer_model_string_length)' = 15) & (! (return->p4 = 0)) & (return->p1 = 42) & (return->p2 = 6) & ('&(return->p3)' = 0)),
+]
+[Codeql] Running patch ingredient (return stmts) query
+Return statements: ['return 0;', 'return NULL;', 'return obj;']
+[Timer] Duration for codeql-get-return-stmts: 20.780s
+[Codeql] Running patch ingredient (labels) query
+Labels: ['fail']
+[Timer] Duration for codeql-get-labels: 14.294s
+[Timer] Duration for analysis: 129.620s
+Repairing Program at location: 102
+Loc 102: Getting patch ingredients at fix location
+Loc 102: [Codeql] Running statement boundary query
+Statement at fix location ends at line 102
+[Timer] Duration for codeql-get-stmt-boundary: 13.976s
+Loc 102: [Codeql] Running patch ingredient (variable) query
+Loc 102: Pointer variables: ['obj']
+Loc 102: Non-pointer variables: ['obj->p1']
+[Timer] Duration for codeql-get-ingredients-variables: 195.336s
+Loc 102: [Codeql] Running patch ingredient (constants) query
+Loc 102: Constants: ['0', '42', '-1', '100']
+[Timer] Duration for codeql-get-consts: 36.468s
+Loc 102: Initializing Patch Generator and Cluster Manager
+Loc 102: Entering the main repair loop
+Loc 102: Total search space size: 561435477516195177720566966706191714556884823411617296285042315467194328122456443307736744085233311041509825191908826538980764062
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 375.426s

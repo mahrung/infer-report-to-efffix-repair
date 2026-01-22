@@ -1,0 +1,63 @@
+[Start] effFix started at 2026-01-21 03:55:09.548659
+[Wed Jan 21 03:55:09 2026][INFO]: <function title at 0x7c7c19d12ee0>
+[Wed Jan 21 03:55:09 2026][INFO]: Displaying Configurations
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: src_dir:/efffix-experiment/efffix-benchmark/lxc/null-ptr-19-lxc/src
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: build_command:make -j4
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: clean_command:make clean || true
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: config_command:./autogen.sh && ./configure
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: tag_id:null-ptr-19-lxc
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: bug_procedure:unknown
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: bug_file:src/lxc/tools/tool_utils.c
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: bug_start_line:328
+[Wed Jan 21 03:55:09 2026][CONFIGURATION]: bug_end_line:328
+[Wed Jan 21 03:55:09 2026][INFO]: Loading dependency tools
+[Wed Jan 21 03:55:09 2026][INFO]: Pre-analyzing Program
+[Wed Jan 21 03:55:09 2026][INFO]: Configuring Target Program
+[Wed Jan 21 03:55:09 2026][COMMAND]: ./autogen.sh && ./configure
+[Wed Jan 21 03:55:29 2026][INFO]: [Timer] Duration for config: 19.817s
+[Wed Jan 21 03:55:29 2026][INFO]: Generating codeql database for target program
+[Wed Jan 21 03:55:29 2026][COMMAND]: make clean || true
+[Wed Jan 21 03:55:29 2026][COMMAND]: codeql database create /effFix-experiment/effFix-benchmark/lxc/null-ptr-19-lxc/pre/codeql-db --language=cpp --threads=16 --command="make -j4"
+[Wed Jan 21 03:55:46 2026][ERROR]: repair failed
+[Wed Jan 21 03:55:46 2026][ERROR]: error executing command: { codeql database create /efffix-experiment/efffix-benchmark/lxc/null-ptr-19-lxc/pre/codeql-db --language=cpp --threads=16 --command="make -j4" ;} 2> /efffix-experiment/efffix-benchmark/lxc/null-ptr-19-lxc/pre/logs/error.log. error is: none
+[Wed Jan 21 03:55:46 2026][ERROR]: runtime error
+[Wed Jan 21 03:55:46 2026][ERROR]: error. exiting...
+[Wed Jan 21 03:55:46 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 166, in main
+    run_pre()
+  file "/opt/efffix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  file "/opt/efffix/app/analyzer.py", line 29, in pre_analyze
+    codeql.create_db()
+  file "/opt/efffix/app/codeql.py", line 34, in create_db
+    utilities.execute_command(cmd)
+  file "/opt/efffix/app/utilities.py", line 30, in execute_command
+    error_exit(f"error executing command: {command}. error is: {error}")
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 03:55:46 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 166, in main
+    run_pre()
+  file "/opt/efffix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  file "/opt/efffix/app/analyzer.py", line 29, in pre_analyze
+    codeql.create_db()
+  file "/opt/efffix/app/codeql.py", line 34, in create_db
+    utilities.execute_command(cmd)
+  file "/opt/efffix/app/utilities.py", line 30, in execute_command
+    error_exit(f"error executing command: {command}. error is: {error}")
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 03:55:46 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 03:55:46 2026][INFO]: [Timer] Duration for total-run-time: 36.625s
+[Wed Jan 21 03:55:46 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 03:55:46 2026][ERROR]: efffix exited with an error after 36.625 seconds
+[Wed Jan 21 03:55:46 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 03:55:46 2026][LOG]: effFix exited with an error after 36.625 seconds
+[Wed Jan 21 03:55:46 2026][END] effFix ended at  2026-01-21 03:55:46.173286
+

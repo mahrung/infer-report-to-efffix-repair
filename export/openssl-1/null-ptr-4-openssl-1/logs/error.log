@@ -1,0 +1,5 @@
+Fix mode: Invalidating fix func CRYPTO_strdup 
+Capturing in make/cc mode...
+Fix mode: Invalidating fix func CRYPTO_strdup 
+Found 1 (out of 733) source file to analyze in /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single
+Analysing block of 200 procs, starting with CRYPTO_strdup

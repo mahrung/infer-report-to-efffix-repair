@@ -1,0 +1,3 @@
+,,"warning","return NULL;","/test/params_test.c","98","14","98","24"
+,,"warning","return obj;","/test/params_test.c","113","5","113","15"
+,,"warning","return 0;","/test/params_test.c","118","5","118","16"

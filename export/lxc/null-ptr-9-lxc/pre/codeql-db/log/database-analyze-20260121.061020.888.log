@@ -1,0 +1,47 @@
+[2026-01-21 06:10:20] This is codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-res-ingredient.csv
+[2026-01-21 06:10:20] Log file was started late.
+[2026-01-21 06:10:20] [PROGRESS] database analyze> Running queries.
+[2026-01-21 06:10:20] Running plumbing command: codeql database run-queries --evaluator-log-level=5 --warnings=show --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --rerun -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql
+[2026-01-21 06:10:20] Calling plumbing command: codeql resolve ram --format=json
+[2026-01-21 06:10:20] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx2388M",
+                        "--off-heap-ram=2388"
+                      ]
+[2026-01-21 06:10:20] Spawning plumbing command: execute queries -J-Xmx2388M --off-heap-ram=2388 --verbosity=progress --logdir=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/log --evaluator-log-level=5 --warnings=show --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/results -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/db-cpp /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql
+[2026-01-21 06:11:00] Plumbing command codeql execute queries terminated with status 0.
+[2026-01-21 06:11:00] Plumbing command codeql database run-queries completed with status 0.
+[2026-01-21 06:11:00] [PROGRESS] database analyze> Interpreting results.
+[2026-01-21 06:11:00] Running plumbing command: codeql database interpret-results --format=csv -o=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-res-ingredient.csv --max-paths=4 --csv-location-format=line-column --print-diagnostics-summary --print-metrics-summary --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql
+[2026-01-21 06:11:00] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --format=json -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql
+[2026-01-21 06:11:00] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:11:00] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql"
+                      ]
+[2026-01-21 06:11:00] [DETAILS] database interpret-results> Scanning for [codeql-pack.yml, qlpack.yml] from /opt/codeql/.codeqlmanifest.json
+[2026-01-21 06:11:00] [DETAILS] database interpret-results> Scanning for [codeql-pack.yml, qlpack.yml] from /opt/
+[2026-01-21 06:11:00] [DETAILS] database interpret-results> Not scanning from /opt/codeql which is already done.
+[2026-01-21 06:11:00] [PROGRESS] database interpret-results> Interpreting /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql...
+[2026-01-21 06:11:00] Calling plumbing command: codeql resolve library-path --query=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql --full-library-path=none --dbscheme=none --format=json
+[2026-01-21 06:11:00] [DETAILS] resolve library-path> Resolving query at normalized path /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql.
+[2026-01-21 06:11:00] [DETAILS] resolve library-path> Found enclosing pack 'efffix/codeql-cpp-queries' at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:11:00] [DETAILS] resolve library-path> Adding compilation cache at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache.
+[2026-01-21 06:11:00] [DETAILS] resolve library-path> Dbscheme was explicitly overridden as /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/none
+[2026-01-21 06:11:00] [DETAILS] resolve library-path> Library path was overridden on command line.
+[2026-01-21 06:11:00] Plumbing command codeql resolve library-path completed:
+                      {
+                        "libraryPath" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/none"
+                        ],
+                        "dbscheme" : "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/none",
+                        "compilationCache" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache"
+                        ],
+                        "relativeName" : "efffix/codeql-cpp-queries/extract_var.ql",
+                        "qlPackName" : "efffix/codeql-cpp-queries"
+                      }
+[2026-01-21 06:11:00] [DETAILS] database interpret-results>  ... found results file at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/results/efffix/codeql-cpp-queries/extract_var.bqrs.
+[2026-01-21 06:11:00] [DETAILS] database interpret-results> Interpreted problem query without a name (cpp/patch-ingredients) at path /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/extract_var.ql.
+[2026-01-21 06:11:01] Plumbing command codeql database interpret-results completed.
+[2026-01-21 06:11:01] Terminating normally.

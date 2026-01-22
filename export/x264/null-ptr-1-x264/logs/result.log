@@ -1,0 +1,73 @@
+[Start] effFix started at 2026-01-21 19:10:47.721888
+<function title at 0x75fb92ae1ee0>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Target bug is: NULLPTR_DEREFERENCE, input/thread.c, open_file, 54, 55
+Performing fix localization
+Result from ochiai: [(52, 0.08770580193070293), (54, 0.08770580193070293), (55, 0.08770580193070293), (56, 0.0), (58, 0.0), (59, 0.0), (60, 0.0), (61, 0.0), (62, 0.0), (63, 0.0), (65, 0.0), (66, 0.0), (67, 0.0), (69, 0.0), (70, 0.0)]
+Locations allowed (by considering trace start and trace end): {55}
+Final locations: [55]
+[Timer] Duration for localize: 53.177s
+Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 54, 55>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 54, 56>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: (((cli_log_level <= -1) & (! (__efffix_tmp = 0))) | (! (__efffix_tmp = 0))),
+	DisjunctSignature: label: <ErrorMemoryLeak, 54, 62>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: (__efffix_tmp = 0),
+	DisjunctSignature: label: <ErrorMemoryLeak, 61, 69>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 54, 69>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (__efffix_tmp = 0),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Codeql] Running patch ingredient (return stmts) query
+Return statements: ['return -1;', 'return 0;']
+[Timer] Duration for codeql-get-return-stmts: 15.472s
+[Codeql] Running patch ingredient (labels) query
+Labels: []
+[Timer] Duration for codeql-get-labels: 14.129s
+[Timer] Duration for analysis: 84.215s
+Repairing Program at location: 55
+Loc 55: Getting patch ingredients at fix location
+Loc 55: [Codeql] Running statement boundary query
+Statement at fix location ends at line 55
+[Timer] Duration for codeql-get-stmt-boundary: 13.416s
+Loc 55: [Codeql] Running patch ingredient (variable) query
+Loc 55: Pointer variables: ['info', 'p_handle', 'h']
+Loc 55: Non-pointer variables: ['info->height', 'info->csp', 'info->width', '__efffix_tmp']
+[Timer] Duration for codeql-get-ingredients-variables: 215.516s
+Loc 55: [Codeql] Running patch ingredient (constants) query
+Loc 55: Constants: ['-1', '0']
+[Timer] Duration for codeql-get-consts: 30.434s
+Loc 55: Initializing Patch Generator and Cluster Manager
+Loc 55: Entering the main repair loop
+Loc 55: Total search space size: 7757801692144610300655319745121451763368079282700078412722477276208919148197684241363827612244422973191411228024344690522256344469760521405333416588869158893224944567693336138654681714934600309488808104792735532043514881367206909811631652
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 343.593s

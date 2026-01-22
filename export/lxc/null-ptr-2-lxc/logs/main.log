@@ -1,0 +1,108 @@
+[Start] effFix started at 2026-01-21 04:44:19.462071
+[Wed Jan 21 04:44:19 2026][INFO]: <function title at 0x7a5c7446fee0>
+[Wed Jan 21 04:44:19 2026][INFO]: Displaying Configurations
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: src_dir:/efffix-experiment/efffix-benchmark/lxc/null-ptr-2-lxc/src
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: build_command:make -j4
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: clean_command:make clean || true
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: config_command:./autogen.sh && ./configure
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: tag_id:null-ptr-2-lxc
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: bug_procedure:lxc_abstract_unix_send_credential
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: bug_file:src/lxc/af_unix.c
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: bug_start_line:235
+[Wed Jan 21 04:44:19 2026][CONFIGURATION]: bug_end_line:238
+[Wed Jan 21 04:44:19 2026][INFO]: Loading dependency tools
+[Wed Jan 21 04:44:19 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 04:44:19 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 04:44:19 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, src/lxc/af_unix.c, lxc_abstract_unix_send_credential, 235, 238
+[Wed Jan 21 04:44:19 2026][INFO]: Performing fix localization
+[Wed Jan 21 04:44:19 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 04:44:20 2026][INFO]: Result from ochiai: [(226, 0.8944271909999159), (221, 0.4472135954999579), (223, 0.4472135954999579), (227, 0.4472135954999579), (228, 0.4472135954999579), (229, 0.4472135954999579), (231, 0.4472135954999579), (232, 0.4472135954999579), (234, 0.4472135954999579), (235, 0.4472135954999579), (237, 0.4472135954999579), (238, 0.4472135954999579), (239, 0.0), (240, 0.0), (241, 0.0), (243, 0.0), (244, 0.0), (246, 0.0), (247, 0.0), (248, 0.0), (249, 0.0), (251, 0.0), (252, 0.0)]
+[Wed Jan 21 04:44:20 2026][COMMAND]: codeql pack install
+[Wed Jan 21 04:44:24 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-res-loc-betweens.csv
+[Wed Jan 21 04:45:08 2026][INFO]: Locations allowed (by considering trace start and trace end): {237, 238}
+[Wed Jan 21 04:45:08 2026][INFO]: Final locations: [237, 238]
+[Wed Jan 21 04:45:08 2026][INFO]: [Timer] Duration for localize: 49.107s
+[Wed Jan 21 04:45:08 2026][INFO]: Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 235, 238>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (data = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (! (data = 0)),
+]
+[Wed Jan 21 04:45:08 2026][INFO]: [Codeql] Running patch ingredient (return stmts) query
+[Wed Jan 21 04:45:08 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-queries/return_stmts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-res-return-stmts.csv
+[Wed Jan 21 04:45:32 2026][INFO]: Return statements: ['return 0;', 'return call to sendmsg;']
+[Wed Jan 21 04:45:32 2026][INFO]: [Timer] Duration for codeql-get-return-stmts: 24.137s
+[Wed Jan 21 04:45:32 2026][INFO]: [Codeql] Running patch ingredient (labels) query
+[Wed Jan 21 04:45:32 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-queries/labels.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-res-labels.csv
+[Wed Jan 21 04:46:00 2026][INFO]: Labels: []
+[Wed Jan 21 04:46:00 2026][INFO]: [Timer] Duration for codeql-get-labels: 27.943s
+[Wed Jan 21 04:46:00 2026][INFO]: [Timer] Duration for analysis: 101.350s
+[Wed Jan 21 04:46:00 2026][INFO]: Repairing Program at location: 237
+[Wed Jan 21 04:46:00 2026][INFO]: Loc 237: Getting patch ingredients at fix location
+[Wed Jan 21 04:46:00 2026][INFO]: Loc 237: [Codeql] Running statement boundary query
+[Wed Jan 21 04:46:00 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 04:46:21 2026][INFO]: Statement at fix location ends at line 237
+[Wed Jan 21 04:46:21 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 20.623s
+[Wed Jan 21 04:46:21 2026][INFO]: Loc 237: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 04:46:21 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-res-ingredient.csv
+[Wed Jan 21 04:47:23 2026][INFO]: Loc 237: Pointer variables: ['cmsg', 'msg.msg_control', '& ...->msg_control']
+[Wed Jan 21 04:47:23 2026][INFO]: Loc 237: Non-pointer variables: ['msg.msg_controllen', '& ...->msg_controllen']
+[Wed Jan 21 04:47:23 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 61.657s
+[Wed Jan 21 04:47:23 2026][INFO]: Loc 237: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 04:47:23 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-queries/consts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-2-lxc/repair/codeql-res-consts.csv
+[Wed Jan 21 04:48:00 2026][INFO]: Loc 237: Constants: ['0', '-1']
+[Wed Jan 21 04:48:00 2026][INFO]: [Timer] Duration for codeql-get-consts: 37.903s
+[Wed Jan 21 04:48:00 2026][INFO]: Loc 237: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 04:48:00 2026][INFO]: Loc 237: Entering the main repair loop
+[Wed Jan 21 04:48:00 2026][INFO]: Loc 237: Total search space size: 102565925167041104264944118027782191793319508967779696096379285128187070142669922937424272874808318881976653164104978846474127605054019914866060
+[Wed Jan 21 04:48:00 2026][ERROR]: repair failed
+[Wed Jan 21 04:48:00 2026][ERROR]: time budget for this location exceeded before entering the main repair loop. try increasing the time limit.
+[Wed Jan 21 04:48:00 2026][ERROR]: runtime error
+[Wed Jan 21 04:48:00 2026][ERROR]: error. exiting...
+[Wed Jan 21 04:48:01 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 168, in main
+    run_repair()
+  file "/opt/efffix/app/main.py", line 131, in run_repair
+    cluster_manager = repair.repair(
+  file "/opt/efffix/app/repair.py", line 242, in repair
+    utilities.error_exit(
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 04:48:01 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 168, in main
+    run_repair()
+  file "/opt/efffix/app/main.py", line 131, in run_repair
+    cluster_manager = repair.repair(
+  file "/opt/efffix/app/repair.py", line 242, in repair
+    utilities.error_exit(
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 04:48:01 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 04:48:01 2026][INFO]: [Timer] Duration for total-run-time: 221.563s
+[Wed Jan 21 04:48:01 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 04:48:01 2026][ERROR]: efffix exited with an error after 221.563 seconds
+[Wed Jan 21 04:48:01 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 04:48:01 2026][LOG]: effFix exited with an error after 221.563 seconds
+[Wed Jan 21 04:48:01 2026][END] effFix ended at  2026-01-21 04:48:01.027431
+

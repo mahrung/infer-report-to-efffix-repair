@@ -1,0 +1,373 @@
+[Start] effFix started at 2026-01-21 05:34:52.650921
+[Wed Jan 21 05:34:52 2026][INFO]: <function title at 0x7daea11f9ee0>
+[Wed Jan 21 05:34:52 2026][INFO]: Displaying Configurations
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: src_dir:/efffix-experiment/efffix-benchmark/lxc/null-ptr-7-lxc/src
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: build_command:make -j4
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: clean_command:make clean || true
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: config_command:./autogen.sh && ./configure
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: tag_id:null-ptr-7-lxc
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: bug_procedure:lxc_abstract_unix_send_credential
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: bug_file:src/lxc/af_unix.c
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: bug_start_line:235
+[Wed Jan 21 05:34:52 2026][CONFIGURATION]: bug_end_line:238
+[Wed Jan 21 05:34:52 2026][INFO]: Loading dependency tools
+[Wed Jan 21 05:34:52 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 05:34:52 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 05:34:52 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, src/lxc/af_unix.c, lxc_abstract_unix_send_credential, 235, 238
+[Wed Jan 21 05:34:52 2026][INFO]: Performing fix localization
+[Wed Jan 21 05:34:53 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:34:53 2026][INFO]: Result from ochiai: [(226, 0.8944271909999159), (221, 0.4472135954999579), (223, 0.4472135954999579), (227, 0.4472135954999579), (228, 0.4472135954999579), (229, 0.4472135954999579), (231, 0.4472135954999579), (232, 0.4472135954999579), (234, 0.4472135954999579), (235, 0.4472135954999579), (237, 0.4472135954999579), (238, 0.4472135954999579), (239, 0.0), (240, 0.0), (241, 0.0), (243, 0.0), (244, 0.0), (246, 0.0), (247, 0.0), (248, 0.0), (249, 0.0), (251, 0.0), (252, 0.0)]
+[Wed Jan 21 05:34:53 2026][COMMAND]: codeql pack install
+[Wed Jan 21 05:34:57 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-loc-betweens.csv
+[Wed Jan 21 05:35:49 2026][INFO]: Locations allowed (by considering trace start and trace end): {237, 238}
+[Wed Jan 21 05:35:49 2026][INFO]: Final locations: [237, 238]
+[Wed Jan 21 05:35:49 2026][INFO]: [Timer] Duration for localize: 56.590s
+[Wed Jan 21 05:35:49 2026][INFO]: Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 235, 238>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (data = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (! (data = 0)),
+]
+[Wed Jan 21 05:35:49 2026][INFO]: [Codeql] Running patch ingredient (return stmts) query
+[Wed Jan 21 05:35:49 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/return_stmts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-return-stmts.csv
+[Wed Jan 21 05:36:06 2026][INFO]: Return statements: ['return 0;', 'return call to sendmsg;']
+[Wed Jan 21 05:36:06 2026][INFO]: [Timer] Duration for codeql-get-return-stmts: 17.123s
+[Wed Jan 21 05:36:06 2026][INFO]: [Codeql] Running patch ingredient (labels) query
+[Wed Jan 21 05:36:06 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/labels.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-labels.csv
+[Wed Jan 21 05:36:21 2026][INFO]: Labels: []
+[Wed Jan 21 05:36:21 2026][INFO]: [Timer] Duration for codeql-get-labels: 14.859s
+[Wed Jan 21 05:36:21 2026][INFO]: [Timer] Duration for analysis: 88.747s
+[Wed Jan 21 05:36:21 2026][INFO]: Repairing Program at location: 237
+[Wed Jan 21 05:36:21 2026][INFO]: Loc 237: Getting patch ingredients at fix location
+[Wed Jan 21 05:36:21 2026][INFO]: Loc 237: [Codeql] Running statement boundary query
+[Wed Jan 21 05:36:21 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 05:36:36 2026][INFO]: Statement at fix location ends at line 237
+[Wed Jan 21 05:36:36 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 14.930s
+[Wed Jan 21 05:36:36 2026][INFO]: Loc 237: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 05:36:36 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-ingredient.csv
+[Wed Jan 21 05:37:23 2026][INFO]: Loc 237: Pointer variables: ['& ...->msg_control', 'msg.msg_control', 'cmsg']
+[Wed Jan 21 05:37:23 2026][INFO]: Loc 237: Non-pointer variables: ['& ...->msg_controllen', 'msg.msg_controllen']
+[Wed Jan 21 05:37:23 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 47.206s
+[Wed Jan 21 05:37:23 2026][INFO]: Loc 237: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 05:37:23 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/consts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-consts.csv
+[Wed Jan 21 05:37:48 2026][INFO]: Loc 237: Constants: ['-1', '0']
+[Wed Jan 21 05:37:48 2026][INFO]: [Timer] Duration for codeql-get-consts: 24.903s
+[Wed Jan 21 05:37:48 2026][INFO]: Loc 237: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 05:37:48 2026][INFO]: Loc 237: Entering the main repair loop
+[Wed Jan 21 05:37:48 2026][INFO]: Loc 237: Total search space size: 102565925167041104264944118027782191793319508967779696096379285128187070142669922937424272874808318881976653164104978846474127605054019914866060
+[Wed Jan 21 05:37:48 2026][COMMAND]: sed -i -e '237s:^:\& ...->msg_controllen = msg.msg_controllen ;  :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:37:48 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/1.patch
+[Wed Jan 21 05:37:48 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:37:49 2026][COMMAND]: sed -i -e '237s:$: return 0; :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:37:49 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/2.patch
+[Wed Jan 21 05:37:49 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:37:56 2026][INFO]: Adding new patch: INSERT BACK return 0;
+[Wed Jan 21 05:37:56 2026][INFO]: Created new cluster cluster-L237-0
+[Wed Jan 21 05:37:56 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+[Wed Jan 21 05:37:56 2026][INFO]: pe_increment: RewardType.SMALL
+[Wed Jan 21 05:37:56 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 05:37:56 2026][INFO]: Adding to Cluster cluster-L237-0
+[Wed Jan 21 05:37:56 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 05:37:56 2026][INFO]: plausible count: 0
+[Wed Jan 21 05:37:56 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 05:37:56 2026][INFO]: Cluster pe increment: RewardType.SMALL
+[Wed Jan 21 05:37:56 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: return 0; : pe: 0.500=>0.550 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: return call to sendmsg; : pe: 0.500=>0.450 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.250 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:37:56 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 05:37:56 2026][COMMAND]: sed -i -e '237s:^:free ( cmsg ) ;  :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:37:56 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/3.patch
+[Wed Jan 21 05:37:56 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:38:03 2026][INFO]: Adding new patch: INSERT FRONT free ( cmsg ) ;
+[Wed Jan 21 05:38:03 2026][INFO]: Created new cluster cluster-L237-1
+[Wed Jan 21 05:38:03 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 221, 237>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Wed Jan 21 05:38:03 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 05:38:03 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 05:38:03 2026][INFO]: Adding to Cluster cluster-L237-1
+[Wed Jan 21 05:38:03 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,free ( POINTER ) ;
+[Wed Jan 21 05:38:03 2026][INFO]: plausible count: 0
+[Wed Jan 21 05:38:03 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 05:38:03 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 05:38:03 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: cmsg : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: & ...->msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: msg.msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: cmsg : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: & ...->msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: msg.msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:38:03 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 05:38:03 2026][COMMAND]: sed -i -e '237s:^:return \& ...->msg_control ;  :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:38:03 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/4.patch
+[Wed Jan 21 05:38:03 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:38:04 2026][COMMAND]: sed -i -e '237s:$: return \& ...->msg_control ; :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:38:04 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/5.patch
+[Wed Jan 21 05:38:04 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:38:05 2026][COMMAND]: sed -i -e '237s:^:return 0;  :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:38:05 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/6.patch
+[Wed Jan 21 05:38:05 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:38:12 2026][INFO]: Adding new patch: INSERT FRONT return 0;
+[Wed Jan 21 05:38:12 2026][INFO]: Adding to Cluster cluster-L237-0
+[Wed Jan 21 05:38:12 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 05:38:12 2026][INFO]: plausible count: 0
+[Wed Jan 21 05:38:12 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 05:38:12 2026][INFO]: Cluster pe increment: RewardType.SMALL
+[Wed Jan 21 05:38:12 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: return 0; : pe: 0.550=>0.595 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: return call to sendmsg; : pe: 0.450=>0.405 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.325 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:38:12 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 05:38:12 2026][INFO]: Loc 237: Ending repair loop since time budget is exceeded
+[Wed Jan 21 05:38:12 2026][INFO]: Loc 237: Repair loop finished
+[Wed Jan 21 05:38:12 2026][INFO]: Repairing Program at location: 238
+[Wed Jan 21 05:38:12 2026][INFO]: Loc 238: Getting patch ingredients at fix location
+[Wed Jan 21 05:38:12 2026][INFO]: Loc 238: [Codeql] Running statement boundary query
+[Wed Jan 21 05:38:12 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 05:38:28 2026][INFO]: Statement at fix location ends at line 238
+[Wed Jan 21 05:38:28 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 15.652s
+[Wed Jan 21 05:38:28 2026][INFO]: Loc 238: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 05:38:28 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-ingredient.csv
+[Wed Jan 21 05:39:13 2026][INFO]: Loc 238: Pointer variables: ['& ...->msg_control', 'msg.msg_control', 'cmsg']
+[Wed Jan 21 05:39:13 2026][INFO]: Loc 238: Non-pointer variables: ['cmsg->cmsg_len', '& ...->msg_controllen', 'msg.msg_controllen']
+[Wed Jan 21 05:39:13 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 45.088s
+[Wed Jan 21 05:39:13 2026][INFO]: Loc 238: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 05:39:13 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/pre/codeql-db /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-queries/consts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/codeql-res-consts.csv
+[Wed Jan 21 05:39:36 2026][INFO]: Loc 238: Constants: ['-1', '1', '0']
+[Wed Jan 21 05:39:36 2026][INFO]: [Timer] Duration for codeql-get-consts: 23.708s
+[Wed Jan 21 05:39:36 2026][INFO]: Loc 238: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 05:39:36 2026][INFO]: Loc 238: Entering the main repair loop
+[Wed Jan 21 05:39:36 2026][INFO]: Loc 238: Total search space size: 861132200499442452838883500105957745884219390945428548859394345958714207510033433828449447421813405887370084649629765994427224617624686191187239833432750258269169151454253574923258824
+[Wed Jan 21 05:39:36 2026][COMMAND]: sed -i -e '238s:^:cmsg->cmsg_len = msg.msg_controllen ;  :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:39:36 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/7.patch
+[Wed Jan 21 05:39:36 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:39:43 2026][INFO]: Adding new patch: INSERT FRONT cmsg->cmsg_len = msg.msg_controllen ;
+[Wed Jan 21 05:39:43 2026][INFO]: Created new cluster cluster-L238-0
+[Wed Jan 21 05:39:43 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 235, 238>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (data = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (! (data = 0)),
+]
+[Wed Jan 21 05:39:43 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 05:39:43 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 05:39:43 2026][INFO]: Adding to Cluster cluster-L238-0
+[Wed Jan 21 05:39:43 2026][INFO]: Grammar: :INSERT POS CMD,ID = ARITH_EXPR ;,ID
+[Wed Jan 21 05:39:43 2026][INFO]: plausible count: 0
+[Wed Jan 21 05:39:43 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 05:39:43 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 05:39:43 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: cmsg->cmsg_len : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: msg.msg_controllen : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: & ...->msg_controllen : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: ID : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: ID ARITH_OP ID : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:43 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 05:39:43 2026][COMMAND]: sed -i -e '238s:^:return call to sendmsg;  :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:39:43 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/8.patch
+[Wed Jan 21 05:39:43 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:39:44 2026][COMMAND]: sed -i -e '238s:$: return msg.msg_control ; :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:39:44 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/9.patch
+[Wed Jan 21 05:39:44 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:39:51 2026][INFO]: Adding new patch: INSERT BACK return msg.msg_control ;
+[Wed Jan 21 05:39:51 2026][INFO]: Created new cluster cluster-L238-1
+[Wed Jan 21 05:39:51 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 235, 238>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (return->cmsg_len = '&(cmsgbuf)->cmsg_len'),
+]
+[Wed Jan 21 05:39:51 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 05:39:51 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 05:39:51 2026][INFO]: Adding to Cluster cluster-L238-1
+[Wed Jan 21 05:39:51 2026][INFO]: Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER
+[Wed Jan 21 05:39:51 2026][INFO]: plausible count: 0
+[Wed Jan 21 05:39:51 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 05:39:51 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 05:39:51 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: msg.msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: & ...->msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: cmsg : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: msg.msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: & ...->msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: cmsg : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:51 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 05:39:51 2026][COMMAND]: sed -i -e '238s:$: free ( cmsg ) ; :' /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c
+[Wed Jan 21 05:39:51 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/af_unix.c.backup /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/src/src/lxc/af_unix.c > /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/10.patch
+[Wed Jan 21 05:39:51 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=src/lxc/af_unix.c --pulse-fix-function=lxc_abstract_unix_send_credential -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single -- make -j4
+[Wed Jan 21 05:39:58 2026][INFO]: Adding new patch: INSERT BACK free ( cmsg ) ;
+[Wed Jan 21 05:39:58 2026][INFO]: Created new cluster cluster-L238-2
+[Wed Jan 21 05:39:58 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 235, 238>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <AbortProgram, 231, 239>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Wed Jan 21 05:39:58 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 05:39:58 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 05:39:58 2026][INFO]: Adding to Cluster cluster-L238-2
+[Wed Jan 21 05:39:58 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,free ( POINTER ) ;
+[Wed Jan 21 05:39:58 2026][INFO]: plausible count: 0
+[Wed Jan 21 05:39:58 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 05:39:58 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 05:39:58 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: cmsg : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: & ...->msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: msg.msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: cmsg : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: & ...->msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: msg.msg_control : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 05:39:58 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 05:39:58 2026][INFO]: Loc 238: Ending repair loop since time budget is exceeded
+[Wed Jan 21 05:39:58 2026][INFO]: Loc 238: Repair loop finished
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Accumulated duration for patch-generation: 0.005s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Average duration for patch-generation: 0.00048s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Accumulated duration for probabilities-update: 0.015s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Average duration for probabilities-update: 0.00150s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Accumulated duration for patch-signature-generation: 0.278s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Average duration for patch-signature-generation: 0.02783s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Accumulated duration for footprint-generation: 45.329s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Average duration for footprint-generation: 4.53289s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Accumulated duration for patch-clustering: 0.376s
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Average duration for patch-clustering: 0.03763s
+[Wed Jan 21 05:39:58 2026][INFO]: Number of prod-rule-combos: 4
+[Wed Jan 21 05:39:58 2026][INFO]: Number of plausible prod-rule-combos: 0
+[Wed Jan 21 05:39:58 2026][INFO]: Number of clusters: 7
+[Wed Jan 21 05:39:58 2026][INFO]: Number of clustered patches: 10
+[Wed Jan 21 05:39:58 2026][INFO]: Average number of patches per cluster:1.429
+[Wed Jan 21 05:39:58 2026][INFO]: plausible-prod-combo-1: 0
+[Wed Jan 21 05:39:58 2026][INFO]: plausible-prod-combo-2: 0
+[Wed Jan 21 05:39:58 2026][INFO]: plausible-prod-combo-3: 0
+[Wed Jan 21 05:39:58 2026][INFO]: plausible-prod-combo-4: 0
+[Wed Jan 21 05:39:58 2026][INFO]: prod-combo-1: 2
+[Wed Jan 21 05:39:58 2026][INFO]: prod-combo-2: 2
+[Wed Jan 21 05:39:58 2026][INFO]: prod-combo-3: 1
+[Wed Jan 21 05:39:58 2026][INFO]: prod-combo-4: 1
+[Wed Jan 21 05:39:58 2026][INFO]: Explored 10/861132200499442452838883500105957745884321956870595589963659290076741989701826753337417227117909785172498271719772435917364648890499494510069216486596855237115643279059307594838124884(0.000%) patches
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Duration for total-repair: 217.506s
+[Wed Jan 21 05:39:58 2026][INFO]: Validating locally good clusters
+[Wed Jan 21 05:39:58 2026][INFO]: Checking which clusters are locally good
+[Wed Jan 21 05:39:58 2026][INFO]: Number of locally good clusters: 0
+[Wed Jan 21 05:39:58 2026][INFO]: Locally good clusters are: []
+[Wed Jan 21 05:39:58 2026][WARNING]: no locally good clusters found. cannot validate.
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Duration for total-validation: 0.000s
+[Wed Jan 21 05:39:58 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 05:39:58 2026][INFO]: [Timer] Duration for total-run-time: 306.260s
+[Wed Jan 21 05:39:58 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 05:39:58 2026][LOG]: effFix (Stage: repair) finished successfully after 306.260 seconds
+[Wed Jan 21 05:39:58 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 05:39:58 2026][LOG]: effFix (Stage: repair) finished successfully after 306.260 seconds
+[Wed Jan 21 05:39:58 2026][END] effFix ended at  2026-01-21 05:39:58.910240
+

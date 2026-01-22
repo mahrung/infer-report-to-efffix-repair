@@ -1,0 +1,39 @@
+Fix mode: Invalidating fix func add_session 
+Capturing in make/cc mode...
+Found 1 (out of 1291) source file to analyze in /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-7-openssl-3/repair/infer-out-single
+Analysing block of 200 procs, starting with add_session
+Runtime Error
+float division by zero
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 75, in analyze
+    fix_loc_lines = localizer.localize(summary_json_path, values.TARGET_BUG)
+  File "/opt/effFix/app/localization/localizer.py", line 136, in localize
+    return localize_single_loc_mode(summary_json_file, target_bug, top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 89, in localize_single_loc_mode
+    ochiai_list = ochiai(all_traces, num_res=top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 46, in ochiai
+    score = presence_in_fail / math.sqrt(
+ZeroDivisionError: float division by zero
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 75, in analyze
+    fix_loc_lines = localizer.localize(summary_json_path, values.TARGET_BUG)
+  File "/opt/effFix/app/localization/localizer.py", line 136, in localize
+    return localize_single_loc_mode(summary_json_file, target_bug, top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 89, in localize_single_loc_mode
+    ochiai_list = ochiai(all_traces, num_res=top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 46, in ochiai
+    score = presence_in_fail / math.sqrt(
+ZeroDivisionError: float division by zero
+
+
+effFix exited with an error after 10.351 seconds 
+

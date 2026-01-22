@@ -1,0 +1,6 @@
+[Start] effFix started at 2026-01-21 02:38:44.808713
+[Wed Jan 21 02:38:44 2026][COMMAND]: ./autogen.sh && ./configure
+[Wed Jan 21 02:39:06 2026][COMMAND]: make clean || true
+[Wed Jan 21 02:39:07 2026][COMMAND]: codeql database create /effFix-experiment/effFix-benchmark/lxc/null-ptr-14-lxc/pre/codeql-db --language=cpp --threads=16 --command="make -j4"
+[Wed Jan 21 02:39:39 2026][COMMAND]: make clean || true
+[Wed Jan 21 02:39:40 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 -o /effFix-experiment/effFix-benchmark/lxc/null-ptr-14-lxc/pre/infer-out-whole -- make -j4

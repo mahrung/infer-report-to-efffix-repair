@@ -1,0 +1,6 @@
+[Start] effFix started at 2024-03-18 04:25:00.905125
+[Mon Mar 18 04:25:00 2024][COMMAND]: CC=gcc ./config
+[Mon Mar 18 04:25:01 2024][COMMAND]: make clean
+[Mon Mar 18 04:25:01 2024][COMMAND]: codeql database create /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db --language=cpp --threads=32 --command="make"
+[Mon Mar 18 04:27:16 2024][COMMAND]: make clean
+[Mon Mar 18 04:27:16 2024][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/infer-out-whole -- make

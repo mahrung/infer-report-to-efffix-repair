@@ -1,0 +1,40 @@
+Internal Error: Fix func is not found in the fix file
+Error backtrace:
+Raised at Stdlib__Scanf.bad_input in file "scanf.ml" (inlined), line 444, characters 18-40
+Called from Stdlib__Scanf.scanf_bad_input in file "scanf.ml", line 1164, characters 4-75
+Called from IBase__Utils.get_available_memory_MB.scan_for_expected_output in file "src/base/Utils.ml", line 442, characters 10-86
+Re-raised at IBase__Die.raise_error.do_raise in file "src/base/Die.ml", line 26, characters 8-56
+Called from Backend__InferAnalyze.invalidate_procedure_fix_mode in file "src/backend/InferAnalyze.ml", line 306, characters 26-58
+Called from Dune__exe__Infer.run in file "src/infer.ml", line 21, characters 2-60
+Called from IBase__Utils.timeit in file "src/base/Utils.ml", line 424, characters 16-20
+Called from IBase__ScubaLogging.execute_with_time_logging in file "src/base/ScubaLogging.ml", line 83, characters 29-44
+Called from Dune__exe__Infer.run in file "src/infer.ml", line 27, characters 22-94
+
+Run the command again with `--keep-going` to try and ignore this error.
+Runtime Error
+'probabilities-update'
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 168, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 135, in run_repair
+    repair.print_repair_stats(all_cluster_managers)
+  File "/opt/effFix/app/repair.py", line 295, in print_repair_stats
+    utilities.global_timer.print_total_and_average(
+  File "/opt/effFix/app/utilities.py", line 133, in print_total_and_average
+    total_elapsed = self.elapsed_record[key]
+KeyError: 'probabilities-update'
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 168, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 135, in run_repair
+    repair.print_repair_stats(all_cluster_managers)
+  File "/opt/effFix/app/repair.py", line 295, in print_repair_stats
+    utilities.global_timer.print_total_and_average(
+  File "/opt/effFix/app/utilities.py", line 133, in print_total_and_average
+    total_elapsed = self.elapsed_record[key]
+KeyError: 'probabilities-update'
+
+
+effFix exited with an error after 600.078 seconds 
+

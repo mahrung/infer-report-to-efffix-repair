@@ -1,0 +1,123 @@
+[Start] effFix started at 2026-01-21 19:10:47.721888
+[Wed Jan 21 19:10:47 2026][INFO]: <function title at 0x75fb92ae1ee0>
+[Wed Jan 21 19:10:47 2026][INFO]: Displaying Configurations
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: src_dir:/opt/efffix-benchmark/x264/null-ptr-1-x264/src
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: build_command:make -j4
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: clean_command:make clean || true
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: config_command:./configure
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: tag_id:null-ptr-1-x264
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: bug_procedure:open_file
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: bug_file:input/thread.c
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: bug_start_line:54
+[Wed Jan 21 19:10:47 2026][CONFIGURATION]: bug_end_line:55
+[Wed Jan 21 19:10:47 2026][INFO]: Loading dependency tools
+[Wed Jan 21 19:10:47 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 19:10:47 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 19:10:47 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, input/thread.c, open_file, 54, 55
+[Wed Jan 21 19:10:47 2026][INFO]: Performing fix localization
+[Wed Jan 21 19:10:48 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=input/thread.c --pulse-fix-function=open_file -o /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/infer-out-single -- make -j4
+[Wed Jan 21 19:10:48 2026][INFO]: Result from ochiai: [(52, 0.08770580193070293), (54, 0.08770580193070293), (55, 0.08770580193070293), (56, 0.0), (58, 0.0), (59, 0.0), (60, 0.0), (61, 0.0), (62, 0.0), (63, 0.0), (65, 0.0), (66, 0.0), (67, 0.0), (69, 0.0), (70, 0.0)]
+[Wed Jan 21 19:10:48 2026][COMMAND]: codeql pack install
+[Wed Jan 21 19:10:53 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-res-loc-betweens.csv
+[Wed Jan 21 19:11:40 2026][INFO]: Locations allowed (by considering trace start and trace end): {55}
+[Wed Jan 21 19:11:40 2026][INFO]: Final locations: [55]
+[Wed Jan 21 19:11:40 2026][INFO]: [Timer] Duration for localize: 53.177s
+[Wed Jan 21 19:11:42 2026][INFO]: Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 54, 55>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 54, 56>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: (((cli_log_level <= -1) & (! (__efffix_tmp = 0))) | (! (__efffix_tmp = 0))),
+	DisjunctSignature: label: <ErrorMemoryLeak, 54, 62>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: (__efffix_tmp = 0),
+	DisjunctSignature: label: <ErrorMemoryLeak, 61, 69>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 54, 69>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = -1), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (__efffix_tmp = 0),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Wed Jan 21 19:11:42 2026][INFO]: [Codeql] Running patch ingredient (return stmts) query
+[Wed Jan 21 19:11:42 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-queries/return_stmts.ql --format=csv --rerun --output=/opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-res-return-stmts.csv
+[Wed Jan 21 19:11:57 2026][INFO]: Return statements: ['return -1;', 'return 0;']
+[Wed Jan 21 19:11:57 2026][INFO]: [Timer] Duration for codeql-get-return-stmts: 15.472s
+[Wed Jan 21 19:11:57 2026][INFO]: [Codeql] Running patch ingredient (labels) query
+[Wed Jan 21 19:11:57 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-queries/labels.ql --format=csv --rerun --output=/opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-res-labels.csv
+[Wed Jan 21 19:12:11 2026][INFO]: Labels: []
+[Wed Jan 21 19:12:11 2026][INFO]: [Timer] Duration for codeql-get-labels: 14.129s
+[Wed Jan 21 19:12:11 2026][INFO]: [Timer] Duration for analysis: 84.215s
+[Wed Jan 21 19:12:11 2026][INFO]: Repairing Program at location: 55
+[Wed Jan 21 19:12:11 2026][INFO]: Loc 55: Getting patch ingredients at fix location
+[Wed Jan 21 19:12:11 2026][INFO]: Loc 55: [Codeql] Running statement boundary query
+[Wed Jan 21 19:12:11 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 19:12:25 2026][INFO]: Statement at fix location ends at line 55
+[Wed Jan 21 19:12:25 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 13.416s
+[Wed Jan 21 19:12:25 2026][INFO]: Loc 55: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 19:12:25 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-res-ingredient.csv
+[Wed Jan 21 19:16:00 2026][INFO]: Loc 55: Pointer variables: ['info', 'p_handle', 'h']
+[Wed Jan 21 19:16:00 2026][INFO]: Loc 55: Non-pointer variables: ['info->height', 'info->csp', 'info->width', '__efffix_tmp']
+[Wed Jan 21 19:16:00 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 215.516s
+[Wed Jan 21 19:16:00 2026][INFO]: Loc 55: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 19:16:00 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db /opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-queries/consts.ql --format=csv --rerun --output=/opt/effFix-benchmark/x264/null-ptr-1-x264/repair/codeql-res-consts.csv
+[Wed Jan 21 19:16:31 2026][INFO]: Loc 55: Constants: ['-1', '0']
+[Wed Jan 21 19:16:31 2026][INFO]: [Timer] Duration for codeql-get-consts: 30.434s
+[Wed Jan 21 19:16:31 2026][INFO]: Loc 55: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 19:16:31 2026][INFO]: Loc 55: Entering the main repair loop
+[Wed Jan 21 19:16:31 2026][INFO]: Loc 55: Total search space size: 7757801692144610300655319745121451763368079282700078412722477276208919148197684241363827612244422973191411228024344690522256344469760521405333416588869158893224944567693336138654681714934600309488808104792735532043514881367206909811631652
+[Wed Jan 21 19:16:31 2026][ERROR]: repair failed
+[Wed Jan 21 19:16:31 2026][ERROR]: time budget for this location exceeded before entering the main repair loop. try increasing the time limit.
+[Wed Jan 21 19:16:31 2026][ERROR]: runtime error
+[Wed Jan 21 19:16:31 2026][ERROR]: error. exiting...
+[Wed Jan 21 19:16:31 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 168, in main
+    run_repair()
+  file "/opt/efffix/app/main.py", line 131, in run_repair
+    cluster_manager = repair.repair(
+  file "/opt/efffix/app/repair.py", line 242, in repair
+    utilities.error_exit(
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 19:16:31 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 168, in main
+    run_repair()
+  file "/opt/efffix/app/main.py", line 131, in run_repair
+    cluster_manager = repair.repair(
+  file "/opt/efffix/app/repair.py", line 242, in repair
+    utilities.error_exit(
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 19:16:31 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 19:16:31 2026][INFO]: [Timer] Duration for total-run-time: 343.593s
+[Wed Jan 21 19:16:31 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 19:16:31 2026][ERROR]: efffix exited with an error after 343.593 seconds
+[Wed Jan 21 19:16:31 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 19:16:31 2026][LOG]: effFix exited with an error after 343.593 seconds
+[Wed Jan 21 19:16:31 2026][END] effFix ended at  2026-01-21 19:16:31.314139
+

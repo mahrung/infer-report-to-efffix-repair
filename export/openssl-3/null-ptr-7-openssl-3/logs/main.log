@@ -1,0 +1,60 @@
+[Start] effFix started at 2026-01-21 18:14:49.208926
+[Wed Jan 21 18:14:49 2026][INFO]: <function title at 0x7b3b2ea2df70>
+[Wed Jan 21 18:14:49 2026][INFO]: Displaying Configurations
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: src_dir:/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-7-openssl-3/src
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: build_command_project:make -j32
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: build_command_repair:make -j32 build_apps
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: clean_command:make clean
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: config_command:CC=gcc ./config
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: tag_id:null-ptr-7-openssl-3
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: bug_type:NULLPTR_DEREFERENCE
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: bug_procedure:add_session
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: bug_file:apps/s_server.c
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: bug_start_line:3575
+[Wed Jan 21 18:14:49 2026][CONFIGURATION]: bug_end_line:3578
+[Wed Jan 21 18:14:49 2026][INFO]: Loading dependency tools
+[Wed Jan 21 18:14:49 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 18:14:49 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 18:14:49 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, apps/s_server.c, add_session, start_line:3575, end_line:3578, two_loc_source_line:-1
+[Wed Jan 21 18:14:49 2026][INFO]: Performing fix localization
+[Wed Jan 21 18:14:57 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 50 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --pulse-skip-procedures 'test_single_eval\\|openssl_add_all_*' --reactive --pulse-fix-mode --pulse-fix-file=apps/s_server.c --pulse-fix-function=add_session -o /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-7-openssl-3/repair/infer-out-single -- make -j32 build_apps
+[Wed Jan 21 18:14:59 2026][ERROR]: Runtime Error
+[Wed Jan 21 18:14:59 2026][ERROR]: float division by zero
+[Wed Jan 21 18:14:59 2026][ERROR]: Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 75, in analyze
+    fix_loc_lines = localizer.localize(summary_json_path, values.TARGET_BUG)
+  File "/opt/effFix/app/localization/localizer.py", line 136, in localize
+    return localize_single_loc_mode(summary_json_file, target_bug, top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 89, in localize_single_loc_mode
+    ochiai_list = ochiai(all_traces, num_res=top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 46, in ochiai
+    score = presence_in_fail / math.sqrt(
+ZeroDivisionError: float division by zero
+[Wed Jan 21 18:14:59 2026][ERROR]: Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 75, in analyze
+    fix_loc_lines = localizer.localize(summary_json_path, values.TARGET_BUG)
+  File "/opt/effFix/app/localization/localizer.py", line 136, in localize
+    return localize_single_loc_mode(summary_json_file, target_bug, top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 89, in localize_single_loc_mode
+    ochiai_list = ochiai(all_traces, num_res=top_k)
+  File "/opt/effFix/app/localization/localizer.py", line 46, in ochiai
+    score = presence_in_fail / math.sqrt(
+ZeroDivisionError: float division by zero
+[Wed Jan 21 18:14:59 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 18:14:59 2026][INFO]: [Timer] Duration for total-run-time: 10.351s
+[Wed Jan 21 18:14:59 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 18:14:59 2026][ERROR]: effFix exited with an error after 10.351 seconds
+[Wed Jan 21 18:14:59 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 18:14:59 2026][LOG]: effFix exited with an error after 10.351 seconds
+[Wed Jan 21 18:14:59 2026][END] effFix ended at  2026-01-21 18:14:59.549694
+

@@ -1,0 +1,5 @@
+,,"warning","return NULL;","/crypto/ocsp/ocsp_ht.c","154","15","154","30"
+,,"warning","return 0;","/crypto/ocsp/ocsp_ht.c","172","3","172","11"
+,,"warning","return 0;","/crypto/ocsp/ocsp_ht.c","179","3","179","11"
+,,"warning","return 0;","/crypto/ocsp/ocsp_ht.c","183","3","183","11"
+,,"warning","return rctx;","/crypto/ocsp/ocsp_ht.c","186","2","186","13"

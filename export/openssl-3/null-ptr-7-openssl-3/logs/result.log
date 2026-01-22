@@ -1,0 +1,10 @@
+[Start] effFix started at 2026-01-21 18:14:49.208926
+<function title at 0x7b3b2ea2df70>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Target bug is: NULLPTR_DEREFERENCE, apps/s_server.c, add_session, start_line:3575, end_line:3578, two_loc_source_line:-1
+Performing fix localization
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 10.351s

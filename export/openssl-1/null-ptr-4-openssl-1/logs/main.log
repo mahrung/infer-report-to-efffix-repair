@@ -1,0 +1,1158 @@
+[Start] effFix started at 2026-01-21 16:26:20.291735
+[Wed Jan 21 16:26:20 2026][INFO]: <function title at 0x7ed7cea5bf70>
+[Wed Jan 21 16:26:20 2026][INFO]: Displaying Configurations
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: src_dir:/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: build_command_project:make
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: build_command_repair:make build_crypto
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: clean_command:make clean
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: config_command:CC=gcc ./config
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: tag_id:null-ptr-4-openssl-1
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: bug_type:NULLPTR_DEREFERENCE
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: bug_procedure:CRYPTO_strdup
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: bug_file:crypto/mem.c
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: bug_start_line:329
+[Wed Jan 21 16:26:20 2026][CONFIGURATION]: bug_end_line:331
+[Wed Jan 21 16:26:20 2026][INFO]: Loading dependency tools
+[Wed Jan 21 16:26:20 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 16:26:20 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 16:26:20 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, crypto/mem.c, CRYPTO_strdup, start_line:329, end_line:331, two_loc_source_line:-1
+[Wed Jan 21 16:26:20 2026][INFO]: Performing fix localization
+[Wed Jan 21 16:26:41 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:26:42 2026][INFO]: Result from ochiai: [(331, 0.7071067811865475), (327, 0.5), (329, 0.5), (332, 0.0)]
+[Wed Jan 21 16:26:42 2026][COMMAND]: codeql pack install
+[Wed Jan 21 16:26:46 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-res-loc-betweens.csv
+[Wed Jan 21 16:27:42 2026][INFO]: Locations allowed (by considering trace start and trace end): {331}
+[Wed Jan 21 16:27:42 2026][INFO]: Final locations: [331]
+[Wed Jan 21 16:27:42 2026][INFO]: [Timer] Duration for localize: 81.691s
+[Wed Jan 21 16:27:42 2026][INFO]: Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+[Wed Jan 21 16:27:42 2026][INFO]: [Codeql] Running patch ingredient (return stmts) query
+[Wed Jan 21 16:27:42 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-queries/return_stmts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-res-return-stmts.csv
+[Wed Jan 21 16:27:59 2026][INFO]: Return statements: ['return NULL;', 'return ret;']
+[Wed Jan 21 16:27:59 2026][INFO]: [Timer] Duration for codeql-get-return-stmts: 17.434s
+[Wed Jan 21 16:27:59 2026][INFO]: [Codeql] Running patch ingredient (labels) query
+[Wed Jan 21 16:27:59 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-queries/labels.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-res-labels.csv
+[Wed Jan 21 16:28:13 2026][INFO]: Labels: []
+[Wed Jan 21 16:28:13 2026][INFO]: [Timer] Duration for codeql-get-labels: 13.822s
+[Wed Jan 21 16:28:13 2026][INFO]: [Timer] Duration for analysis: 113.318s
+[Wed Jan 21 16:28:13 2026][INFO]: Repairing Program at location: 331
+[Wed Jan 21 16:28:13 2026][INFO]: Loc 331: Getting patch ingredients at fix location
+[Wed Jan 21 16:28:13 2026][INFO]: Loc 331: [Codeql] Running statement boundary query
+[Wed Jan 21 16:28:13 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 16:28:27 2026][INFO]: Statement at fix location ends at line 331
+[Wed Jan 21 16:28:27 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 13.605s
+[Wed Jan 21 16:28:27 2026][INFO]: Loc 331: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 16:28:27 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-res-ingredient.csv
+[Wed Jan 21 16:30:27 2026][INFO]: Loc 331: Pointer variables: ['ret', 'str']
+[Wed Jan 21 16:30:27 2026][INFO]: Loc 331: Non-pointer variables: []
+[Wed Jan 21 16:30:27 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 120.754s
+[Wed Jan 21 16:30:27 2026][INFO]: Loc 331: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 16:30:27 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-queries/consts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/codeql-res-consts.csv
+[Wed Jan 21 16:31:03 2026][INFO]: Loc 331: Constants: ['-1', '1', '0']
+[Wed Jan 21 16:31:03 2026][INFO]: [Timer] Duration for codeql-get-consts: 35.191s
+[Wed Jan 21 16:31:03 2026][INFO]: Loc 331: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 16:31:03 2026][INFO]: Loc 331: Entering the main repair loop
+[Wed Jan 21 16:31:03 2026][INFO]: Loc 331: Total search space size: 3704219304778729154511168907551203351037872429024457301679314914510905246372749754343933724438510958229905800452874
+[Wed Jan 21 16:31:03 2026][COMMAND]: sed -i -e '331s:$: return ret ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:03 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/1.patch
+[Wed Jan 21 16:31:03 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:04 2026][INFO]: Adding new patch: INSERT BACK return ret ;
+[Wed Jan 21 16:31:04 2026][INFO]: Created new cluster cluster-L331-0
+[Wed Jan 21 16:31:04 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+[Wed Jan 21 16:31:04 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: Adding to Cluster cluster-L331-0
+[Wed Jan 21 16:31:04 2026][INFO]: Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:31:04 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:04 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:04 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:04 2026][WARNING]: did not generate a new patch
+[Wed Jan 21 16:31:04 2026][COMMAND]: sed -i -e '331s:^:str = malloc ( sizeof ( * str ) ) ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:04 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/2.patch
+[Wed Jan 21 16:31:04 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:04 2026][INFO]: Adding new patch: INSERT FRONT str = malloc ( sizeof ( * str ) ) ;
+[Wed Jan 21 16:31:04 2026][INFO]: Created new cluster cluster-L331-1
+[Wed Jan 21 16:31:04 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 331, 331>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+[Wed Jan 21 16:31:04 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: Adding to Cluster cluster-L331-1
+[Wed Jan 21 16:31:04 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+[Wed Jan 21 16:31:04 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:04 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:04 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:04 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:04 2026][COMMAND]: sed -i -e '331s:$: return ret; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:04 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/3.patch
+[Wed Jan 21 16:31:05 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:05 2026][INFO]: Adding new patch: INSERT BACK return ret;
+[Wed Jan 21 16:31:05 2026][INFO]: Adding to Cluster cluster-L331-0
+[Wed Jan 21 16:31:05 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 16:31:05 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:05 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:05 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:05 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:05 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:05 2026][COMMAND]: sed -i -e '331s:$: return NULL; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:05 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/4.patch
+[Wed Jan 21 16:31:05 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:06 2026][INFO]: Adding new patch: INSERT BACK return NULL;
+[Wed Jan 21 16:31:06 2026][INFO]: Created new cluster cluster-L331-2
+[Wed Jan 21 16:31:06 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Wed Jan 21 16:31:06 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:06 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:06 2026][INFO]: Adding to Cluster cluster-L331-2
+[Wed Jan 21 16:31:06 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 16:31:06 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:06 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:06 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:06 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:06 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:06 2026][COMMAND]: sed -i -e '331s:^:if ( str != str \&\& ret == NULL ) { return NULL; }  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:06 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/5.patch
+[Wed Jan 21 16:31:06 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:07 2026][INFO]: Adding new patch: INSERT FRONT if ( str != str && ret == NULL ) { return NULL; }
+[Wed Jan 21 16:31:07 2026][INFO]: Adding to Cluster cluster-L331-0
+[Wed Jan 21 16:31:07 2026][INFO]: Grammar: :INSERT POS CMD,if ( BOOL_EXPR ) { CMD },BOOL_EXPR_S && BOOL_EXPR_S,COND_POINTER POINTER_OP COND_POINTER,COND_POINTER POINTER_OP POINTER_CONST,EXIT_STMT
+[Wed Jan 21 16:31:07 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:07 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:07 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:07 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: == : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: != : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: < : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: <= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: > : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: >= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: == : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: != : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: BOOL_EXPR_S && BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: BOOL_EXPR_S || BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ! ( BOOL_EXPR_S ) : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: COND_POINTER POINTER_OP COND_POINTER : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: COND_POINTER POINTER_OP POINTER_CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ARITH_EXPR REL_OP ARITH_EXPR : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ARITH_EXPR REL_OP CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:07 2026][COMMAND]: sed -i -e '331s:^:return str ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:07 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/6.patch
+[Wed Jan 21 16:31:07 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:07 2026][INFO]: Adding new patch: INSERT FRONT return str ;
+[Wed Jan 21 16:31:07 2026][INFO]: Created new cluster cluster-L331-3
+[Wed Jan 21 16:31:07 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 329>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = return),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = return),
+]
+[Wed Jan 21 16:31:07 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:07 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:07 2026][INFO]: Adding to Cluster cluster-L331-3
+[Wed Jan 21 16:31:07 2026][INFO]: Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:31:07 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:07 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:07 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:07 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:07 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:07 2026][COMMAND]: sed -i -e '331s:$: return NULL ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:07 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/7.patch
+[Wed Jan 21 16:31:07 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:08 2026][INFO]: Adding new patch: INSERT BACK return NULL ;
+[Wed Jan 21 16:31:08 2026][INFO]: Adding to Cluster cluster-L331-2
+[Wed Jan 21 16:31:08 2026][INFO]: Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER_CONST
+[Wed Jan 21 16:31:08 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:08 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:08 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:08 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:08 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:08 2026][COMMAND]: sed -i -e '331s:^:if ( ! ( str != str ) ) { return NULL; }  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:08 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/8.patch
+[Wed Jan 21 16:31:08 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:09 2026][INFO]: Adding new patch: INSERT FRONT if ( ! ( str != str ) ) { return NULL; }
+[Wed Jan 21 16:31:09 2026][INFO]: Created new cluster cluster-L331-4
+[Wed Jan 21 16:31:09 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+[Wed Jan 21 16:31:09 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: Adding to Cluster cluster-L331-4
+[Wed Jan 21 16:31:09 2026][INFO]: Grammar: :INSERT POS CMD,if ( BOOL_EXPR ) { CMD },! ( BOOL_EXPR_S ),COND_POINTER POINTER_OP COND_POINTER,EXIT_STMT
+[Wed Jan 21 16:31:09 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:09 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:09 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: != : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: < : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: <= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: == : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: > : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: >= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: != : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: == : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ! ( BOOL_EXPR_S ) : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: BOOL_EXPR_S || BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: BOOL_EXPR_S && BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: COND_POINTER POINTER_OP COND_POINTER : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ARITH_EXPR REL_OP ARITH_EXPR : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ARITH_EXPR REL_OP CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: COND_POINTER POINTER_OP POINTER_CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:09 2026][COMMAND]: sed -i -e '331s:$: free ( str ) ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:09 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/9.patch
+[Wed Jan 21 16:31:09 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:09 2026][INFO]: Adding new patch: INSERT BACK free ( str ) ;
+[Wed Jan 21 16:31:09 2026][INFO]: Created new cluster cluster-L331-5
+[Wed Jan 21 16:31:09 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: (str = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: (! (return = 0)), 
+		formula: (! (str = 0)),
+]
+[Wed Jan 21 16:31:09 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: Adding to Cluster cluster-L331-5
+[Wed Jan 21 16:31:09 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,free ( POINTER ) ;
+[Wed Jan 21 16:31:09 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:09 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:09 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:09 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:09 2026][COMMAND]: sed -i -e '331s:$: ret = malloc ( sizeof ( * str ) ) ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:09 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/10.patch
+[Wed Jan 21 16:31:09 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:10 2026][INFO]: Adding new patch: INSERT BACK ret = malloc ( sizeof ( * str ) ) ;
+[Wed Jan 21 16:31:10 2026][INFO]: Created new cluster cluster-L331-6
+[Wed Jan 21 16:31:10 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Wed Jan 21 16:31:10 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:10 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:10 2026][INFO]: Adding to Cluster cluster-L331-6
+[Wed Jan 21 16:31:10 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+[Wed Jan 21 16:31:10 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:10 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:10 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:10 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:10 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:10 2026][COMMAND]: sed -i -e '331s:^:return ret;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:10 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/11.patch
+[Wed Jan 21 16:31:10 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:11 2026][INFO]: Adding new patch: INSERT FRONT return ret;
+[Wed Jan 21 16:31:11 2026][INFO]: Created new cluster cluster-L331-7
+[Wed Jan 21 16:31:11 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+[Wed Jan 21 16:31:11 2026][INFO]: pe_increment: RewardType.BIG
+[Wed Jan 21 16:31:11 2026][INFO]: ppie_increment: RewardType.BIG
+[Wed Jan 21 16:31:11 2026][INFO]: Found a locally good patch after 290.907s from starting tool
+[Wed Jan 21 16:31:11 2026][INFO]: Adding to Cluster cluster-L331-7
+[Wed Jan 21 16:31:11 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 16:31:11 2026][INFO]: plausible count: 1
+[Wed Jan 21 16:31:11 2026][INFO]: cumulative repetition: 3
+[Wed Jan 21 16:31:11 2026][INFO]: Cluster pe increment: RewardType.BIG
+[Wed Jan 21 16:31:11 2026][INFO]: Cluster ppie increment: RewardType.BIG
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: return ret; : pe: 0.500=>0.550 ; ppie: 0.500=>0.600
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: return NULL; : pe: 0.500=>0.450 ; ppie: 0.500=>0.400
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.250 ; ppie: 0.167=>0.333
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.600
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.400
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:11 2026][COMMAND]: sed -i -e '331s:^:return NULL; ret = str ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:11 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/12.patch
+[Wed Jan 21 16:31:11 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:11 2026][INFO]: Adding new patch: INSERT FRONT return NULL; ret = str ;
+[Wed Jan 21 16:31:11 2026][INFO]: Created new cluster cluster-L331-8
+[Wed Jan 21 16:31:11 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 329>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+[Wed Jan 21 16:31:11 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:11 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:11 2026][INFO]: Adding to Cluster cluster-L331-8
+[Wed Jan 21 16:31:11 2026][INFO]: Grammar: :INSERT POS CMD,CMD CMD,EXIT_STMT,HEAP,POINTER = POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:31:11 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:11 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:11 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:11 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:11 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:11 2026][COMMAND]: sed -i -e '331s:^:return NULL; return NULL;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:11 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/13.patch
+[Wed Jan 21 16:31:11 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:12 2026][INFO]: Adding new patch: INSERT FRONT return NULL; return NULL;
+[Wed Jan 21 16:31:12 2026][INFO]: Adding to Cluster cluster-L331-8
+[Wed Jan 21 16:31:12 2026][INFO]: Grammar: :INSERT POS CMD,CMD CMD,EXIT_STMT,EXIT_STMT
+[Wed Jan 21 16:31:12 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:12 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:12 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:12 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:12 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:12 2026][COMMAND]: sed -i -e '331s:$: ret = NULL ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:12 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/14.patch
+[Wed Jan 21 16:31:12 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:13 2026][INFO]: Adding new patch: INSERT BACK ret = NULL ;
+[Wed Jan 21 16:31:13 2026][INFO]: Adding to Cluster cluster-L331-2
+[Wed Jan 21 16:31:13 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER_CONST
+[Wed Jan 21 16:31:13 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:13 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:13 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:13 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:13 2026][COMMAND]: sed -i -e '331s:^:ret = malloc ( sizeof ( * ret ) ) ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:13 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/15.patch
+[Wed Jan 21 16:31:13 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:13 2026][INFO]: Adding new patch: INSERT FRONT ret = malloc ( sizeof ( * ret ) ) ;
+[Wed Jan 21 16:31:13 2026][INFO]: Created new cluster cluster-L331-9
+[Wed Jan 21 16:31:13 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 331, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 329>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+[Wed Jan 21 16:31:13 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:13 2026][INFO]: ppie_increment: RewardType.BIG
+[Wed Jan 21 16:31:13 2026][INFO]: Adding to Cluster cluster-L331-9
+[Wed Jan 21 16:31:13 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+[Wed Jan 21 16:31:13 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:13 2026][INFO]: cumulative repetition: 3
+[Wed Jan 21 16:31:13 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:13 2026][INFO]: Cluster ppie increment: RewardType.BIG
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.600
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.400
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.600
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.400
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.467
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.267
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.267
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.307
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.267
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.680
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.320
+[Wed Jan 21 16:31:13 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:13 2026][COMMAND]: sed -i -e '331s:^:ret = str ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:13 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/16.patch
+[Wed Jan 21 16:31:13 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:14 2026][INFO]: Adding new patch: INSERT FRONT ret = str ;
+[Wed Jan 21 16:31:14 2026][INFO]: Adding to Cluster cluster-L331-3
+[Wed Jan 21 16:31:14 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:31:14 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:14 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:14 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:14 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:14 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:14 2026][COMMAND]: sed -i -e '331s:^:free ( str ) ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:14 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/17.patch
+[Wed Jan 21 16:31:14 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:15 2026][INFO]: Adding new patch: INSERT FRONT free ( str ) ;
+[Wed Jan 21 16:31:15 2026][INFO]: Created new cluster cluster-L331-10
+[Wed Jan 21 16:31:15 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: (! (str = 0)),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <LatentAbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: (str = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: (! (return = 0)), 
+		formula: (! (str = 0)),
+]
+[Wed Jan 21 16:31:15 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: Adding to Cluster cluster-L331-10
+[Wed Jan 21 16:31:15 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,free ( POINTER ) ;
+[Wed Jan 21 16:31:15 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:15 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:15 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:15 2026][COMMAND]: sed -i -e '331s:$: ret = str ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:15 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/18.patch
+[Wed Jan 21 16:31:15 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:15 2026][INFO]: Adding new patch: INSERT BACK ret = str ;
+[Wed Jan 21 16:31:15 2026][INFO]: Created new cluster cluster-L331-11
+[Wed Jan 21 16:31:15 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = return),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+[Wed Jan 21 16:31:15 2026][INFO]: pe_increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: Adding to Cluster cluster-L331-11
+[Wed Jan 21 16:31:15 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:31:15 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:15 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:15 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:15 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:15 2026][COMMAND]: sed -i -e '331s:$: ret = malloc ( sizeof ( * str ) ) ; return ret; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:15 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/19.patch
+[Wed Jan 21 16:31:15 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:16 2026][INFO]: Adding new patch: INSERT BACK ret = malloc ( sizeof ( * str ) ) ; return ret;
+[Wed Jan 21 16:31:16 2026][INFO]: Adding to Cluster cluster-L331-6
+[Wed Jan 21 16:31:16 2026][INFO]: Grammar: :INSERT POS CMD,CMD CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;,EXIT_STMT
+[Wed Jan 21 16:31:16 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:16 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:31:16 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:16 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:16 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:16 2026][COMMAND]: sed -i -e '331s:^:str = malloc ( sizeof ( * ret ) ) ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:16 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/20.patch
+[Wed Jan 21 16:31:16 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:17 2026][INFO]: Adding new patch: INSERT FRONT str = malloc ( sizeof ( * ret ) ) ;
+[Wed Jan 21 16:31:17 2026][INFO]: Adding to Cluster cluster-L331-1
+[Wed Jan 21 16:31:17 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+[Wed Jan 21 16:31:17 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:17 2026][INFO]: cumulative repetition: 4
+[Wed Jan 21 16:31:17 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:17 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:17 2026][COMMAND]: sed -i -e '331s:$: str = NULL ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:17 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/21.patch
+[Wed Jan 21 16:31:17 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:17 2026][INFO]: Adding new patch: INSERT BACK str = NULL ;
+[Wed Jan 21 16:31:17 2026][INFO]: Adding to Cluster cluster-L331-0
+[Wed Jan 21 16:31:17 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER_CONST
+[Wed Jan 21 16:31:17 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:17 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:17 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:17 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:17 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:17 2026][COMMAND]: sed -i -e '331s:$: str = ret ; :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:17 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/22.patch
+[Wed Jan 21 16:31:17 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:18 2026][INFO]: Adding new patch: INSERT BACK str = ret ;
+[Wed Jan 21 16:31:18 2026][INFO]: Adding to Cluster cluster-L331-0
+[Wed Jan 21 16:31:18 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:31:18 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:18 2026][INFO]: cumulative repetition: 3
+[Wed Jan 21 16:31:18 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:18 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:18 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:18 2026][COMMAND]: sed -i -e '331s:^:return NULL ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:18 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/23.patch
+[Wed Jan 21 16:31:18 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:19 2026][INFO]: Adding new patch: INSERT FRONT return NULL ;
+[Wed Jan 21 16:31:19 2026][INFO]: Adding to Cluster cluster-L331-8
+[Wed Jan 21 16:31:19 2026][INFO]: Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER_CONST
+[Wed Jan 21 16:31:19 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:19 2026][INFO]: cumulative repetition: 2
+[Wed Jan 21 16:31:19 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:19 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:19 2026][COMMAND]: sed -i -e '331s:^:return NULL;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:19 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/24.patch
+[Wed Jan 21 16:31:19 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:19 2026][INFO]: Adding new patch: INSERT FRONT return NULL;
+[Wed Jan 21 16:31:19 2026][INFO]: Adding to Cluster cluster-L331-8
+[Wed Jan 21 16:31:19 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 16:31:19 2026][INFO]: plausible count: 1
+[Wed Jan 21 16:31:19 2026][INFO]: cumulative repetition: 4
+[Wed Jan 21 16:31:19 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:19 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:19 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:19 2026][COMMAND]: sed -i -e '331s:^:str = NULL ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c
+[Wed Jan 21 16:31:19 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/25.patch
+[Wed Jan 21 16:31:19 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/mem.c --pulse-fix-function=CRYPTO_strdup -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:31:20 2026][INFO]: Adding new patch: INSERT FRONT str = NULL ;
+[Wed Jan 21 16:31:20 2026][INFO]: Adding to Cluster cluster-L331-0
+[Wed Jan 21 16:31:20 2026][INFO]: Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER_CONST
+[Wed Jan 21 16:31:20 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:31:20 2026][INFO]: cumulative repetition: 3
+[Wed Jan 21 16:31:20 2026][INFO]: Cluster pe increment: RewardType.NO
+[Wed Jan 21 16:31:20 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+[Wed Jan 21 16:31:20 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:31:20 2026][INFO]: Loc 331: Ending repair loop since time budget is exceeded
+[Wed Jan 21 16:31:20 2026][INFO]: Loc 331: Repair loop finished
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Accumulated duration for patch-generation: 0.021s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Average duration for patch-generation: 0.00083s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Accumulated duration for probabilities-update: 0.064s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Average duration for probabilities-update: 0.00255s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Accumulated duration for patch-signature-generation: 0.368s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Average duration for patch-signature-generation: 0.01470s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Accumulated duration for footprint-generation: 15.761s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Average duration for footprint-generation: 0.63045s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Accumulated duration for patch-clustering: 0.885s
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Average duration for patch-clustering: 0.03541s
+[Wed Jan 21 16:31:20 2026][INFO]: Number of prod-rule-combos: 12
+[Wed Jan 21 16:31:20 2026][INFO]: Number of plausible prod-rule-combos: 1
+[Wed Jan 21 16:31:20 2026][INFO]: Number of clusters: 12
+[Wed Jan 21 16:31:20 2026][INFO]: Number of clustered patches: 25
+[Wed Jan 21 16:31:20 2026][INFO]: Average number of patches per cluster:2.083
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-1: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-2: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-3: 1
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-4: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-5: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-6: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-7: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-8: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-9: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-10: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-11: 0
+[Wed Jan 21 16:31:20 2026][INFO]: plausible-prod-combo-12: 0
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-1: 2
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-2: 4
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-3: 4
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-4: 1
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-5: 2
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-6: 1
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-7: 2
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-8: 1
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-9: 1
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-10: 3
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-11: 3
+[Wed Jan 21 16:31:20 2026][INFO]: prod-combo-12: 1
+[Wed Jan 21 16:31:20 2026][INFO]: Explored 25/3704219304778729154511168907551203351037872429024457301679314914510905246372749754343933724438510958229905800452874(0.000%) patches
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Duration for total-repair: 186.879s
+[Wed Jan 21 16:31:20 2026][INFO]: Validating locally good clusters
+[Wed Jan 21 16:31:20 2026][INFO]: Checking which clusters are locally good
+[Wed Jan 21 16:31:20 2026][INFO]: Number of locally good clusters: 1
+[Wed Jan 21 16:31:20 2026][INFO]: Locally good clusters are: [cluster-L331-7 : GOOD, pe_incre: RewardType.BIG, ppie_incre: RewardType.BIG, PatchSignature: [
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+] =>
+[
+	Plausible Patch: /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/all-patches/cluster-L331-7/11.patch (size:4),
+]
+,
+]
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Duration for total-validation: 0.003s
+[Wed Jan 21 16:31:20 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 16:31:20 2026][INFO]: [Timer] Duration for total-run-time: 300.226s
+[Wed Jan 21 16:31:20 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 16:31:20 2026][LOG]: effFix (Stage: repair) finished successfully after 300.226 seconds
+[Wed Jan 21 16:31:20 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 16:31:20 2026][LOG]: effFix (Stage: repair) finished successfully after 300.226 seconds
+[Wed Jan 21 16:31:20 2026][END] effFix ended at  2026-01-21 16:31:20.501829
+

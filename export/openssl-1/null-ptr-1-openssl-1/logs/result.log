@@ -1,0 +1,108 @@
+[Start] effFix started at 2026-01-21 15:55:30.308582
+<function title at 0x7bad35c40f70>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Target bug is: NULLPTR_DEREFERENCE, crypto/x509/x509_vpm.c, X509_VERIFY_PARAM_new, start_line:91, end_line:92, two_loc_source_line:-1
+Performing fix localization
+Result from ochiai: [(88, 0.23570226039551587), (91, 0.23570226039551587), (92, 0.23570226039551587), (93, 0.0), (94, 0.0)]
+Locations allowed (by considering trace start and trace end): {92}
+Final locations: [92]
+[Timer] Duration for localize: 65.200s
+Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 91, 92>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: ((return->trust = 0) & (return->depth = -1) & (return->trust = return->purpose) & (return->purpose = return->policies) & (return->policies = return->name) & (return->name = return->inh_flags) & (return->inh_flags = return->flags)),
+]
+[Codeql] Running patch ingredient (return stmts) query
+Return statements: ['return NULL;', 'return param;']
+[Timer] Duration for codeql-get-return-stmts: 22.245s
+[Codeql] Running patch ingredient (labels) query
+Labels: []
+[Timer] Duration for codeql-get-labels: 14.302s
+[Timer] Duration for analysis: 102.016s
+Repairing Program at location: 92
+Loc 92: Getting patch ingredients at fix location
+Loc 92: [Codeql] Running statement boundary query
+Statement at fix location ends at line 92
+[Timer] Duration for codeql-get-stmt-boundary: 14.753s
+Loc 92: [Codeql] Running patch ingredient (variable) query
+Loc 92: Pointer variables: ['param']
+Loc 92: Non-pointer variables: []
+[Timer] Duration for codeql-get-ingredients-variables: 138.768s
+Loc 92: [Codeql] Running patch ingredient (constants) query
+Loc 92: Constants: ['0', '-1', '91']
+[Timer] Duration for codeql-get-consts: 44.048s
+Loc 92: Initializing Patch Generator and Cluster Manager
+Loc 92: Entering the main repair loop
+Loc 92: Total search space size: 53083259605779243339761591973027559894206382810958015074837152505470347128204048
+Adding new patch: INSERT FRONT return NULL ;
+Created new cluster cluster-L92-0
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 91, 91>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L92-0
+Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER_CONST
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Loc 92: Ending repair loop since time budget is exceeded
+Loc 92: Repair loop finished
+[Timer] Accumulated duration for patch-generation: 0.000s
+[Timer] Average duration for patch-generation: 0.00023s
+[Timer] Accumulated duration for probabilities-update: 0.001s
+[Timer] Average duration for probabilities-update: 0.00113s
+[Timer] Accumulated duration for patch-signature-generation: 0.008s
+[Timer] Average duration for patch-signature-generation: 0.00801s
+[Timer] Accumulated duration for footprint-generation: 1.402s
+[Timer] Average duration for footprint-generation: 1.40187s
+[Timer] Accumulated duration for patch-clustering: 0.017s
+[Timer] Average duration for patch-clustering: 0.01661s
+Number of prod-rule-combos: 1
+Number of plausible prod-rule-combos: 0
+Number of clusters: 1
+Number of clustered patches: 1
+Average number of patches per cluster:1.000
+plausible-prod-combo-1: 0
+prod-combo-1: 1
+Explored 1/53083259605779243339761591973027559894206382810958015074837152505470347128204048(0.000%) patches
+[Timer] Duration for total-repair: 199.044s
+Validating locally good clusters
+Checking which clusters are locally good
+Number of locally good clusters: 0
+Locally good clusters are: []
+[Timer] Duration for total-validation: 0.000s
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 301.081s

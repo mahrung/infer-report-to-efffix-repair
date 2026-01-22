@@ -1,0 +1,30 @@
+[
+    {
+        "bug_type": "NULLPTR_DEREFERENCE",
+        "file": "src/lxc/af_unix.c",
+        "line": 154,
+        "procedure": "lxc_abstract_unix_connect",
+        "bug_trace": [
+            {"line_number": 150, "description": "start of trace"},
+            {"line_number": 153, "description": "possible null assignment"},
+            {"line_number": 154, "description": "null dereference here"}
+        ]
+    },
+    {
+        "bug_type": "MEMORY_LEAK_C",
+        "file": "src/lxc/cgroups/cgfsng.c",
+        "line": 462,
+        "procedure": "cg_legacy_get_hierarchies",
+        "bug_trace": [
+            {"line_number": 460, "description": "memory allocation"},
+            {"line_number": 462, "description": "memory leak"}
+        ]
+    },
+    {
+        "bug_type": "UNSUPPORTED_BUG_TYPE",
+        "file": "src/other.c",
+        "line": 100,
+        "procedure": "some_function",
+        "bug_trace": []
+    }
+]

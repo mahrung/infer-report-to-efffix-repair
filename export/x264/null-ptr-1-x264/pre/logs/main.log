@@ -1,0 +1,37 @@
+[Start] effFix started at 2026-01-21 19:06:30.840950
+[Wed Jan 21 19:06:30 2026][INFO]: <function title at 0x75d02b0b1ee0>
+[Wed Jan 21 19:06:30 2026][INFO]: Displaying Configurations
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: src_dir:/opt/efffix-benchmark/x264/null-ptr-1-x264/src
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: build_command:make -j4
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: clean_command:make clean || true
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: config_command:./configure
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: tag_id:null-ptr-1-x264
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: bug_procedure:unknown
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: bug_file:input/thread.c
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: bug_start_line:55
+[Wed Jan 21 19:06:30 2026][CONFIGURATION]: bug_end_line:55
+[Wed Jan 21 19:06:30 2026][INFO]: Loading dependency tools
+[Wed Jan 21 19:06:30 2026][INFO]: Pre-analyzing Program
+[Wed Jan 21 19:06:30 2026][INFO]: Configuring Target Program
+[Wed Jan 21 19:06:30 2026][COMMAND]: ./configure
+[Wed Jan 21 19:06:32 2026][INFO]: [Timer] Duration for config: 1.778s
+[Wed Jan 21 19:06:32 2026][INFO]: Generating codeql database for target program
+[Wed Jan 21 19:06:32 2026][COMMAND]: make clean || true
+[Wed Jan 21 19:06:35 2026][COMMAND]: codeql database create /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db --language=cpp --threads=16 --command="make -j4"
+[Wed Jan 21 19:07:14 2026][INFO]: [Timer] Duration for codeql-build-db: 42.254s
+[Wed Jan 21 19:07:14 2026][INFO]: Running Infer on Whole Program
+[Wed Jan 21 19:07:14 2026][COMMAND]: make clean || true
+[Wed Jan 21 19:07:14 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 -o /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/infer-out-whole -- make -j4
+[Wed Jan 21 19:10:45 2026][INFO]: [Timer] Duration for infer-detect: 210.700s
+[Wed Jan 21 19:10:45 2026][INFO]: [Timer] Duration for pre-analysis: 254.738s
+[Wed Jan 21 19:10:45 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 19:10:45 2026][INFO]: [Timer] Duration for total-run-time: 254.739s
+[Wed Jan 21 19:10:45 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 19:10:45 2026][LOG]: effFix (Stage: pre) finished successfully after 254.739 seconds
+[Wed Jan 21 19:10:45 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 19:10:45 2026][LOG]: effFix (Stage: pre) finished successfully after 254.739 seconds
+[Wed Jan 21 19:10:45 2026][END] effFix ended at  2026-01-21 19:10:45.587483
+

@@ -1,0 +1,51 @@
+[Start] effFix started at 2026-01-21 16:17:09.752940
+[Wed Jan 21 16:17:09 2026][INFO]: <function title at 0x70f9dc535f70>
+[Wed Jan 21 16:17:09 2026][INFO]: Displaying Configurations
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: src_dir:/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-2-openssl-1/src
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: build_command_project:make
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: build_command_repair:make build_crypto
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: clean_command:make clean
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: config_command:CC=gcc ./config
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: tag_id:null-ptr-2-openssl-1
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: bug_type:NULLPTR_DEREFERENCE
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: bug_procedure:DH_check_pub_key
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: bug_file:crypto/dh/dh_check.c
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: bug_start_line:128
+[Wed Jan 21 16:17:09 2026][CONFIGURATION]: bug_end_line:132
+[Wed Jan 21 16:17:09 2026][INFO]: Loading dependency tools
+[Wed Jan 21 16:17:09 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 16:17:09 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 16:17:09 2026][ERROR]: Repair Failed
+[Wed Jan 21 16:17:09 2026][ERROR]: Target bug not found by Infer analysis. This is likely because the Infer bug trace has start and end location in different function, which is not supported by EffFix now.
+[Wed Jan 21 16:17:09 2026][ERROR]: Runtime Error
+[Wed Jan 21 16:17:09 2026][ERROR]: Error. Exiting...
+[Wed Jan 21 16:17:09 2026][ERROR]: Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 52, in analyze
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+[Wed Jan 21 16:17:09 2026][ERROR]: Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 52, in analyze
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+[Wed Jan 21 16:17:09 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 16:17:09 2026][INFO]: [Timer] Duration for total-run-time: 0.074s
+[Wed Jan 21 16:17:09 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 16:17:09 2026][ERROR]: effFix exited with an error after 0.074 seconds
+[Wed Jan 21 16:17:09 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 16:17:09 2026][LOG]: effFix exited with an error after 0.074 seconds
+[Wed Jan 21 16:17:09 2026][END] effFix ended at  2026-01-21 16:17:09.817380
+

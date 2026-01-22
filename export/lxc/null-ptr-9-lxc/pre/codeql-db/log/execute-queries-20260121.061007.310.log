@@ -1,0 +1,153 @@
+[2026-01-21 06:10:07] This is codeql execute queries -J-Xmx2388M --off-heap-ram=2388 --verbosity=progress --logdir=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/log --evaluator-log-level=5 --warnings=show --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/results -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/db-cpp /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql
+[2026-01-21 06:10:07] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --format=json -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql
+[2026-01-21 06:10:07] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:10:07] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql"
+                      ]
+[2026-01-21 06:10:07] Refusing fancy output: The terminal is not an xterm: 
+[2026-01-21 06:10:07] Creating executor with 1 threads.
+[2026-01-21 06:10:07] Calling plumbing command: codeql resolve extensions --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql
+[2026-01-21 06:10:07] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --format startingpacks -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql
+[2026-01-21 06:10:07] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:10:07] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries"
+                      ]
+[2026-01-21 06:10:09] Plumbing command codeql resolve extensions completed:
+                      {
+                        "models" : [ ],
+                        "data" : { }
+                      }
+[2026-01-21 06:10:09] [DETAILS] execute queries> Did not find any ML models.
+[2026-01-21 06:10:09] Calling plumbing command: codeql resolve library-path --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src/qlconfig.yml --query=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql --format=json
+[2026-01-21 06:10:09] [DETAILS] resolve library-path> Resolving query at normalized path /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql.
+[2026-01-21 06:10:09] [DETAILS] resolve library-path> Found enclosing pack 'efffix/codeql-cpp-queries' at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:10:09] [DETAILS] resolve library-path> Adding compilation cache at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache.
+[2026-01-21 06:10:09] [DETAILS] resolve library-path> Resolving library dependencies from /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlpack.yml.
+[2026-01-21 06:10:09] [DETAILS] resolve library-path> QL pack dependencies for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries resolved OK.
+[2026-01-21 06:10:09] [DETAILS] resolve library-path> Found dbscheme through QL packs: /root/.codeql/packages/codeql/cpp-all/0.6.0/semmlecode.cpp.dbscheme.
+[2026-01-21 06:10:09] Plumbing command codeql resolve library-path completed:
+                      {
+                        "libraryPath" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries",
+                          "/root/.codeql/packages/codeql/cpp-all/0.6.0",
+                          "/root/.codeql/packages/codeql/ssa/0.0.13",
+                          "/root/.codeql/packages/codeql/tutorial/0.0.6"
+                        ],
+                        "dbscheme" : "/root/.codeql/packages/codeql/cpp-all/0.6.0/semmlecode.cpp.dbscheme",
+                        "compilationCache" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache"
+                        ],
+                        "relativeName" : "efffix/codeql-cpp-queries/stmt_boundary.ql",
+                        "qlPackName" : "efffix/codeql-cpp-queries"
+                      }
+[2026-01-21 06:10:09] [PROGRESS] execute queries> Compiling query plan for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql.
+[2026-01-21 06:10:09] [DETAILS] execute queries> Resolving imports for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql.
+[2026-01-21 06:10:09] Resolved file set for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql hashes to 74bb3933e39bb31bb26a2459f2e9a174f6744b47.
+[2026-01-21 06:10:09] [DETAILS] execute queries> Checking QL for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql.
+[2026-01-21 06:10:10] ExternalModuleBindingPass ...
+[2026-01-21 06:10:10] ExternalModuleBindingPass time: 00:00.419
+[2026-01-21 06:10:10] QLPredicateSynthesiser ...
+[2026-01-21 06:10:10] QLPredicateSynthesiser time: 00:00.012
+[2026-01-21 06:10:10] DeclarationBindingPass ...
+[2026-01-21 06:10:10] DeclarationBindingPass time: 00:00.061
+[2026-01-21 06:10:10] Fixed point time ...
+[2026-01-21 06:10:11] Fixed point time time: 00:00.510
+[2026-01-21 06:10:11] ReferenceBindingPass ...
+[2026-01-21 06:10:11] ReferenceBindingPass time: 00:00.053
+[2026-01-21 06:10:11] PopulateInstantiationMapPass ...
+[2026-01-21 06:10:11] PopulateInstantiationMapPass time: 00:00.192
+[2026-01-21 06:10:11] ReferenceBindingCheck ...
+[2026-01-21 06:10:11] ReferenceBindingCheck time: 00:00.040
+[2026-01-21 06:10:11] PredicateBodyBindingPass ...
+[2026-01-21 06:10:11] PredicateBodyBindingPass time: 00:00.154
+[2026-01-21 06:10:11] LanguagePragmaPropagationPass ...
+[2026-01-21 06:10:11] LanguagePragmaPropagationPass time: 00:00.013
+[2026-01-21 06:10:11] Ambiguity checks ...
+[2026-01-21 06:10:11] Ambiguity checks time: 00:00.055
+[2026-01-21 06:10:11] Ql checks ...
+[2026-01-21 06:10:12] Ql checks time: 00:00.797
+[2026-01-21 06:10:13] Compilation pipeline
+[2026-01-21 06:10:13] Type Inference ...
+[2026-01-21 06:10:13] CSV_TYPE_HIERARCHY: Best number of iterations,Maximum number of runs,Number of BDD variables,Size of BDD for typefacts
+[2026-01-21 06:10:13] CSV_TYPE_HIERARCHY: 0,0,12,12
+[2026-01-21 06:10:13] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:10:13] CSV_TYPE_HIERARCHY: 0,0,8,8
+[2026-01-21 06:10:13] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:10:13] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,812,1828
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,2,2
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,2,2
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,3,3
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,4,4
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,7,7
+[2026-01-21 06:10:14] CSV_TYPE_HIERARCHY: 0,0,5,5
+[2026-01-21 06:10:14] Type Inference time: 00:01.271
+[2026-01-21 06:10:15] [DETAILS] execute queries> Optimizing /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql.
+[2026-01-21 06:10:15] Processing compilation pipeline
+[2026-01-21 06:10:15] Started compiling a query
+[2026-01-21 06:10:15] Initialising compiler...
+[2026-01-21 06:10:15] 	 ... compiler initialised
+[2026-01-21 06:10:15] About to start query optimisation
+[2026-01-21 06:10:15] Compilation cache miss for 0781787e1f667efe6496299e4094248bebeedcf4.
+[2026-01-21 06:10:15] Stored compiled program for 0781787e1f667efe6496299e4094248bebeedcf4.
+[2026-01-21 06:10:15] Compilation cache miss for a8676a4b0a2fdbb647289c783712fc431431e690.
+[2026-01-21 06:10:15] Stored compiled program for a8676a4b0a2fdbb647289c783712fc431431e690.
+[2026-01-21 06:10:15] Compilation cache miss for 601c7fe5d0f0d3c694803e9b9ab5f3464276fa73.
+[2026-01-21 06:10:16] Stored compiled program for 601c7fe5d0f0d3c694803e9b9ab5f3464276fa73.
+[2026-01-21 06:10:16] Compilation cache miss for 95f65a94e5b4afee33db764d4d10c34fb4001788.
+[2026-01-21 06:10:16] Stored compiled program for 95f65a94e5b4afee33db764d4d10c34fb4001788.
+[2026-01-21 06:10:16] Compilation cache miss for 3cbdd84e0ed1171373c2c646614da24a56daf315.
+[2026-01-21 06:10:18] Stored compiled program for 3cbdd84e0ed1171373c2c646614da24a56daf315.
+[2026-01-21 06:10:18] Compilation cache miss for 8f77d4540c372a0aa68a01a774762c714386675e.
+[2026-01-21 06:10:19] Stored compiled program for 8f77d4540c372a0aa68a01a774762c714386675e.
+[2026-01-21 06:10:19] CSV_COMPILATION: NONE,MISC,RA_TRANSLATION,OPTIMISATIONS
+[2026-01-21 06:10:19] CSV_COMPILATION: 256,176,299,3190
+[2026-01-21 06:10:19] [SPAMMY] execute queries> No database upgrade/downgrade needed for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql
+[2026-01-21 06:10:19] [PROGRESS] execute queries> [1/1 comp 9.4s] Compiled /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql.
+[2026-01-21 06:10:19] [PROGRESS] execute queries> Starting evaluation of efffix/codeql-cpp-queries/stmt_boundary.ql.
+[2026-01-21 06:10:19] Starting evaluation of /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql
+[2026-01-21 06:10:19] (0s) Start query execution
+[2026-01-21 06:10:19] (0s) Beginning execution of stmt_boundary.ql
+[2026-01-21 06:10:19] (0s)  >>> Created relation files/2@bfcf0c84 with 413 rows and digest a1e902el37icja61ktd34snk3h0.
+[2026-01-21 06:10:19] (0s)  >>> Created relation folders/2@3a330ev0 with 33 rows and digest 90bfddnf330m6u148i88s66ohv9.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate File#1c14e1de::Container::getAbsolutePath#0#dispred#ff/2@64dd30uq
+[2026-01-21 06:10:19] (0s)  >>> Created relation File#1c14e1de::Container::getAbsolutePath#0#dispred#ff/2@64dd30uq with 446 rows and digest 6ecc8f9mcc4klahnfhik6p3gcd8.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate File#1c14e1de::Container::getBaseName#0#dispred#ff/2@90e488i1
+[2026-01-21 06:10:19] (0s)  >>> Created relation File#1c14e1de::Container::getBaseName#0#dispred#ff/2@90e488i1 with 445 rows and digest 3e471cjkmje7boc0akr7tp7hjt3.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate File#1c14e1de::Container::getBaseName#0#dispred#ff_10#join_rhs/2@a9e7720q
+[2026-01-21 06:10:19] (0s)  >>> Created relation File#1c14e1de::Container::getBaseName#0#dispred#ff_10#join_rhs/2@a9e7720q with 445 rows and digest 25e49090rb59td6t08ialh7tco2.
+[2026-01-21 06:10:19] (0s)  >>> Created relation locations_stmt/6@002559ts with 32906 rows and digest 6d6cd7gl9nj3apooo3mi4hhmr26.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getContainer#ff/2@3231d5fh
+[2026-01-21 06:10:19] (0s)  >>> Created relation Location#bd5c7591::Location::getContainer#ff/2@3231d5fh with 32906 rows and digest 699a6fia9tr3av4ig13s8htojgc.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getContainer#ff_10#join_rhs/2@209afa2c
+[2026-01-21 06:10:19] (0s)  >>> Created relation Location#bd5c7591::Location::getContainer#ff_10#join_rhs/2@209afa2c with 32906 rows and digest e571844a37fa5jp33ofe8o6k4r0.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate Location#bd5c7591::Location::getStartLine#ff/2@63c3924s
+[2026-01-21 06:10:19] (0s)  >>> Created relation Location#bd5c7591::Location::getStartLine#ff/2@63c3924s with 32906 rows and digest 3ca561le6p27i6r5bllij1ou8lb.
+[2026-01-21 06:10:19] (0s)  >>> Created relation stmts/3@a84928ns with 46321 rows and digest 84662ba0kpag29n61mv928nqua5.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate stmts_20#join_rhs/2@362f86vo
+[2026-01-21 06:10:19] (0s)  >>> Created relation stmts_20#join_rhs/2@362f86vo with 46321 rows and digest 099a2cq20q7sreo3b8cqa5atuef.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate #select#ff/2@9abf29a9
+[2026-01-21 06:10:19] (0s)  >>> Created relation #select#ff/2@9abf29a9 with 1 rows and digest 7e3decg8t4g0fni732j182pn3v3.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate project#Element#496c7fc2::ElementBase::toString#0#dispred/1@c4ad99tp
+[2026-01-21 06:10:19] (0s)  >>> Created relation project#Element#496c7fc2::ElementBase::toString#0#dispred/1@c4ad99tp with 380387 rows and digest 7bd4afsaor873nklk1c1ulr9ua9.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/6@a695e5cc
+[2026-01-21 06:10:19] (0s)  >>> Created relation Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/6@a695e5cc with 1 rows and digest 18f43aiqk93cbhvui1jlge4adq4.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate _#select#ff_stmts#shared/3@5a290ash
+[2026-01-21 06:10:19] (0s)  >>> Created relation _#select#ff_stmts#shared/3@5a290ash with 1 rows and digest 363947hkv8fu7028sbhrcf85oi5.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate _Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff__#select#ff_stmts#shared#antijoin_rhs/2@ac32164c
+[2026-01-21 06:10:19] (0s)  >>> Created relation _Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff__#select#ff_stmts#shared#antijoin_rhs/2@ac32164c with 1 rows and digest 7e3decg8t4g0fni732j182pn3v3.
+[2026-01-21 06:10:19] (0s) Starting to evaluate predicate #select#query#ffffffff/8@dd555062
+[2026-01-21 06:10:19] (0s)  >>> Created relation #select#query#ffffffff/8@dd555062 with 1 rows and digest 62ff7e9r2l22joetbjmq6sjot78.
+[2026-01-21 06:10:19] (0s) Query done
+[2026-01-21 06:10:19] (0s) Sequence stamp origin is -5956192751747448571
+[2026-01-21 06:10:19] (0s) Pausing evaluation to sync to disk at sequence stamp o+0
+[2026-01-21 06:10:19] (0s) Unpausing evaluation
+[2026-01-21 06:10:19] Evaluation of /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/stmt_boundary.ql produced BQRS results.
+[2026-01-21 06:10:19] [PROGRESS] execute queries> [1/1 eval 329ms] Evaluation done; writing results to efffix/codeql-cpp-queries/stmt_boundary.bqrs.
+[2026-01-21 06:10:19] [PROGRESS] execute queries> Shutting down query evaluator.
+[2026-01-21 06:10:19] Pausing evaluation to close the cache at sequence stamp o+1
+[2026-01-21 06:10:19] The disk cache is freshly trimmed; leave it be.
+[2026-01-21 06:10:19] Unpausing evaluation
+[2026-01-21 06:10:19] Terminating normally.

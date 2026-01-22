@@ -1,0 +1,109 @@
+[Start] effFix started at 2026-01-21 18:17:53.435344
+[Wed Jan 21 18:17:53 2026][INFO]: <function title at 0x7009cc1d3f70>
+[Wed Jan 21 18:17:53 2026][INFO]: Displaying Configurations
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: src_dir:/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/src
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: build_command_project:make -j32
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: build_command_repair:make -j32 build_tests
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: clean_command:make clean
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: config_command:CC=gcc ./config
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: tag_id:null-ptr-8-openssl-3
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: bug_type:NULLPTR_DEREFERENCE
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: bug_procedure:init_object
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: bug_file:test/params_test.c
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: bug_start_line:100
+[Wed Jan 21 18:17:53 2026][CONFIGURATION]: bug_end_line:102
+[Wed Jan 21 18:17:53 2026][INFO]: Loading dependency tools
+[Wed Jan 21 18:17:53 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 18:17:53 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 18:17:53 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, test/params_test.c, init_object, start_line:100, end_line:102, two_loc_source_line:-1
+[Wed Jan 21 18:17:53 2026][INFO]: Performing fix localization
+[Wed Jan 21 18:18:12 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 50 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --pulse-skip-procedures 'test_single_eval\\|openssl_add_all_*' --reactive --pulse-fix-mode --pulse-fix-file=test/params_test.c --pulse-fix-function=init_object -o /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/infer-out-single -- make -j32 build_tests
+[Wed Jan 21 18:18:14 2026][INFO]: Result from ochiai: [(98, 0.1414213562373095), (100, 0.1414213562373095), (102, 0.1414213562373095), (103, 0.0), (104, 0.0), (107, 0.0), (110, 0.0), (111, 0.0), (113, 0.0)]
+[Wed Jan 21 18:18:14 2026][COMMAND]: codeql pack install
+[Wed Jan 21 18:18:18 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-res-loc-betweens.csv
+[Wed Jan 21 18:19:26 2026][INFO]: Locations allowed (by considering trace start and trace end): {102}
+[Wed Jan 21 18:19:26 2026][INFO]: Final locations: [102]
+[Wed Jan 21 18:19:27 2026][INFO]: [Timer] Duration for localize: 93.537s
+[Wed Jan 21 18:19:27 2026][INFO]: Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 100, 102>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <LatentAbortProgram, 104, 361>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (secure_mem_initialized = 0)) & (! ('&(sh)->freelist_size' = 0)) & (2 <= '&(sh)->bittable_size')),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'}), frozenset({'return->p4'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: (('&(return->p6->__infer_model_string_length)' = 15) & (! (return->p4 = 0)) & (return->p1 = 42) & (return->p2 = 6) & ('&(return->p3)' = 0)),
+]
+[Wed Jan 21 18:19:27 2026][INFO]: [Codeql] Running patch ingredient (return stmts) query
+[Wed Jan 21 18:19:27 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/return_stmts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-res-return-stmts.csv
+[Wed Jan 21 18:19:48 2026][INFO]: Return statements: ['return 0;', 'return NULL;', 'return obj;']
+[Wed Jan 21 18:19:48 2026][INFO]: [Timer] Duration for codeql-get-return-stmts: 20.780s
+[Wed Jan 21 18:19:48 2026][INFO]: [Codeql] Running patch ingredient (labels) query
+[Wed Jan 21 18:19:48 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/labels.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-res-labels.csv
+[Wed Jan 21 18:20:03 2026][INFO]: Labels: ['fail']
+[Wed Jan 21 18:20:03 2026][INFO]: [Timer] Duration for codeql-get-labels: 14.294s
+[Wed Jan 21 18:20:03 2026][INFO]: [Timer] Duration for analysis: 129.620s
+[Wed Jan 21 18:20:03 2026][INFO]: Repairing Program at location: 102
+[Wed Jan 21 18:20:03 2026][INFO]: Loc 102: Getting patch ingredients at fix location
+[Wed Jan 21 18:20:03 2026][INFO]: Loc 102: [Codeql] Running statement boundary query
+[Wed Jan 21 18:20:03 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 18:20:17 2026][INFO]: Statement at fix location ends at line 102
+[Wed Jan 21 18:20:17 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 13.976s
+[Wed Jan 21 18:20:17 2026][INFO]: Loc 102: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 18:20:17 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-res-ingredient.csv
+[Wed Jan 21 18:23:32 2026][INFO]: Loc 102: Pointer variables: ['obj']
+[Wed Jan 21 18:23:32 2026][INFO]: Loc 102: Non-pointer variables: ['obj->p1']
+[Wed Jan 21 18:23:32 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 195.336s
+[Wed Jan 21 18:23:32 2026][INFO]: Loc 102: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 18:23:32 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/consts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-res-consts.csv
+[Wed Jan 21 18:24:08 2026][INFO]: Loc 102: Constants: ['0', '42', '-1', '100']
+[Wed Jan 21 18:24:08 2026][INFO]: [Timer] Duration for codeql-get-consts: 36.468s
+[Wed Jan 21 18:24:08 2026][INFO]: Loc 102: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 18:24:08 2026][INFO]: Loc 102: Entering the main repair loop
+[Wed Jan 21 18:24:08 2026][INFO]: Loc 102: Total search space size: 561435477516195177720566966706191714556884823411617296285042315467194328122456443307736744085233311041509825191908826538980764062
+[Wed Jan 21 18:24:08 2026][ERROR]: Repair Failed
+[Wed Jan 21 18:24:08 2026][ERROR]: Time budget for this location exceeded before entering the main repair loop. Try increasing the time limit.
+[Wed Jan 21 18:24:08 2026][ERROR]: Runtime Error
+[Wed Jan 21 18:24:08 2026][ERROR]: Error. Exiting...
+[Wed Jan 21 18:24:08 2026][ERROR]: Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 143, in run_repair
+    cluster_manager = repair.repair_single_location(
+  File "/opt/effFix/app/repair.py", line 256, in repair_single_location
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+[Wed Jan 21 18:24:08 2026][ERROR]: Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 143, in run_repair
+    cluster_manager = repair.repair_single_location(
+  File "/opt/effFix/app/repair.py", line 256, in repair_single_location
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+[Wed Jan 21 18:24:08 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 18:24:08 2026][INFO]: [Timer] Duration for total-run-time: 375.426s
+[Wed Jan 21 18:24:08 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 18:24:08 2026][ERROR]: effFix exited with an error after 375.426 seconds
+[Wed Jan 21 18:24:08 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 18:24:08 2026][LOG]: effFix exited with an error after 375.426 seconds
+[Wed Jan 21 18:24:08 2026][END] effFix ended at  2026-01-21 18:24:08.851691
+

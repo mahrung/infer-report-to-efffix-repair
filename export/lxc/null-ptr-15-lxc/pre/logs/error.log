@@ -1,0 +1,38 @@
+/bin/sh: 1: ./autogen.sh: not found
+Repair Failed
+Error executing command: { ./autogen.sh && ./configure ;} 2> /effFix-experiment/effFix-benchmark/lxc/null-ptr-15-lxc/pre/logs/error.log. Error is: None
+Runtime Error
+Error. Exiting...
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 166, in main
+    run_pre()
+  File "/opt/effFix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  File "/opt/effFix/app/analyzer.py", line 20, in pre_analyze
+    config_program()
+  File "/opt/effFix/app/analyzer.py", line 11, in config_program
+    utilities.execute_command(values.CONF_COMMAND_CONFIG)
+  File "/opt/effFix/app/utilities.py", line 30, in execute_command
+    error_exit(f"Error executing command: {command}. Error is: {error}")
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 166, in main
+    run_pre()
+  File "/opt/effFix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  File "/opt/effFix/app/analyzer.py", line 20, in pre_analyze
+    config_program()
+  File "/opt/effFix/app/analyzer.py", line 11, in config_program
+    utilities.execute_command(values.CONF_COMMAND_CONFIG)
+  File "/opt/effFix/app/utilities.py", line 30, in execute_command
+    error_exit(f"Error executing command: {command}. Error is: {error}")
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+
+effFix exited with an error after 0.013 seconds 
+

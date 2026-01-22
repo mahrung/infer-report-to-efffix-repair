@@ -1,0 +1,40 @@
+Initializing database at /effFix-experiment/effFix-benchmark/lxc/null-ptr-19-lxc/pre/codeql-db.
+Running build command: [make, -j4]
+A fatal error occurred: Exit status 2 from command: [make, -j4]
+Repair Failed
+Error executing command: { codeql database create /effFix-experiment/effFix-benchmark/lxc/null-ptr-19-lxc/pre/codeql-db --language=cpp --threads=16 --command="make -j4" ;} 2> /effFix-experiment/effFix-benchmark/lxc/null-ptr-19-lxc/pre/logs/error.log. Error is: None
+Runtime Error
+Error. Exiting...
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 166, in main
+    run_pre()
+  File "/opt/effFix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  File "/opt/effFix/app/analyzer.py", line 29, in pre_analyze
+    codeql.create_db()
+  File "/opt/effFix/app/codeql.py", line 34, in create_db
+    utilities.execute_command(cmd)
+  File "/opt/effFix/app/utilities.py", line 30, in execute_command
+    error_exit(f"Error executing command: {command}. Error is: {error}")
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 166, in main
+    run_pre()
+  File "/opt/effFix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  File "/opt/effFix/app/analyzer.py", line 29, in pre_analyze
+    codeql.create_db()
+  File "/opt/effFix/app/codeql.py", line 34, in create_db
+    utilities.execute_command(cmd)
+  File "/opt/effFix/app/utilities.py", line 30, in execute_command
+    error_exit(f"Error executing command: {command}. Error is: {error}")
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+
+effFix exited with an error after 36.625 seconds 
+

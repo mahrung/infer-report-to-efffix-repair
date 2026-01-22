@@ -1,0 +1,5 @@
+Fix mode: Invalidating fix func OCSP_sendreq_new 
+Capturing in make/cc mode...
+Fix mode: Invalidating fix func OCSP_sendreq_new 
+Found 1 (out of 733) source file to analyze in /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/infer-out-single
+Analysing block of 200 procs, starting with OCSP_sendreq_new

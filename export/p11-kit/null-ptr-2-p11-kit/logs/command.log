@@ -1,0 +1,4 @@
+[Start] effFix started at 2026-01-22 02:09:19.484703
+[Thu Jan 22 02:09:19 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=p11-kit/virtual.c --pulse-fix-function=__infer_globals_initializer_function_info -o /opt/effFix-benchmark/p11-kit/null-ptr-2-p11-kit/repair/infer-out-single -- make -j4
+[Thu Jan 22 02:09:19 2026][COMMAND]: codeql pack install
+[Thu Jan 22 02:09:23 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/p11-kit/null-ptr-2-p11-kit/pre/codeql-db /opt/effFix-benchmark/p11-kit/null-ptr-2-p11-kit/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/opt/effFix-benchmark/p11-kit/null-ptr-2-p11-kit/repair/codeql-res-loc-betweens.csv

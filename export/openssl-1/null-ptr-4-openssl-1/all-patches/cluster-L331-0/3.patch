@@ -1,0 +1,11 @@
+--- /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/mem.c.backup	2026-01-21 16:26:20.289896416 +0000
++++ /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/src/crypto/mem.c	2026-01-21 16:31:04.998410143 +0000
+@@ -328,7 +328,7 @@
+ 	{
+ 	char *ret = CRYPTO_malloc(strlen(str)+1, file, line);
+ 
+-	strcpy(ret, str);
++	strcpy(ret, str); return ret; 
+ 	return ret;
+ 	}
+ 

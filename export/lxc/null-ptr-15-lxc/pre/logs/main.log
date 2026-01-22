@@ -1,0 +1,59 @@
+[Start] effFix started at 2026-01-21 01:28:10.555133
+[Wed Jan 21 01:28:10 2026][INFO]: <function title at 0x7554666bdee0>
+[Wed Jan 21 01:28:10 2026][INFO]: Displaying Configurations
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: src_dir:/efffix-experiment/efffix-benchmark/lxc/null-ptr-15-lxc/src
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: build_command:make -j4
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: clean_command:make clean || true
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: config_command:./autogen.sh && ./configure
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: tag_id:null-ptr-15-lxc
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: bug_procedure:unknown
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: bug_file:src/lxc/network.c
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: bug_start_line:1329
+[Wed Jan 21 01:28:10 2026][CONFIGURATION]: bug_end_line:1329
+[Wed Jan 21 01:28:10 2026][INFO]: Loading dependency tools
+[Wed Jan 21 01:28:10 2026][INFO]: Pre-analyzing Program
+[Wed Jan 21 01:28:10 2026][INFO]: Configuring Target Program
+[Wed Jan 21 01:28:10 2026][COMMAND]: ./autogen.sh && ./configure
+[Wed Jan 21 01:28:10 2026][ERROR]: repair failed
+[Wed Jan 21 01:28:10 2026][ERROR]: error executing command: { ./autogen.sh && ./configure ;} 2> /efffix-experiment/efffix-benchmark/lxc/null-ptr-15-lxc/pre/logs/error.log. error is: none
+[Wed Jan 21 01:28:10 2026][ERROR]: runtime error
+[Wed Jan 21 01:28:10 2026][ERROR]: error. exiting...
+[Wed Jan 21 01:28:10 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 166, in main
+    run_pre()
+  file "/opt/efffix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  file "/opt/efffix/app/analyzer.py", line 20, in pre_analyze
+    config_program()
+  file "/opt/efffix/app/analyzer.py", line 11, in config_program
+    utilities.execute_command(values.conf_command_config)
+  file "/opt/efffix/app/utilities.py", line 30, in execute_command
+    error_exit(f"error executing command: {command}. error is: {error}")
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 01:28:10 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 166, in main
+    run_pre()
+  file "/opt/efffix/app/main.py", line 111, in run_pre
+    analyzer.pre_analyze()
+  file "/opt/efffix/app/analyzer.py", line 20, in pre_analyze
+    config_program()
+  file "/opt/efffix/app/analyzer.py", line 11, in config_program
+    utilities.execute_command(values.conf_command_config)
+  file "/opt/efffix/app/utilities.py", line 30, in execute_command
+    error_exit(f"error executing command: {command}. error is: {error}")
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Wed Jan 21 01:28:10 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 01:28:10 2026][INFO]: [Timer] Duration for total-run-time: 0.013s
+[Wed Jan 21 01:28:10 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 01:28:10 2026][ERROR]: efffix exited with an error after 0.013 seconds
+[Wed Jan 21 01:28:10 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 01:28:10 2026][LOG]: effFix exited with an error after 0.013 seconds
+[Wed Jan 21 01:28:10 2026][END] effFix ended at  2026-01-21 01:28:10.567260
+

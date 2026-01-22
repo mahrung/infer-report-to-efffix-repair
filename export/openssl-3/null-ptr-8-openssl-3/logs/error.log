@@ -1,0 +1,36 @@
+Running queries.
+Compiling query plan for /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/consts.ql.
+[1/1 comp 15.3s] Compiled /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-8-openssl-3/repair/codeql-queries/consts.ql.
+Starting evaluation of efffix/codeql-cpp-queries/consts.ql.
+[1/1 eval 16.3s] Evaluation done; writing results to efffix/codeql-cpp-queries/consts.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Repair Failed
+Time budget for this location exceeded before entering the main repair loop. Try increasing the time limit.
+Runtime Error
+Error. Exiting...
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 143, in run_repair
+    cluster_manager = repair.repair_single_location(
+  File "/opt/effFix/app/repair.py", line 256, in repair_single_location
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 182, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 143, in run_repair
+    cluster_manager = repair.repair_single_location(
+  File "/opt/effFix/app/repair.py", line 256, in repair_single_location
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 26, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+
+effFix exited with an error after 375.426 seconds 
+

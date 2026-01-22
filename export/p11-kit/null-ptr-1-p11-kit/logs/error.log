@@ -1,0 +1,36 @@
+Running queries.
+Compiling query plan for /opt/effFix-benchmark/p11-kit/null-ptr-1-p11-kit/repair/codeql-queries/loc_between.ql.
+[1/1 comp 19s] Compiled /opt/effFix-benchmark/p11-kit/null-ptr-1-p11-kit/repair/codeql-queries/loc_between.ql.
+Starting evaluation of efffix/codeql-cpp-queries/loc_between.ql.
+[1/1 eval 8.5s] Evaluation done; writing results to efffix/codeql-cpp-queries/loc_between.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Repair Failed
+No fix locations found.
+Runtime Error
+Error. Exiting...
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 168, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 77, in analyze
+    utilities.error_exit("No fix locations found.")
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 168, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  File "/opt/effFix/app/analyzer.py", line 77, in analyze
+    utilities.error_exit("No fix locations found.")
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+
+effFix exited with an error after 51.469 seconds 
+

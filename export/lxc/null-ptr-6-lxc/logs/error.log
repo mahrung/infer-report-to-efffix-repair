@@ -1,0 +1,36 @@
+Running queries.
+Compiling query plan for /effFix-experiment/effFix-benchmark/lxc/null-ptr-6-lxc/repair/codeql-queries/consts.ql.
+[1/1 comp 16.1s] Compiled /effFix-experiment/effFix-benchmark/lxc/null-ptr-6-lxc/repair/codeql-queries/consts.ql.
+Starting evaluation of efffix/codeql-cpp-queries/consts.ql.
+[1/1 eval 2.2s] Evaluation done; writing results to efffix/codeql-cpp-queries/consts.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Repair Failed
+Time budget for this location exceeded before entering the main repair loop. Try increasing the time limit.
+Runtime Error
+Error. Exiting...
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 168, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 131, in run_repair
+    cluster_manager = repair.repair(
+  File "/opt/effFix/app/repair.py", line 242, in repair
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+Traceback (most recent call last):
+  File "/opt/effFix/app/main.py", line 168, in main
+    run_repair()
+  File "/opt/effFix/app/main.py", line 131, in run_repair
+    cluster_manager = repair.repair(
+  File "/opt/effFix/app/repair.py", line 242, in repair
+    utilities.error_exit(
+  File "/opt/effFix/app/utilities.py", line 16, in error_exit
+    raise Exception("Error. Exiting...")
+Exception: Error. Exiting...
+
+
+effFix exited with an error after 221.516 seconds 
+

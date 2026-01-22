@@ -1,0 +1,38 @@
+[Start] effFix started at 2024-03-18 04:25:00.905125
+[Mon Mar 18 04:25:00 2024][INFO]: <function title at 0x7ffff7774f70>
+[Mon Mar 18 04:25:00 2024][INFO]: Displaying Configurations
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: src_dir:/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/src
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: build_command_project:make
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: build_command_repair:make build_crypto
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: clean_command:make clean
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: config_command:CC=gcc ./config
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: tag_id:null-ptr-3-openssl-1
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: bug_type:NULLPTR_DEREFERENCE
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: bug_procedure:OCSP_sendreq_new
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: bug_file:crypto/ocsp/ocsp_ht.c
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: bug_start_line:160
+[Mon Mar 18 04:25:00 2024][CONFIGURATION]: bug_end_line:161
+[Mon Mar 18 04:25:00 2024][INFO]: Loading dependency tools
+[Mon Mar 18 04:25:00 2024][INFO]: Pre-analyzing Program
+[Mon Mar 18 04:25:00 2024][INFO]: Configuring Target Program
+[Mon Mar 18 04:25:00 2024][COMMAND]: CC=gcc ./config
+[Mon Mar 18 04:25:01 2024][INFO]: [Timer] Duration for config: 0.639s
+[Mon Mar 18 04:25:01 2024][INFO]: Generating codeql database for target program
+[Mon Mar 18 04:25:01 2024][COMMAND]: make clean
+[Mon Mar 18 04:25:01 2024][COMMAND]: codeql database create /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db --language=cpp --threads=32 --command="make"
+[Mon Mar 18 04:27:16 2024][INFO]: [Timer] Duration for codeql-build-db: 134.888s
+[Mon Mar 18 04:27:16 2024][INFO]: Running Infer on Whole Program
+[Mon Mar 18 04:27:16 2024][COMMAND]: make clean
+[Mon Mar 18 04:27:16 2024][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/infer-out-whole -- make
+[Mon Mar 18 04:30:32 2024][INFO]: [Timer] Duration for infer-detect: 196.256s
+[Mon Mar 18 04:30:32 2024][INFO]: [Timer] Duration for pre-analysis: 331.784s
+[Mon Mar 18 04:30:32 2024][INFO]: Finalizing and exiting tool
+[Mon Mar 18 04:30:32 2024][INFO]: [Timer] Duration for total-run-time: 331.785s
+[Mon Mar 18 04:30:32 2024][LOG]: Run time statistics:
+-----------------------
+[Mon Mar 18 04:30:32 2024][LOG]: effFix (Stage: pre) finished successfully after 331.785 seconds
+[Mon Mar 18 04:30:32 2024][LOG]: Time duration
+----------------------
+[Mon Mar 18 04:30:32 2024][LOG]: effFix (Stage: pre) finished successfully after 331.785 seconds
+[Mon Mar 18 04:30:32 2024][END] effFix ended at  2024-03-18 04:30:32.690274
+

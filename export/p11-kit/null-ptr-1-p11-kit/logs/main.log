@@ -1,0 +1,58 @@
+[Start] effFix started at 2026-01-22 02:03:14.454173
+[Thu Jan 22 02:03:14 2026][INFO]: <function title at 0x76dc51414ee0>
+[Thu Jan 22 02:03:14 2026][INFO]: Displaying Configurations
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: src_dir:/opt/efffix-benchmark/p11-kit/null-ptr-1-p11-kit/src
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: build_command:make -j4
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: clean_command:make clean || true
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: config_command:./autogen.sh && ./configure
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: tag_id:null-ptr-1-p11-kit
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: bug_type:nullptr_dereference
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: bug_procedure:__infer_globals_initializer_function_info
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: bug_file:p11-kit/virtual.c
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: bug_start_line:2536
+[Thu Jan 22 02:03:14 2026][CONFIGURATION]: bug_end_line:2536
+[Thu Jan 22 02:03:14 2026][INFO]: Loading dependency tools
+[Thu Jan 22 02:03:14 2026][INFO]: Analyzing Program for Repair
+[Thu Jan 22 02:03:14 2026][INFO]: Checking whether Infer detected the target bug
+[Thu Jan 22 02:03:14 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, p11-kit/virtual.c, __infer_globals_initializer_function_info, 2536, 2536
+[Thu Jan 22 02:03:14 2026][INFO]: Performing fix localization
+[Thu Jan 22 02:03:14 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 --reactive --pulse-fix-mode --pulse-fix-file=p11-kit/virtual.c --pulse-fix-function=__infer_globals_initializer_function_info -o /opt/effFix-benchmark/p11-kit/null-ptr-1-p11-kit/repair/infer-out-single -- make -j4
+[Thu Jan 22 02:03:15 2026][INFO]: Result from ochiai: [(2535, 1.0), (2536, 1.0)]
+[Thu Jan 22 02:03:15 2026][COMMAND]: codeql pack install
+[Thu Jan 22 02:03:19 2026][COMMAND]: codeql database analyze /opt/effFix-benchmark/p11-kit/null-ptr-1-p11-kit/pre/codeql-db /opt/effFix-benchmark/p11-kit/null-ptr-1-p11-kit/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/opt/effFix-benchmark/p11-kit/null-ptr-1-p11-kit/repair/codeql-res-loc-betweens.csv
+[Thu Jan 22 02:04:05 2026][INFO]: Locations allowed (by considering trace start and trace end): set()
+[Thu Jan 22 02:04:05 2026][INFO]: Final locations: []
+[Thu Jan 22 02:04:05 2026][ERROR]: repair failed
+[Thu Jan 22 02:04:05 2026][ERROR]: no fix locations found.
+[Thu Jan 22 02:04:05 2026][ERROR]: runtime error
+[Thu Jan 22 02:04:05 2026][ERROR]: error. exiting...
+[Thu Jan 22 02:04:05 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 168, in main
+    run_repair()
+  file "/opt/efffix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  file "/opt/efffix/app/analyzer.py", line 77, in analyze
+    utilities.error_exit("no fix locations found.")
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Thu Jan 22 02:04:05 2026][ERROR]: traceback (most recent call last):
+  file "/opt/efffix/app/main.py", line 168, in main
+    run_repair()
+  file "/opt/efffix/app/main.py", line 123, in run_repair
+    fix_loc_lines, return_stmts, labels = analyzer.analyze()
+  file "/opt/efffix/app/analyzer.py", line 77, in analyze
+    utilities.error_exit("no fix locations found.")
+  file "/opt/efffix/app/utilities.py", line 16, in error_exit
+    raise exception("error. exiting...")
+exception: error. exiting...
+[Thu Jan 22 02:04:05 2026][INFO]: Finalizing and exiting tool
+[Thu Jan 22 02:04:05 2026][INFO]: [Timer] Duration for total-run-time: 51.469s
+[Thu Jan 22 02:04:05 2026][LOG]: Run time statistics:
+-----------------------
+[Thu Jan 22 02:04:05 2026][ERROR]: efffix exited with an error after 51.469 seconds
+[Thu Jan 22 02:04:05 2026][LOG]: Time duration
+----------------------
+[Thu Jan 22 02:04:05 2026][LOG]: effFix exited with an error after 51.469 seconds
+[Thu Jan 22 02:04:05 2026][END] effFix ended at  2026-01-22 02:04:05.922510
+

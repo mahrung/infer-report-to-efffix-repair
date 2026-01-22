@@ -1,0 +1,7 @@
+,,"warning","pointer(msg.msg_control)","/src/lxc/af_unix.c","234","6","234","16"
+,,"warning","non-pointer(msg.msg_controllen)","/src/lxc/af_unix.c","235","6","235","19"
+,,"warning","pointer(cmsg)","/src/lxc/af_unix.c","237","2","237","5"
+,,"warning","non-pointer(& ...->msg_controllen)
+pointer(& ...->msg_control)","/src/lxc/af_unix.c","237","9","237","27"
+,,"warning","pointer(cmsg)","/src/lxc/af_unix.c","238","2","238","5"
+,,"warning","non-pointer(cmsg->cmsg_len)","/src/lxc/af_unix.c","238","8","238","15"

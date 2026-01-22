@@ -1,0 +1,4 @@
+[Start] effFix started at 2026-01-21 03:55:09.548659
+[Wed Jan 21 03:55:09 2026][COMMAND]: ./autogen.sh && ./configure
+[Wed Jan 21 03:55:29 2026][COMMAND]: make clean || true
+[Wed Jan 21 03:55:29 2026][COMMAND]: codeql database create /effFix-experiment/effFix-benchmark/lxc/null-ptr-19-lxc/pre/codeql-db --language=cpp --threads=16 --command="make -j4"

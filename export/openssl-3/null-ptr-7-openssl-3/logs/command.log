@@ -1,0 +1,2 @@
+[Start] effFix started at 2026-01-21 18:14:49.208926
+[Wed Jan 21 18:14:57 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 50 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --pulse-skip-procedures 'test_single_eval\\|openssl_add_all_*' --reactive --pulse-fix-mode --pulse-fix-file=apps/s_server.c --pulse-fix-function=add_session -o /effFix-experiment/effFix-benchmark/openssl-3/null-ptr-7-openssl-3/repair/infer-out-single -- make -j32 build_apps

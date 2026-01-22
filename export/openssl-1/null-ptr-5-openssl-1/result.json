@@ -1,0 +1,1967 @@
+{
+    "stats": {
+        "num_fix_locations": 1,
+        "return_stmts": [
+            "return 0;",
+            "return 1;"
+        ],
+        "return_stmts_count": 2,
+        "labels": [],
+        "labels_count": 0,
+        "avg_num_pointers": 5.0,
+        "avg_num_non_pointers": 1.0,
+        "avg_num_constants": 2.0,
+        "total_num_patches": 5,
+        "total_num_clusters": 5,
+        "num_patches_per_cluster": 1.0,
+        "total_search_space": 91334226744720287959846151753893852893868927187247001726557447812990880733987031569084647924128919499809878800284479013961006730713988367252741081219896747749318644976229832918154,
+        "explored_search_space": "0.00000 %",
+        "average_validation_time": "0.00000 s",
+        "total_num_locally_plausible_clusters": 0,
+        "total_num_locally_plausible_patches": 0,
+        "total_num_globally_plausible_clusters": 0,
+        "total_num_globally_plausible_patches": 0,
+        "total_num_globally_representative_patches": 0,
+        "globally_plausible_clusters": [],
+        "globally_representative_patches": [],
+        "total_stagnated_rules": 0,
+        "total_prod_rules": 4,
+        "total_plausible_prod_rules": 0,
+        "total_resets": 0
+    },
+    "plausible_patch_found_time": [],
+    "loc_results": {
+        "1183": {
+            "pointers": [
+                "s->init_buf",
+                "s->init_buf->data",
+                "frag->fragment",
+                "s",
+                "frag"
+            ],
+            "non_pointers": [
+                "s->init_num"
+            ],
+            "constants": [
+                "0",
+                "-1"
+            ],
+            "search_space_size": 91334226744720287959846151753893852893868927187247001726557447812990880733987031569084647924128919499809878800284479013961006730713988367252741081219896747749318644976229832918154,
+            "grammar_states": [
+                {
+                    "timestamp": 281.0534635460008,
+                    "state": [
+                        {
+                            "rule": "POINTER_CONST -> NULL",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "ID -> s->init_num",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "CONST -> 0",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "CONST -> -1",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 0;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 1;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_OP -> +",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> -",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> *",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> /",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "REL_OP -> <",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> <=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> ==",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> !=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POINTER_OP -> ==",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_OP -> !=",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER_CONST",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID ARITH_OP ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S || BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S && BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> ! ( BOOL_EXPR_S )",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP ARITH_EXPR",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP COND_POINTER",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP POINTER_CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = POINTER_EXPR ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.3333333333333333
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = malloc ( sizeof ( * POINTER ) ) ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.3333333333333333
+                        },
+                        {
+                            "rule": "HEAP -> free ( POINTER ) ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.3333333333333333
+                        },
+                        {
+                            "rule": "CMD -> HEAP",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "CMD -> ID = ARITH_EXPR ;",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "CMD -> return POINTER_EXPR ;",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "CMD -> EXIT_STMT",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "CMD -> if ( BOOL_EXPR ) { CMD }",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "CMD -> CMD CMD",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POS -> FRONT",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POS -> BACK",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "PATCH -> INSERT POS CMD",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        }
+                    ]
+                },
+                {
+                    "timestamp": 287.84822717600036,
+                    "state": [
+                        {
+                            "rule": "POINTER_CONST -> NULL",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "ID -> s->init_num",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "CONST -> 0",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "CONST -> -1",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 0;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 1;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_OP -> +",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> -",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> *",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> /",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "REL_OP -> <",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> <=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> ==",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> !=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POINTER_OP -> ==",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_OP -> !=",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER_CONST",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID ARITH_OP ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S || BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S && BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> ! ( BOOL_EXPR_S )",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP ARITH_EXPR",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP COND_POINTER",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP POINTER_CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = POINTER_EXPR ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = malloc ( sizeof ( * POINTER ) ) ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> free ( POINTER ) ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.33333333333333326
+                        },
+                        {
+                            "rule": "CMD -> HEAP",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.1666666666666666
+                        },
+                        {
+                            "rule": "CMD -> ID = ARITH_EXPR ;",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> return POINTER_EXPR ;",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> EXIT_STMT",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> if ( BOOL_EXPR ) { CMD }",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> CMD CMD",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "POS -> FRONT",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POS -> BACK",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "PATCH -> INSERT POS CMD",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        }
+                    ]
+                },
+                {
+                    "timestamp": 288.6225910909998,
+                    "state": [
+                        {
+                            "rule": "POINTER_CONST -> NULL",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "ID -> s->init_num",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "CONST -> 0",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "CONST -> -1",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 0;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 1;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_OP -> +",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> -",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> *",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> /",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "REL_OP -> <",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> <=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> ==",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> !=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POINTER_OP -> ==",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_OP -> !=",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER_CONST",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID ARITH_OP ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S || BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S && BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> ! ( BOOL_EXPR_S )",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP ARITH_EXPR",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP COND_POINTER",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP POINTER_CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = POINTER_EXPR ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = malloc ( sizeof ( * POINTER ) ) ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> free ( POINTER ) ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.33333333333333326
+                        },
+                        {
+                            "rule": "CMD -> HEAP",
+                            "pe": 0.1666666666666666,
+                            "ppie": 0.1666666666666666,
+                            "scaled_product": 0.1666666666666666
+                        },
+                        {
+                            "rule": "CMD -> ID = ARITH_EXPR ;",
+                            "pe": 0.16666666666666663,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> return POINTER_EXPR ;",
+                            "pe": 0.16666666666666663,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> EXIT_STMT",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666677
+                        },
+                        {
+                            "rule": "CMD -> if ( BOOL_EXPR ) { CMD }",
+                            "pe": 0.16666666666666663,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "CMD -> CMD CMD",
+                            "pe": 0.16666666666666663,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.16666666666666666
+                        },
+                        {
+                            "rule": "POS -> FRONT",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POS -> BACK",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "PATCH -> INSERT POS CMD",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        }
+                    ]
+                },
+                {
+                    "timestamp": 295.63194410899996,
+                    "state": [
+                        {
+                            "rule": "POINTER_CONST -> NULL",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "ID -> s->init_num",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "CONST -> 0",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "CONST -> -1",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 0;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 1;",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_OP -> +",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> -",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> *",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> /",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "REL_OP -> <",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> <=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> ==",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> !=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POINTER_OP -> ==",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_OP -> !=",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER_CONST",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID ARITH_OP ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S || BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S && BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> ! ( BOOL_EXPR_S )",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP ARITH_EXPR",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP COND_POINTER",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP POINTER_CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = POINTER_EXPR ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = malloc ( sizeof ( * POINTER ) ) ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> free ( POINTER ) ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.33333333333333326
+                        },
+                        {
+                            "rule": "CMD -> HEAP",
+                            "pe": 0.16666666666666663,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.16666666666666657
+                        },
+                        {
+                            "rule": "CMD -> ID = ARITH_EXPR ;",
+                            "pe": 0.16666666666666663,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.16666666666666657
+                        },
+                        {
+                            "rule": "CMD -> return POINTER_EXPR ;",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666669
+                        },
+                        {
+                            "rule": "CMD -> EXIT_STMT",
+                            "pe": 0.16666666666666674,
+                            "ppie": 0.16666666666666674,
+                            "scaled_product": 0.1666666666666668
+                        },
+                        {
+                            "rule": "CMD -> if ( BOOL_EXPR ) { CMD }",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666669
+                        },
+                        {
+                            "rule": "CMD -> CMD CMD",
+                            "pe": 0.16666666666666669,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.16666666666666669
+                        },
+                        {
+                            "rule": "POS -> FRONT",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POS -> BACK",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "PATCH -> INSERT POS CMD",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        }
+                    ]
+                },
+                {
+                    "timestamp": 296.2211964880007,
+                    "state": [
+                        {
+                            "rule": "POINTER_CONST -> NULL",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag->fragment",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> s",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.2
+                        },
+                        {
+                            "rule": "ID -> s->init_num",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "CONST -> 0",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "CONST -> -1",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 0;",
+                            "pe": 0.44999999999999996,
+                            "ppie": 0.5,
+                            "scaled_product": 0.44999999999999996
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 1;",
+                            "pe": 0.55,
+                            "ppie": 0.5,
+                            "scaled_product": 0.55
+                        },
+                        {
+                            "rule": "ARITH_OP -> +",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> -",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> *",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> /",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "REL_OP -> <",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> <=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> ==",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> !=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POINTER_OP -> ==",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_OP -> !=",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER_CONST",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID ARITH_OP ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S || BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S && BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> ! ( BOOL_EXPR_S )",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP ARITH_EXPR",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP COND_POINTER",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP POINTER_CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = POINTER_EXPR ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = malloc ( sizeof ( * POINTER ) ) ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.33333333333333337
+                        },
+                        {
+                            "rule": "HEAP -> free ( POINTER ) ;",
+                            "pe": 0.3333333333333333,
+                            "ppie": 0.3333333333333333,
+                            "scaled_product": 0.33333333333333326
+                        },
+                        {
+                            "rule": "CMD -> HEAP",
+                            "pe": 0.15,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.14999999999999994
+                        },
+                        {
+                            "rule": "CMD -> ID = ARITH_EXPR ;",
+                            "pe": 0.15,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.14999999999999994
+                        },
+                        {
+                            "rule": "CMD -> return POINTER_EXPR ;",
+                            "pe": 0.15000000000000002,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.15000000000000002
+                        },
+                        {
+                            "rule": "CMD -> EXIT_STMT",
+                            "pe": 0.25000000000000006,
+                            "ppie": 0.16666666666666674,
+                            "scaled_product": 0.2500000000000001
+                        },
+                        {
+                            "rule": "CMD -> if ( BOOL_EXPR ) { CMD }",
+                            "pe": 0.15000000000000002,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.15000000000000002
+                        },
+                        {
+                            "rule": "CMD -> CMD CMD",
+                            "pe": 0.15000000000000002,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.15000000000000002
+                        },
+                        {
+                            "rule": "POS -> FRONT",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POS -> BACK",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "PATCH -> INSERT POS CMD",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        }
+                    ]
+                },
+                {
+                    "timestamp": 301.21297665900056,
+                    "state": [
+                        {
+                            "rule": "POINTER_CONST -> NULL",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf",
+                            "pe": 0.19999999999999998,
+                            "ppie": 0.19999999999999998,
+                            "scaled_product": 0.19999999999999998
+                        },
+                        {
+                            "rule": "POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.20000000000000007
+                        },
+                        {
+                            "rule": "POINTER -> frag->fragment",
+                            "pe": 0.19999999999999998,
+                            "ppie": 0.19999999999999998,
+                            "scaled_product": 0.19999999999999998
+                        },
+                        {
+                            "rule": "POINTER -> s",
+                            "pe": 0.19999999999999998,
+                            "ppie": 0.19999999999999998,
+                            "scaled_product": 0.19999999999999998
+                        },
+                        {
+                            "rule": "POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.20000000000000007
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf",
+                            "pe": 0.19999999999999998,
+                            "ppie": 0.19999999999999998,
+                            "scaled_product": 0.19999999999999998
+                        },
+                        {
+                            "rule": "COND_POINTER -> s->init_buf->data",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.20000000000000007
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag->fragment",
+                            "pe": 0.19999999999999998,
+                            "ppie": 0.19999999999999998,
+                            "scaled_product": 0.19999999999999998
+                        },
+                        {
+                            "rule": "COND_POINTER -> s",
+                            "pe": 0.19999999999999998,
+                            "ppie": 0.19999999999999998,
+                            "scaled_product": 0.19999999999999998
+                        },
+                        {
+                            "rule": "COND_POINTER -> frag",
+                            "pe": 0.2,
+                            "ppie": 0.2,
+                            "scaled_product": 0.20000000000000007
+                        },
+                        {
+                            "rule": "ID -> s->init_num",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        },
+                        {
+                            "rule": "CONST -> 0",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "CONST -> -1",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 0;",
+                            "pe": 0.44999999999999996,
+                            "ppie": 0.5,
+                            "scaled_product": 0.44999999999999996
+                        },
+                        {
+                            "rule": "EXIT_STMT -> return 1;",
+                            "pe": 0.55,
+                            "ppie": 0.5,
+                            "scaled_product": 0.55
+                        },
+                        {
+                            "rule": "ARITH_OP -> +",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> -",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> *",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "ARITH_OP -> /",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "REL_OP -> <",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> <=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> ==",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> !=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "REL_OP -> >=",
+                            "pe": 0.16666666666666666,
+                            "ppie": 0.16666666666666666,
+                            "scaled_product": 0.16666666666666663
+                        },
+                        {
+                            "rule": "POINTER_OP -> ==",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_OP -> !=",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POINTER_EXPR -> POINTER_CONST",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "ARITH_EXPR -> ID ARITH_OP ID",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S || BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S && BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> ! ( BOOL_EXPR_S )",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR -> BOOL_EXPR_S",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP ARITH_EXPR",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> ARITH_EXPR REL_OP CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP COND_POINTER",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "BOOL_EXPR_S -> COND_POINTER POINTER_OP POINTER_CONST",
+                            "pe": 0.25,
+                            "ppie": 0.25,
+                            "scaled_product": 0.25
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = POINTER_EXPR ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.3333333333333334
+                        },
+                        {
+                            "rule": "HEAP -> POINTER = malloc ( sizeof ( * POINTER ) ) ;",
+                            "pe": 0.33333333333333337,
+                            "ppie": 0.33333333333333337,
+                            "scaled_product": 0.3333333333333334
+                        },
+                        {
+                            "rule": "HEAP -> free ( POINTER ) ;",
+                            "pe": 0.33333333333333326,
+                            "ppie": 0.33333333333333326,
+                            "scaled_product": 0.3333333333333332
+                        },
+                        {
+                            "rule": "CMD -> HEAP",
+                            "pe": 0.15,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.14999999999999997
+                        },
+                        {
+                            "rule": "CMD -> ID = ARITH_EXPR ;",
+                            "pe": 0.14999999999999997,
+                            "ppie": 0.16666666666666663,
+                            "scaled_product": 0.14999999999999994
+                        },
+                        {
+                            "rule": "CMD -> return POINTER_EXPR ;",
+                            "pe": 0.15,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.15000000000000002
+                        },
+                        {
+                            "rule": "CMD -> EXIT_STMT",
+                            "pe": 0.25000000000000006,
+                            "ppie": 0.1666666666666667,
+                            "scaled_product": 0.2500000000000001
+                        },
+                        {
+                            "rule": "CMD -> if ( BOOL_EXPR ) { CMD }",
+                            "pe": 0.15,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.15000000000000002
+                        },
+                        {
+                            "rule": "CMD -> CMD CMD",
+                            "pe": 0.15000000000000002,
+                            "ppie": 0.16666666666666669,
+                            "scaled_product": 0.15000000000000005
+                        },
+                        {
+                            "rule": "POS -> FRONT",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "POS -> BACK",
+                            "pe": 0.5,
+                            "ppie": 0.5,
+                            "scaled_product": 0.5
+                        },
+                        {
+                            "rule": "PATCH -> INSERT POS CMD",
+                            "pe": 1.0,
+                            "ppie": 1.0,
+                            "scaled_product": 1.0
+                        }
+                    ]
+                }
+            ],
+            "num_clusters": 5,
+            "num_total_patches": 5,
+            "locally_plausible_clusters": []
+        }
+    },
+    "stagnated_prod_rules": {},
+    "plausible_prod_rules": {},
+    "used_prod_rules": {
+        "INSERT POS CMD,HEAP,free ( POINTER ) ;": 1,
+        "INSERT POS CMD,EXIT_STMT": 2,
+        "INSERT POS CMD,ID = ARITH_EXPR ;,ID": 1,
+        "INSERT POS CMD,CMD CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;,HEAP,POINTER = POINTER_EXPR ;,POINTER": 1
+    }
+}

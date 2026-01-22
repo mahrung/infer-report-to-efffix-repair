@@ -1,0 +1,11 @@
+--- /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-1-openssl-1/repair/x509_vpm.c.backup	2026-01-21 15:18:26.179215447 +0000
++++ /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-1-openssl-1/src/crypto/x509/x509_vpm.c	2026-01-21 15:22:50.943315324 +0000
+@@ -89,7 +89,7 @@
+ 	{
+ 	X509_VERIFY_PARAM *param;
+ 	param = OPENSSL_malloc(sizeof(X509_VERIFY_PARAM));
+-	memset(param, 0, sizeof(X509_VERIFY_PARAM));
++	memset(param, 0, sizeof(X509_VERIFY_PARAM)); if ( param == NULL && param != NULL ) { param = malloc ( sizeof ( * param ) ) ; } 
+ 	x509_verify_param_zero(param);
+ 	return param;
+ 	}

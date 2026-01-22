@@ -1,0 +1,6 @@
+[Start] effFix started at 2026-01-21 19:06:30.840950
+[Wed Jan 21 19:06:30 2026][COMMAND]: ./configure
+[Wed Jan 21 19:06:32 2026][COMMAND]: make clean || true
+[Wed Jan 21 19:06:35 2026][COMMAND]: codeql database create /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/codeql-db --language=cpp --threads=16 --command="make -j4"
+[Wed Jan 21 19:07:14 2026][COMMAND]: make clean || true
+[Wed Jan 21 19:07:14 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --pulse-max-disjuncts 100 --jobs 32 -o /opt/effFix-benchmark/x264/null-ptr-1-x264/pre/infer-out-whole -- make -j4

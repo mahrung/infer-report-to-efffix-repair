@@ -1,0 +1,1055 @@
+[Start] effFix started at 2026-01-21 16:26:20.291735
+<function title at 0x7ed7cea5bf70>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Target bug is: NULLPTR_DEREFERENCE, crypto/mem.c, CRYPTO_strdup, start_line:329, end_line:331, two_loc_source_line:-1
+Performing fix localization
+Result from ochiai: [(331, 0.7071067811865475), (327, 0.5), (329, 0.5), (332, 0.0)]
+Locations allowed (by considering trace start and trace end): {331}
+Final locations: [331]
+[Timer] Duration for localize: 81.691s
+Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+[Codeql] Running patch ingredient (return stmts) query
+Return statements: ['return NULL;', 'return ret;']
+[Timer] Duration for codeql-get-return-stmts: 17.434s
+[Codeql] Running patch ingredient (labels) query
+Labels: []
+[Timer] Duration for codeql-get-labels: 13.822s
+[Timer] Duration for analysis: 113.318s
+Repairing Program at location: 331
+Loc 331: Getting patch ingredients at fix location
+Loc 331: [Codeql] Running statement boundary query
+Statement at fix location ends at line 331
+[Timer] Duration for codeql-get-stmt-boundary: 13.605s
+Loc 331: [Codeql] Running patch ingredient (variable) query
+Loc 331: Pointer variables: ['ret', 'str']
+Loc 331: Non-pointer variables: []
+[Timer] Duration for codeql-get-ingredients-variables: 120.754s
+Loc 331: [Codeql] Running patch ingredient (constants) query
+Loc 331: Constants: ['-1', '1', '0']
+[Timer] Duration for codeql-get-consts: 35.191s
+Loc 331: Initializing Patch Generator and Cluster Manager
+Loc 331: Entering the main repair loop
+Loc 331: Total search space size: 3704219304778729154511168907551203351037872429024457301679314914510905246372749754343933724438510958229905800452874
+Adding new patch: INSERT BACK return ret ;
+Created new cluster cluster-L331-0
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-0
+Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT str = malloc ( sizeof ( * str ) ) ;
+Created new cluster cluster-L331-1
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 331, 331>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-1
+Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK return ret;
+Adding to Cluster cluster-L331-0
+Grammar: :INSERT POS CMD,EXIT_STMT
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK return NULL;
+Created new cluster cluster-L331-2
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-2
+Grammar: :INSERT POS CMD,EXIT_STMT
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT if ( str != str && ret == NULL ) { return NULL; }
+Adding to Cluster cluster-L331-0
+Grammar: :INSERT POS CMD,if ( BOOL_EXPR ) { CMD },BOOL_EXPR_S && BOOL_EXPR_S,COND_POINTER POINTER_OP COND_POINTER,COND_POINTER POINTER_OP POINTER_CONST,EXIT_STMT
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: == : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: != : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: < : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: <= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: > : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: >= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: == : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: != : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: BOOL_EXPR_S && BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: BOOL_EXPR_S || BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: ! ( BOOL_EXPR_S ) : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: COND_POINTER POINTER_OP COND_POINTER : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: COND_POINTER POINTER_OP POINTER_CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: ARITH_EXPR REL_OP ARITH_EXPR : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: ARITH_EXPR REL_OP CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT return str ;
+Created new cluster cluster-L331-3
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 329>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = return),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = return),
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-3
+Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK return NULL ;
+Adding to Cluster cluster-L331-2
+Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER_CONST
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT if ( ! ( str != str ) ) { return NULL; }
+Created new cluster cluster-L331-4
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-4
+Grammar: :INSERT POS CMD,if ( BOOL_EXPR ) { CMD },! ( BOOL_EXPR_S ),COND_POINTER POINTER_OP COND_POINTER,EXIT_STMT
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return NULL; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return ret; : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: != : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: < : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: <= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: == : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: > : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: >= : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: != : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: == : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ! ( BOOL_EXPR_S ) : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: BOOL_EXPR_S || BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: BOOL_EXPR_S && BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: BOOL_EXPR_S : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: COND_POINTER POINTER_OP COND_POINTER : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: ARITH_EXPR REL_OP ARITH_EXPR : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: ARITH_EXPR REL_OP CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: COND_POINTER POINTER_OP POINTER_CONST : pe: 0.250=>0.250 ; ppie: 0.250=>0.250
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK free ( str ) ;
+Created new cluster cluster-L331-5
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: (str = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: (! (return = 0)), 
+		formula: (! (str = 0)),
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-5
+Grammar: :INSERT POS CMD,HEAP,free ( POINTER ) ;
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK ret = malloc ( sizeof ( * str ) ) ;
+Created new cluster cluster-L331-6
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-6
+Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: HEAP : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: EXIT_STMT : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: CMD CMD : pe: 0.167=>0.167 ; ppie: 0.167=>0.167
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT return ret;
+Created new cluster cluster-L331-7
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+pe_increment: RewardType.BIG
+ppie_increment: RewardType.BIG
+Found a locally good patch after 290.907s from starting tool
+Adding to Cluster cluster-L331-7
+Grammar: :INSERT POS CMD,EXIT_STMT
+plausible count: 1
+cumulative repetition: 3
+Cluster pe increment: RewardType.BIG
+Cluster ppie increment: RewardType.BIG
+Prod probability update: return ret; : pe: 0.500=>0.550 ; ppie: 0.500=>0.600
+Prod probability update: return NULL; : pe: 0.500=>0.450 ; ppie: 0.500=>0.400
+Prod probability update: EXIT_STMT : pe: 0.167=>0.250 ; ppie: 0.167=>0.333
+Prod probability update: HEAP : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+Prod probability update: CMD CMD : pe: 0.167=>0.150 ; ppie: 0.167=>0.133
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.600
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.400
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT return NULL; ret = str ;
+Created new cluster cluster-L331-8
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 329>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-8
+Grammar: :INSERT POS CMD,CMD CMD,EXIT_STMT,HEAP,POINTER = POINTER_EXPR ;,POINTER
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.333
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT return NULL; return NULL;
+Adding to Cluster cluster-L331-8
+Grammar: :INSERT POS CMD,CMD CMD,EXIT_STMT,EXIT_STMT
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.333
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK ret = NULL ;
+Adding to Cluster cluster-L331-2
+Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER_CONST
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.333
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.333
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.133
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT ret = malloc ( sizeof ( * ret ) ) ;
+Created new cluster cluster-L331-9
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 331, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 329>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.BIG
+Adding to Cluster cluster-L331-9
+Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+plausible count: 0
+cumulative repetition: 3
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.BIG
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.500=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.500=>0.400
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.467
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.267
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.333=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.133=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.333=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.133=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.600=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.400=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT ret = str ;
+Adding to Cluster cluster-L331-3
+Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT free ( str ) ;
+Created new cluster cluster-L331-10
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: (! (str = 0)),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <LatentAbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: (str = 0),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: (! (return = 0)), 
+		formula: (! (str = 0)),
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-10
+Grammar: :INSERT POS CMD,HEAP,free ( POINTER ) ;
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK ret = str ;
+Created new cluster cluster-L331-11
+Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ErrorMemoryLeak, 329, 331>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (str = return),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+]
+pe_increment: RewardType.NO
+ppie_increment: RewardType.NO
+Adding to Cluster cluster-L331-11
+Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK ret = malloc ( sizeof ( * str ) ) ; return ret;
+Adding to Cluster cluster-L331-6
+Grammar: :INSERT POS CMD,CMD CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;,EXIT_STMT
+plausible count: 0
+cumulative repetition: 1
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT str = malloc ( sizeof ( * ret ) ) ;
+Adding to Cluster cluster-L331-1
+Grammar: :INSERT POS CMD,HEAP,POINTER = malloc ( sizeof ( * POINTER ) ) ;
+plausible count: 0
+cumulative repetition: 4
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK str = NULL ;
+Adding to Cluster cluster-L331-0
+Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER_CONST
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT BACK str = ret ;
+Adding to Cluster cluster-L331-0
+Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER
+plausible count: 0
+cumulative repetition: 3
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT return NULL ;
+Adding to Cluster cluster-L331-8
+Grammar: :INSERT POS CMD,return POINTER_EXPR ;,POINTER_CONST
+plausible count: 0
+cumulative repetition: 2
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT return NULL;
+Adding to Cluster cluster-L331-8
+Grammar: :INSERT POS CMD,EXIT_STMT
+plausible count: 1
+cumulative repetition: 4
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: return NULL; : pe: 0.450=>0.450 ; ppie: 0.400=>0.400
+Prod probability update: return ret; : pe: 0.550=>0.550 ; ppie: 0.600=>0.600
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Adding new patch: INSERT FRONT str = NULL ;
+Adding to Cluster cluster-L331-0
+Grammar: :INSERT POS CMD,HEAP,POINTER = POINTER_EXPR ;,POINTER_CONST
+plausible count: 0
+cumulative repetition: 3
+Cluster pe increment: RewardType.NO
+Cluster ppie increment: RewardType.NO
+Prod probability update: NULL : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: str : pe: 0.500=>0.500 ; ppie: 0.400=>0.400
+Prod probability update: ret : pe: 0.500=>0.500 ; ppie: 0.600=>0.600
+Prod probability update: POINTER_CONST : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.333 ; ppie: 0.467=>0.467
+Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.333 ; ppie: 0.267=>0.267
+Prod probability update: HEAP : pe: 0.150=>0.150 ; ppie: 0.307=>0.307
+Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: return POINTER_EXPR ; : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: EXIT_STMT : pe: 0.250=>0.250 ; ppie: 0.267=>0.267
+Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: CMD CMD : pe: 0.150=>0.150 ; ppie: 0.107=>0.107
+Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.680=>0.680
+Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.320=>0.320
+Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+Loc 331: Ending repair loop since time budget is exceeded
+Loc 331: Repair loop finished
+[Timer] Accumulated duration for patch-generation: 0.021s
+[Timer] Average duration for patch-generation: 0.00083s
+[Timer] Accumulated duration for probabilities-update: 0.064s
+[Timer] Average duration for probabilities-update: 0.00255s
+[Timer] Accumulated duration for patch-signature-generation: 0.368s
+[Timer] Average duration for patch-signature-generation: 0.01470s
+[Timer] Accumulated duration for footprint-generation: 15.761s
+[Timer] Average duration for footprint-generation: 0.63045s
+[Timer] Accumulated duration for patch-clustering: 0.885s
+[Timer] Average duration for patch-clustering: 0.03541s
+Number of prod-rule-combos: 12
+Number of plausible prod-rule-combos: 1
+Number of clusters: 12
+Number of clustered patches: 25
+Average number of patches per cluster:2.083
+plausible-prod-combo-1: 0
+plausible-prod-combo-2: 0
+plausible-prod-combo-3: 1
+plausible-prod-combo-4: 0
+plausible-prod-combo-5: 0
+plausible-prod-combo-6: 0
+plausible-prod-combo-7: 0
+plausible-prod-combo-8: 0
+plausible-prod-combo-9: 0
+plausible-prod-combo-10: 0
+plausible-prod-combo-11: 0
+plausible-prod-combo-12: 0
+prod-combo-1: 2
+prod-combo-2: 4
+prod-combo-3: 4
+prod-combo-4: 1
+prod-combo-5: 2
+prod-combo-6: 1
+prod-combo-7: 2
+prod-combo-8: 1
+prod-combo-9: 1
+prod-combo-10: 3
+prod-combo-11: 3
+prod-combo-12: 1
+Explored 25/3704219304778729154511168907551203351037872429024457301679314914510905246372749754343933724438510958229905800452874(0.000%) patches
+[Timer] Duration for total-repair: 186.879s
+Validating locally good clusters
+Checking which clusters are locally good
+Number of locally good clusters: 1
+Locally good clusters are: [cluster-L331-7 : GOOD, pe_incre: RewardType.BIG, ppie_incre: RewardType.BIG, PatchSignature: [
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset({frozenset({'str'})}), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: True,
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: True,
+] =>
+[
+	Plausible Patch: /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-4-openssl-1/repair/all-patches/cluster-L331-7/11.patch (size:4),
+]
+,
+]
+[Timer] Duration for total-validation: 0.003s
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 300.226s

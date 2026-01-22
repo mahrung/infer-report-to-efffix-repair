@@ -1,0 +1,212 @@
+[Start] effFix started at 2026-01-21 16:18:24.691969
+[Wed Jan 21 16:18:24 2026][INFO]: <function title at 0x79b63c8bdf70>
+[Wed Jan 21 16:18:24 2026][INFO]: Displaying Configurations
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: src_dir:/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/src
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: build_command_project:make
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: build_command_repair:make build_crypto
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: clean_command:make clean
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: config_command:CC=gcc ./config
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: tag_id:null-ptr-3-openssl-1
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: bug_type:NULLPTR_DEREFERENCE
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: bug_procedure:OCSP_sendreq_new
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: bug_file:crypto/ocsp/ocsp_ht.c
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: bug_start_line:160
+[Wed Jan 21 16:18:24 2026][CONFIGURATION]: bug_end_line:161
+[Wed Jan 21 16:18:24 2026][INFO]: Loading dependency tools
+[Wed Jan 21 16:18:24 2026][INFO]: Analyzing Program for Repair
+[Wed Jan 21 16:18:24 2026][INFO]: Checking whether Infer detected the target bug
+[Wed Jan 21 16:18:24 2026][INFO]: Target bug is: NULLPTR_DEREFERENCE, crypto/ocsp/ocsp_ht.c, OCSP_sendreq_new, start_line:160, end_line:161, two_loc_source_line:-1
+[Wed Jan 21 16:18:24 2026][INFO]: Performing fix localization
+[Wed Jan 21 16:18:41 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/ocsp/ocsp_ht.c --pulse-fix-function=OCSP_sendreq_new -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:18:42 2026][INFO]: Result from ochiai: [(154, 0.105999788000636), (157, 0.105999788000636), (160, 0.105999788000636), (161, 0.105999788000636), (162, 0.0), (163, 0.0), (164, 0.0), (165, 0.0), (166, 0.0), (170, 0.0), (171, 0.0), (172, 0.0)]
+[Wed Jan 21 16:18:42 2026][COMMAND]: codeql pack install
+[Wed Jan 21 16:18:46 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-queries/loc_between.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-res-loc-betweens.csv
+[Wed Jan 21 16:19:36 2026][INFO]: Locations allowed (by considering trace start and trace end): {161}
+[Wed Jan 21 16:19:36 2026][INFO]: Final locations: [161]
+[Wed Jan 21 16:19:36 2026][INFO]: [Timer] Duration for localize: 72.188s
+[Wed Jan 21 16:19:38 2026][INFO]: Target bug signature: PatchSignature: [
+	DisjunctSignature: label: <AbortProgram, 160, 161>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18),
+	DisjunctSignature: label: <ErrorMemoryLeak, 160, 171>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: (((! (err_fns = 0)) & (! (maxline = 0)) & (! (threadid_callback = 0)) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)) | ((! (err_fns = 0)) & (! (maxline = 0)) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18))),
+	DisjunctSignature: label: <ErrorMemoryLeak, 160, 171>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: (((threadid_callback = return) & (threadid_callback = 0) & (! (err_fns = 0)) & (! (maxline = 0)) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)) | ((threadid_callback = return) & (threadid_callback = 0) & (! (err_fns = 0)) & (! (maxline = 0)) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18) & (! (id_callback = 0)))),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (err_fns = 0)) & (! (threadid_callback = 0)) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (err_fns = 0)) & (! (id_callback = 0)) & (threadid_callback = 0) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (err_fns = 0)) & (threadid_callback = 0) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)),
+	DisjunctSignature: label: <ISLLatentMemoryError, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (err_fns = 0)) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)),
+	DisjunctSignature: label: <LatentAbortProgram, 162, 437>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: True, 
+		formula: ((! (err_fns = 0)) & (threadid_callback = 0) & ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18)),
+]
+[Wed Jan 21 16:19:38 2026][INFO]: [Codeql] Running patch ingredient (return stmts) query
+[Wed Jan 21 16:19:38 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-queries/return_stmts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-res-return-stmts.csv
+[Wed Jan 21 16:20:01 2026][INFO]: Return statements: ['return 0;', 'return NULL;', 'return rctx;']
+[Wed Jan 21 16:20:01 2026][INFO]: [Timer] Duration for codeql-get-return-stmts: 22.804s
+[Wed Jan 21 16:20:01 2026][INFO]: [Codeql] Running patch ingredient (labels) query
+[Wed Jan 21 16:20:01 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-queries/labels.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-res-labels.csv
+[Wed Jan 21 16:20:15 2026][INFO]: Labels: []
+[Wed Jan 21 16:20:15 2026][INFO]: [Timer] Duration for codeql-get-labels: 13.632s
+[Wed Jan 21 16:20:15 2026][INFO]: [Timer] Duration for analysis: 110.601s
+[Wed Jan 21 16:20:15 2026][INFO]: Repairing Program at location: 161
+[Wed Jan 21 16:20:15 2026][INFO]: Loc 161: Getting patch ingredients at fix location
+[Wed Jan 21 16:20:15 2026][INFO]: Loc 161: [Codeql] Running statement boundary query
+[Wed Jan 21 16:20:15 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-queries/stmt_boundary.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-res-stmt-boundary.csv
+[Wed Jan 21 16:20:29 2026][INFO]: Statement at fix location ends at line 161
+[Wed Jan 21 16:20:29 2026][INFO]: [Timer] Duration for codeql-get-stmt-boundary: 14.456s
+[Wed Jan 21 16:20:29 2026][INFO]: Loc 161: [Codeql] Running patch ingredient (variable) query
+[Wed Jan 21 16:20:29 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-queries/extract_var.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-res-ingredient.csv
+[Wed Jan 21 16:22:47 2026][INFO]: Loc 161: Pointer variables: ['rctx']
+[Wed Jan 21 16:22:47 2026][INFO]: Loc 161: Non-pointer variables: ['rctx->state']
+[Wed Jan 21 16:22:47 2026][INFO]: [Timer] Duration for codeql-get-ingredients-variables: 137.553s
+[Wed Jan 21 16:22:47 2026][INFO]: Loc 161: [Codeql] Running patch ingredient (constants) query
+[Wed Jan 21 16:22:47 2026][COMMAND]: codeql database analyze /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/pre/codeql-db /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-queries/consts.ql --format=csv --rerun --output=/effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/codeql-res-consts.csv
+[Wed Jan 21 16:23:22 2026][INFO]: Loc 161: Constants: ['-1', '0', '160', '4096']
+[Wed Jan 21 16:23:22 2026][INFO]: [Timer] Duration for codeql-get-consts: 35.082s
+[Wed Jan 21 16:23:22 2026][INFO]: Loc 161: Initializing Patch Generator and Cluster Manager
+[Wed Jan 21 16:23:22 2026][INFO]: Loc 161: Entering the main repair loop
+[Wed Jan 21 16:23:22 2026][INFO]: Loc 161: Total search space size: 115544218655154699672520543713582272681246190484509475482222652607669865044950225482687589442787782490144191535226515289021691476
+[Wed Jan 21 16:23:22 2026][COMMAND]: sed -i -e '161s:^:return rctx ; rctx = rctx ;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/src/crypto/ocsp/ocsp_ht.c
+[Wed Jan 21 16:23:22 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/ocsp_ht.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/src/crypto/ocsp/ocsp_ht.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/1.patch
+[Wed Jan 21 16:23:22 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/ocsp/ocsp_ht.c --pulse-fix-function=OCSP_sendreq_new -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:23:24 2026][INFO]: Adding new patch: INSERT FRONT return rctx ; rctx = rctx ;
+[Wed Jan 21 16:23:24 2026][INFO]: Created new cluster cluster-L161-0
+[Wed Jan 21 16:23:24 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset({frozenset({'return'})}), 
+		deallocated: frozenset(), 
+		return_formula: (! (return = 0)), 
+		formula: ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18),
+]
+[Wed Jan 21 16:23:24 2026][INFO]: pe_increment: RewardType.SMALL
+[Wed Jan 21 16:23:24 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:23:24 2026][INFO]: Adding to Cluster cluster-L161-0
+[Wed Jan 21 16:23:24 2026][INFO]: Grammar: :INSERT POS CMD,CMD CMD,return POINTER_EXPR ;,POINTER,HEAP,POINTER = POINTER_EXPR ;,POINTER
+[Wed Jan 21 16:23:24 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:23:24 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:23:24 2026][INFO]: Cluster pe increment: RewardType.SMALL
+[Wed Jan 21 16:23:24 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: rctx : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: rctx : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: POINTER : pe: 0.500=>0.550 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: POINTER_CONST : pe: 0.500=>0.450 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: POINTER = POINTER_EXPR ; : pe: 0.333=>0.400 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: POINTER = malloc ( sizeof ( * POINTER ) ) ; : pe: 0.333=>0.300 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: free ( POINTER ) ; : pe: 0.333=>0.300 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: HEAP : pe: 0.167=>0.183 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.167=>0.183 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: CMD CMD : pe: 0.167=>0.183 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.167=>0.150 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:23:24 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:23:24 2026][COMMAND]: sed -i -e '161s:^:return 0;  :' /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/src/crypto/ocsp/ocsp_ht.c
+[Wed Jan 21 16:23:24 2026][COMMAND]: diff -u /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/ocsp_ht.c.backup /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/src/crypto/ocsp/ocsp_ht.c > /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/2.patch
+[Wed Jan 21 16:23:24 2026][COMMAND]: /opt/infer/infer/bin/infer --pulse-only --jobs 16 --pulse-max-disjuncts 100 --pulse-model-malloc-pattern CRYPTO_malloc --pulse-model-free-pattern CRYPTO_free --pulse-model-realloc-pattern CRYPTO_realloc --reactive --pulse-fix-mode --pulse-fix-file=crypto/ocsp/ocsp_ht.c --pulse-fix-function=OCSP_sendreq_new -o /effFix-experiment/effFix-benchmark/openssl-1/null-ptr-3-openssl-1/repair/infer-out-single -- make build_crypto
+[Wed Jan 21 16:23:25 2026][INFO]: Adding new patch: INSERT FRONT return 0;
+[Wed Jan 21 16:23:25 2026][INFO]: Created new cluster cluster-L161-1
+[Wed Jan 21 16:23:25 2026][INFO]: Cluster signature: PatchSignature: [
+	DisjunctSignature: label: <ErrorMemoryLeak, 160, 160>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18),
+	DisjunctSignature: label: <Ok, 0, 0>, 
+		allocated: frozenset(), 
+		deallocated: frozenset(), 
+		return_formula: (return = 0), 
+		formula: ('&(OCSP_sendreq_new.post_hdr->__infer_model_string_length)' = 18),
+]
+[Wed Jan 21 16:23:25 2026][INFO]: pe_increment: RewardType.SMALL
+[Wed Jan 21 16:23:25 2026][INFO]: ppie_increment: RewardType.NO
+[Wed Jan 21 16:23:25 2026][INFO]: Adding to Cluster cluster-L161-1
+[Wed Jan 21 16:23:25 2026][INFO]: Grammar: :INSERT POS CMD,EXIT_STMT
+[Wed Jan 21 16:23:25 2026][INFO]: plausible count: 0
+[Wed Jan 21 16:23:25 2026][INFO]: cumulative repetition: 1
+[Wed Jan 21 16:23:25 2026][INFO]: Cluster pe increment: RewardType.SMALL
+[Wed Jan 21 16:23:25 2026][INFO]: Cluster ppie increment: RewardType.NO
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: return 0; : pe: 0.333=>0.400 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: return NULL; : pe: 0.333=>0.300 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: return rctx; : pe: 0.333=>0.300 ; ppie: 0.333=>0.333
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: EXIT_STMT : pe: 0.150=>0.235 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: HEAP : pe: 0.183=>0.165 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: ID = ARITH_EXPR ; : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: return POINTER_EXPR ; : pe: 0.183=>0.165 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: if ( BOOL_EXPR ) { CMD } : pe: 0.150=>0.135 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: CMD CMD : pe: 0.183=>0.165 ; ppie: 0.167=>0.167
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: FRONT : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: BACK : pe: 0.500=>0.500 ; ppie: 0.500=>0.500
+[Wed Jan 21 16:23:25 2026][INFO]: Prod probability update: INSERT POS CMD : pe: 1.000=>1.000 ; ppie: 1.000=>1.000
+[Wed Jan 21 16:23:25 2026][INFO]: Loc 161: Ending repair loop since time budget is exceeded
+[Wed Jan 21 16:23:25 2026][INFO]: Loc 161: Repair loop finished
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Accumulated duration for patch-generation: 0.001s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Average duration for patch-generation: 0.00071s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Accumulated duration for probabilities-update: 0.005s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Average duration for probabilities-update: 0.00227s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Accumulated duration for patch-signature-generation: 0.018s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Average duration for patch-signature-generation: 0.00882s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Accumulated duration for footprint-generation: 2.659s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Average duration for footprint-generation: 1.32951s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Accumulated duration for patch-clustering: 0.042s
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Average duration for patch-clustering: 0.02078s
+[Wed Jan 21 16:23:25 2026][INFO]: Number of prod-rule-combos: 2
+[Wed Jan 21 16:23:25 2026][INFO]: Number of plausible prod-rule-combos: 0
+[Wed Jan 21 16:23:25 2026][INFO]: Number of clusters: 2
+[Wed Jan 21 16:23:25 2026][INFO]: Number of clustered patches: 2
+[Wed Jan 21 16:23:25 2026][INFO]: Average number of patches per cluster:1.000
+[Wed Jan 21 16:23:25 2026][INFO]: plausible-prod-combo-1: 0
+[Wed Jan 21 16:23:25 2026][INFO]: plausible-prod-combo-2: 0
+[Wed Jan 21 16:23:25 2026][INFO]: prod-combo-1: 1
+[Wed Jan 21 16:23:25 2026][INFO]: prod-combo-2: 1
+[Wed Jan 21 16:23:25 2026][INFO]: Explored 2/115544218655154699672520543713582272681246190484509475482222652607669865044950225482687589442787782490144191535226515289021691476(0.000%) patches
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Duration for total-repair: 189.882s
+[Wed Jan 21 16:23:25 2026][INFO]: Validating locally good clusters
+[Wed Jan 21 16:23:25 2026][INFO]: Checking which clusters are locally good
+[Wed Jan 21 16:23:25 2026][INFO]: Number of locally good clusters: 0
+[Wed Jan 21 16:23:25 2026][INFO]: Locally good clusters are: []
+[Wed Jan 21 16:23:25 2026][WARNING]: No locally good clusters found. Cannot validate.
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Duration for total-validation: 0.001s
+[Wed Jan 21 16:23:25 2026][INFO]: Finalizing and exiting tool
+[Wed Jan 21 16:23:25 2026][INFO]: [Timer] Duration for total-run-time: 300.516s
+[Wed Jan 21 16:23:25 2026][LOG]: Run time statistics:
+-----------------------
+[Wed Jan 21 16:23:25 2026][LOG]: effFix (Stage: repair) finished successfully after 300.516 seconds
+[Wed Jan 21 16:23:25 2026][LOG]: Time duration
+----------------------
+[Wed Jan 21 16:23:25 2026][LOG]: effFix (Stage: repair) finished successfully after 300.516 seconds
+[Wed Jan 21 16:23:25 2026][END] effFix ended at  2026-01-21 16:23:25.184595
+

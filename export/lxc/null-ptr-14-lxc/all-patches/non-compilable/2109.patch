@@ -1,0 +1,11 @@
+--- /effFix-experiment/effFix-benchmark/lxc/null-ptr-14-lxc/repair/af_unix.c.backup	2026-01-21 02:41:15.172852363 +0000
++++ /effFix-experiment/effFix-benchmark/lxc/null-ptr-14-lxc/src/src/lxc/af_unix.c	2026-01-21 02:49:39.590215758 +0000
+@@ -235,7 +235,7 @@
+ 	msg.msg_controllen = sizeof(cmsgbuf);
+ 
+ 	cmsg = CMSG_FIRSTHDR(&msg);
+-	cmsg->cmsg_len = CMSG_LEN(sizeof(struct ucred));
++	cmsg->cmsg_len = CMSG_LEN(sizeof(struct ucred)); if ( msg.msg_control != NULL ) { free ( & ...->msg_control ) ; } 
+ 	cmsg->cmsg_level = SOL_SOCKET;
+ 	cmsg->cmsg_type = SCM_CREDENTIALS;
+ 	memcpy(CMSG_DATA(cmsg), &cred, sizeof(cred));

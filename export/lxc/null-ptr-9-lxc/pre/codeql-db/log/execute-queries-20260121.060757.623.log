@@ -1,0 +1,146 @@
+[2026-01-21 06:07:57] This is codeql execute queries -J-Xmx2388M --off-heap-ram=2388 --verbosity=progress --logdir=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/log --evaluator-log-level=5 --warnings=show --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --rerun --output=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/results -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/pre/codeql-db/db-cpp /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql
+[2026-01-21 06:07:57] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --format=json -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql
+[2026-01-21 06:07:57] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:07:58] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql"
+                      ]
+[2026-01-21 06:07:58] Refusing fancy output: The terminal is not an xterm: 
+[2026-01-21 06:07:58] Creating executor with 1 threads.
+[2026-01-21 06:07:58] Calling plumbing command: codeql resolve extensions --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql
+[2026-01-21 06:07:58] Calling plumbing command: codeql resolve queries --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --format startingpacks -- /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql
+[2026-01-21 06:07:58] [PROGRESS] resolve queries> Recording pack reference efffix/codeql-cpp-queries at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:07:58] Plumbing command codeql resolve queries completed:
+                      [
+                        "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries"
+                      ]
+[2026-01-21 06:07:59] Plumbing command codeql resolve extensions completed:
+                      {
+                        "models" : [ ],
+                        "data" : { }
+                      }
+[2026-01-21 06:07:59] [DETAILS] execute queries> Did not find any ML models.
+[2026-01-21 06:07:59] Calling plumbing command: codeql resolve library-path --qlconfig-file=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlconfig.yml --query=/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql --format=json
+[2026-01-21 06:07:59] [DETAILS] resolve library-path> Resolving query at normalized path /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql.
+[2026-01-21 06:07:59] [DETAILS] resolve library-path> Found enclosing pack 'efffix/codeql-cpp-queries' at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries.
+[2026-01-21 06:07:59] [DETAILS] resolve library-path> Adding compilation cache at /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache.
+[2026-01-21 06:07:59] [DETAILS] resolve library-path> Resolving library dependencies from /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/qlpack.yml.
+[2026-01-21 06:07:59] [DETAILS] resolve library-path> QL pack dependencies for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries resolved OK.
+[2026-01-21 06:07:59] [DETAILS] resolve library-path> Found dbscheme through QL packs: /root/.codeql/packages/codeql/cpp-all/0.6.0/semmlecode.cpp.dbscheme.
+[2026-01-21 06:07:59] Plumbing command codeql resolve library-path completed:
+                      {
+                        "libraryPath" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries",
+                          "/root/.codeql/packages/codeql/cpp-all/0.6.0",
+                          "/root/.codeql/packages/codeql/ssa/0.0.13",
+                          "/root/.codeql/packages/codeql/tutorial/0.0.6"
+                        ],
+                        "dbscheme" : "/root/.codeql/packages/codeql/cpp-all/0.6.0/semmlecode.cpp.dbscheme",
+                        "compilationCache" : [
+                          "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/.cache"
+                        ],
+                        "relativeName" : "efffix/codeql-cpp-queries/labels.ql",
+                        "qlPackName" : "efffix/codeql-cpp-queries"
+                      }
+[2026-01-21 06:07:59] [PROGRESS] execute queries> Compiling query plan for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql.
+[2026-01-21 06:07:59] [DETAILS] execute queries> Resolving imports for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql.
+[2026-01-21 06:08:00] Resolved file set for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql hashes to 018a6730bbbf68e9c63abff6675ab137fbd2e5a4.
+[2026-01-21 06:08:00] [DETAILS] execute queries> Checking QL for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql.
+[2026-01-21 06:08:00] ExternalModuleBindingPass ...
+[2026-01-21 06:08:00] ExternalModuleBindingPass time: 00:00.464
+[2026-01-21 06:08:00] QLPredicateSynthesiser ...
+[2026-01-21 06:08:00] QLPredicateSynthesiser time: 00:00.019
+[2026-01-21 06:08:00] DeclarationBindingPass ...
+[2026-01-21 06:08:00] DeclarationBindingPass time: 00:00.065
+[2026-01-21 06:08:00] Fixed point time ...
+[2026-01-21 06:08:01] Fixed point time time: 00:00.552
+[2026-01-21 06:08:01] ReferenceBindingPass ...
+[2026-01-21 06:08:01] ReferenceBindingPass time: 00:00.046
+[2026-01-21 06:08:01] PopulateInstantiationMapPass ...
+[2026-01-21 06:08:01] PopulateInstantiationMapPass time: 00:00.244
+[2026-01-21 06:08:01] ReferenceBindingCheck ...
+[2026-01-21 06:08:01] ReferenceBindingCheck time: 00:00.047
+[2026-01-21 06:08:01] PredicateBodyBindingPass ...
+[2026-01-21 06:08:02] PredicateBodyBindingPass time: 00:00.206
+[2026-01-21 06:08:02] LanguagePragmaPropagationPass ...
+[2026-01-21 06:08:02] LanguagePragmaPropagationPass time: 00:00.012
+[2026-01-21 06:08:02] Ambiguity checks ...
+[2026-01-21 06:08:02] Ambiguity checks time: 00:00.074
+[2026-01-21 06:08:02] Ql checks ...
+[2026-01-21 06:08:02] Ql checks time: 00:00.853
+[2026-01-21 06:08:03] Compilation pipeline
+[2026-01-21 06:08:04] Type Inference ...
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: Best number of iterations,Maximum number of runs,Number of BDD variables,Size of BDD for typefacts
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,12,12
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,8,8
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,0,0
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,812,1828
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,2,2
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,2,2
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,3,3
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,4,4
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,7,7
+[2026-01-21 06:08:04] CSV_TYPE_HIERARCHY: 0,0,5,5
+[2026-01-21 06:08:05] Type Inference time: 00:01.367
+[2026-01-21 06:08:05] [DETAILS] execute queries> Optimizing /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql.
+[2026-01-21 06:08:05] Processing compilation pipeline
+[2026-01-21 06:08:05] Started compiling a query
+[2026-01-21 06:08:06] Initialising compiler...
+[2026-01-21 06:08:06] 	 ... compiler initialised
+[2026-01-21 06:08:06] About to start query optimisation
+[2026-01-21 06:08:06] Compilation cache miss for e857d39a671865276f4951a3f72dbfa8a6874297.
+[2026-01-21 06:08:06] Stored compiled program for e857d39a671865276f4951a3f72dbfa8a6874297.
+[2026-01-21 06:08:06] Compilation cache miss for a8676a4b0a2fdbb647289c783712fc431431e690.
+[2026-01-21 06:08:06] Stored compiled program for a8676a4b0a2fdbb647289c783712fc431431e690.
+[2026-01-21 06:08:07] Compilation cache miss for 37d9f17a628b084f51b6e9266ef33d2efaf79eb0.
+[2026-01-21 06:08:07] Stored compiled program for 37d9f17a628b084f51b6e9266ef33d2efaf79eb0.
+[2026-01-21 06:08:07] Compilation cache miss for 6f0d1d1653b8de447f97f5f6a4762b176ec76f0b.
+[2026-01-21 06:08:07] Stored compiled program for 6f0d1d1653b8de447f97f5f6a4762b176ec76f0b.
+[2026-01-21 06:08:07] Compilation cache miss for 077e6622a81d02806ea1148cee10d40b0b1a85e5.
+[2026-01-21 06:08:08] Stored compiled program for 077e6622a81d02806ea1148cee10d40b0b1a85e5.
+[2026-01-21 06:08:08] Compilation cache miss for 05861ff14084e62ed9fe554dd056eef9ef8eac50.
+[2026-01-21 06:08:10] Stored compiled program for 05861ff14084e62ed9fe554dd056eef9ef8eac50.
+[2026-01-21 06:08:10] Compilation cache miss for fae8b2b3ca3f6f6c8e85c92dd7b2729d4f31dbbe.
+[2026-01-21 06:08:10] Stored compiled program for fae8b2b3ca3f6f6c8e85c92dd7b2729d4f31dbbe.
+[2026-01-21 06:08:10] CSV_COMPILATION: NONE,MISC,RA_TRANSLATION,OPTIMISATIONS
+[2026-01-21 06:08:10] CSV_COMPILATION: 355,348,340,3462
+[2026-01-21 06:08:10] [SPAMMY] execute queries> No database upgrade/downgrade needed for /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql
+[2026-01-21 06:08:10] [PROGRESS] execute queries> [1/1 comp 10.9s] Compiled /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql.
+[2026-01-21 06:08:10] [PROGRESS] execute queries> Starting evaluation of efffix/codeql-cpp-queries/labels.ql.
+[2026-01-21 06:08:10] Starting evaluation of /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql
+[2026-01-21 06:08:10] (0s) Start query execution
+[2026-01-21 06:08:10] (0s) Beginning execution of labels.ql
+[2026-01-21 06:08:10] (0s)  >>> Created relation jumpinfo/3@4dc8fd2r with 2059 rows and digest 309151a19i7ejs2lua5gbet0i2c.
+[2026-01-21 06:08:10] (0s)  >>> Created relation functions/3@d341e4il with 3368 rows and digest d763e6003o1s1eu8f15cilossvc.
+[2026-01-21 06:08:10] (0s)  >>> Created relation stmts/3@a84928ns with 46321 rows and digest 84662ba0kpag29n61mv928nqua5.
+[2026-01-21 06:08:10] (0s) Starting to evaluate predicate stmts_10#join_rhs/2@37b390k0
+[2026-01-21 06:08:10] (0s)  >>> Created relation stmts_10#join_rhs/2@37b390k0 with 46321 rows and digest 667b0blvojp3tusllt610q1unn4.
+[2026-01-21 06:08:10] (0s) Starting to evaluate predicate #select#ff/2@1c766b5t
+[2026-01-21 06:08:10] (0s)  >>> Created relation #select#ff/2@1c766b5t with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s) Inferred that m#Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/1@26f26crl is empty, due to #select#ff/2@1c766b5t.
+[2026-01-21 06:08:10] (0s) Inferred that _#select#ff_stmts#shared/3@68c66br7 is empty, due to #select#ff/2@1c766b5t.
+[2026-01-21 06:08:10] (0s) Inferred that #select#query#ffffffff/8@eb889dfc is empty, due to #select#ff/2@1c766b5t.
+[2026-01-21 06:08:10] (0s) Inferred that m#File#1c14e1de::Container::getAbsolutePath#0#dispred#bf/1@9e63d29n is empty, due to m#Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/1@26f26crl.
+[2026-01-21 06:08:10] (0s) Inferred that _Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff__#select#ff_stmts#shared#antijoin_rhs/2@f3b960mr is empty, due to _#select#ff_stmts#shared/3@68c66br7.
+[2026-01-21 06:08:10] (0s) Inferred that File#1c14e1de::Container::getAbsolutePath#0#dispred#bf/2@66bb27jh is empty, due to m#File#1c14e1de::Container::getAbsolutePath#0#dispred#bf/1@9e63d29n.
+[2026-01-21 06:08:10] (0s) Inferred that Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/6@69dbb0l0 is empty, due to File#1c14e1de::Container::getAbsolutePath#0#dispred#bf/2@66bb27jh.
+[2026-01-21 06:08:10] (0s)  >>> Created relation #select#query#ffffffff/8@eb889dfc with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s)  >>> Created relation File#1c14e1de::Container::getAbsolutePath#0#dispred#bf/2@66bb27jh with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s)  >>> Created relation Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/6@69dbb0l0 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s)  >>> Created relation _Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff__#select#ff_stmts#shared#antijoin_rhs/2@f3b960mr with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s)  >>> Created relation m#File#1c14e1de::Container::getAbsolutePath#0#dispred#bf/1@9e63d29n with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s)  >>> Created relation m#Location#bd5c7591::Location::hasLocationInfo#5#dispred#bfffff/1@26f26crl with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:10] (0s)  >>> Created relation _#select#ff_stmts#shared/3@68c66br7 with 0 rows and digest THIS-RELATION-HAS-NO-TUPLES.
+[2026-01-21 06:08:11] (0s) Query done
+[2026-01-21 06:08:11] (0s) Sequence stamp origin is -5956193308716519644
+[2026-01-21 06:08:11] (0s) Pausing evaluation to sync to disk at sequence stamp o+0
+[2026-01-21 06:08:11] (0s) Unpausing evaluation
+[2026-01-21 06:08:11] Evaluation of /effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/repair/codeql-queries/labels.ql produced BQRS results.
+[2026-01-21 06:08:11] [PROGRESS] execute queries> [1/1 eval 271ms] Evaluation done; writing results to efffix/codeql-cpp-queries/labels.bqrs.
+[2026-01-21 06:08:11] [PROGRESS] execute queries> Shutting down query evaluator.
+[2026-01-21 06:08:11] Pausing evaluation to close the cache at sequence stamp o+1
+[2026-01-21 06:08:11] The disk cache is freshly trimmed; leave it be.
+[2026-01-21 06:08:11] Unpausing evaluation
+[2026-01-21 06:08:11] Terminating normally.

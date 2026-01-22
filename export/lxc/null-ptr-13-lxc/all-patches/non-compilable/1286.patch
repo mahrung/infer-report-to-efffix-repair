@@ -1,0 +1,11 @@
+--- /effFix-experiment/effFix-benchmark/lxc/null-ptr-13-lxc/repair/af_unix.c.backup	2026-01-21 02:28:15.198823088 +0000
++++ /effFix-experiment/effFix-benchmark/lxc/null-ptr-13-lxc/src/src/lxc/af_unix.c	2026-01-21 02:32:43.274488388 +0000
+@@ -234,7 +234,7 @@
+ 	msg.msg_control = cmsgbuf;
+ 	msg.msg_controllen = sizeof(cmsgbuf);
+ 
+-	cmsg = CMSG_FIRSTHDR(&msg);
++	cmsg = CMSG_FIRSTHDR(&msg); if ( & ...->msg_controllen != msg.msg_controllen + msg.msg_controllen && msg.msg_control != msg.msg_control ) { return call to sendmsg; msg.msg_controllen = & ...->msg_controllen / msg.msg_controllen ; } 
+ 	cmsg->cmsg_len = CMSG_LEN(sizeof(struct ucred));
+ 	cmsg->cmsg_level = SOL_SOCKET;
+ 	cmsg->cmsg_type = SCM_CREDENTIALS;

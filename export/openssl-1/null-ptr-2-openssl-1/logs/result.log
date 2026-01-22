@@ -1,0 +1,8 @@
+[Start] effFix started at 2026-01-21 16:17:09.752940
+<function title at 0x70f9dc535f70>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 0.074s

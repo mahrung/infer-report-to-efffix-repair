@@ -1,0 +1,29 @@
+#0
+hooks/unmount-namespace.c:123: error: Use After Free(USE_AFTER_FREE)
+  accessing `fd` that was closed with `fclose()` on line 120.
+  121. 	if (!mf) {
+  122. 		int error = errno;
+  123. 		close(fd);
+       ^
+  124. 		errno = error;
+  125. 		free(mounts);
+
+#1
+src/lxc/af_unix.c:154: error: Null Dereference(NULLPTR_DEREFERENCE)
+  `cmsg` could be null (null value originating from line 153) and is dereferenced.
+  152.
+  153. 	cmsg = CMSG_FIRSTHDR(&msg);
+  154. 	cmsg->cmsg_level = SOL_SOCKET;
+       ^
+  155. 	cmsg->cmsg_type = SCM_RIGHTS;
+  156. 	cmsg->cmsg_len = CMSG_LEN(num_sendfds * sizeof(int));
+
+#2
+src/lxc/cgroups/cgfsng.c:462: error: Memory Leak(MEMORY_LEAK_C)
+  Memory dynamically allocated by `malloc`, indirectly via call to `lxc_append_string()` on line 466 is not freed after the last access at line 462, column 4.
+  460. 		ret = snprintf(numstr, LXC_NUMSTRLEN64, "%zu", i);
+  461. 		if (ret < 0 || (size_t)ret >= LXC_NUMSTRLEN64) {
+  462. 			lxc_free_array((void **)cpulist, free);
+       ^
+  463. 			return NULL;
+  464. 		}

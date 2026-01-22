@@ -1,0 +1,32 @@
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Capturing in make/cc mode...
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Fix mode: Invalidating fix func lxc_abstract_unix_send_credential 
+Found 1 (out of 74) source file to analyze in /effFix-experiment/effFix-benchmark/lxc/null-ptr-7-lxc/repair/infer-out-single
+Analysing block of 200 procs, starting with lxc_abstract_unix_send_credential

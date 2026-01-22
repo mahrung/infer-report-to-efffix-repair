@@ -1,0 +1,10 @@
+---
+sourceLocationPrefix: "/effFix-experiment/effFix-benchmark/lxc/null-ptr-9-lxc/src"
+baselineLinesOfCode: 49454
+unicodeNewlines: false
+columnKind: "utf8"
+primaryLanguage: "cpp"
+creationMetadata:
+  sha: "72cc48f99077028058d979c47d9e4291f31838b9"
+  cliVersion: "2.12.2"
+  creationTime: "2026-01-21T06:04:42.580321399Z"

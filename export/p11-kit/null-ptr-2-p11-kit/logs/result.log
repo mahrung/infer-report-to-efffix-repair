@@ -1,0 +1,13 @@
+[Start] effFix started at 2026-01-22 02:09:19.484703
+<function title at 0x701086e24ee0>
+Displaying Configurations
+Loading dependency tools
+Analyzing Program for Repair
+Checking whether Infer detected the target bug
+Target bug is: NULLPTR_DEREFERENCE, p11-kit/virtual.c, __infer_globals_initializer_function_info, 2536, 2536
+Performing fix localization
+Result from ochiai: [(2535, 1.0), (2536, 1.0)]
+Locations allowed (by considering trace start and trace end): set()
+Final locations: []
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 36.460s

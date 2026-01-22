@@ -1,0 +1,14 @@
+[Start] effFix started at 2026-01-21 05:24:27.927819
+<function title at 0x70a3cd983ee0>
+Displaying Configurations
+Loading dependency tools
+Pre-analyzing Program
+Configuring Target Program
+[Timer] Duration for config: 21.846s
+Generating codeql database for target program
+[Timer] Duration for codeql-build-db: 38.923s
+Running Infer on Whole Program
+[Timer] Duration for infer-detect: 153.403s
+[Timer] Duration for pre-analysis: 214.186s
+Finalizing and exiting tool
+[Timer] Duration for total-run-time: 214.193s
